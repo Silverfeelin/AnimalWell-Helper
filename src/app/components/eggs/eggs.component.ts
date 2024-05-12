@@ -3,6 +3,7 @@ import { IEgg } from './egg.interface';
 import { EggControlsComponent } from './egg-controls/egg-controls.component';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../../services/data.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-eggs',
@@ -19,6 +20,7 @@ export class EggsComponent implements OnInit {
 
   constructor(
     private readonly _dataService: DataService,
+    private readonly _eventService: EventService,
     private readonly _http: HttpClient,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
@@ -31,6 +33,10 @@ export class EggsComponent implements OnInit {
       this.loadStorage();
       this._changeDetectorRef.markForCheck();
     });
+
+    this._eventService.eggsUpdated.subscribe({
+      next: (eggs: Array<IEgg>) => this.onEggsUpdated(eggs)
+    });
   }
 
   selectEgg(egg: IEgg): void {
@@ -42,7 +48,7 @@ export class EggsComponent implements OnInit {
     this.saveStorage();
   }
 
-  onEggUpdated(egg: IEgg): void {
+  onEggsUpdated(eggs: Array<IEgg>): void {
     this.saveStorage();
   }
 

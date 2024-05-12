@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class EventService {
-  eggVisibilityChanged = new Subject<IEgg>();
+  eggsUpdated = new Subject<Array<IEgg>>();
+  eggVisibilityChanged = new Subject<{egg: IEgg, navigate?: boolean}>();
 
   constructor() { }
 }

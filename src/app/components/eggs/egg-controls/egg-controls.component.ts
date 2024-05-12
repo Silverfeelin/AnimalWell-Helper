@@ -12,8 +12,6 @@ import { EventService } from '../../../services/event.service';
 export class EggControlsComponent {
   @Input() egg?: IEgg;
 
-  @Output() eggUpdated = new EventEmitter<IEgg>();
-
   constructor(
     private readonly _eventService: EventService
   ) { }
@@ -21,13 +19,13 @@ export class EggControlsComponent {
   toggleFound(): void {
     if (!this.egg) { return; }
     this.egg.obtained = !this.egg.obtained;
-    this.eggUpdated.emit(this.egg);
+    this._eventService.eggsUpdated.next([this.egg]);
   }
 
   toggleVisible(): void {
     if (!this.egg) { return; }
     this.egg.visible = !this.egg.visible;
-    this._eventService.eggVisibilityChanged.next(this.egg);
-    this.eggUpdated.emit(this.egg);
+    this._eventService.eggVisibilityChanged.next({ egg: this.egg, navigate: true });
+    this._eventService.eggsUpdated.next([this.egg]);
   }
 }

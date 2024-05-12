@@ -54,22 +54,26 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   onData(): void {
     this.renderMap();
     this._subscriptions.push(this._eventService.eggVisibilityChanged.subscribe({
-      next: egg => {
+      next: data => {
+        const egg = data.egg;
         const m = this.eggMarkers[egg.code];
         if (!m) { return; }
 
         // Show or remove egg.
         egg.visible ? m.marker.addTo(m.tile.layer) : m.marker.remove();
 
-        // Go to egg
+        // Reveal egg
         if (egg.visible) {
           if (!m.tile.revealed) {
             this.toggleTile(m.tile, true);
             this.saveStorage();
           }
-          this.map.flyTo(m.marker.getLatLng(), 3);
-          this.mapElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
-          m.marker.openPopup();
+
+          if (data.navigate) {
+            this.map.flyTo(m.marker.getLatLng(), 2);
+            this.mapElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
+            m.marker.openPopup();
+          }
         }
       }
     }));
@@ -84,6 +88,24 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     if (!confirm('Are you sure you want to show all map tiles?')) { return; }
     this.toggleAll(true);
     this.saveStorage();
+  }
+
+  showAllEggs(): void {
+    if (!confirm(`Are you sure you want to show all eggs? This also reveal the tiles they're in.`)) { return; }
+    for (const egg of this.eggs) {
+      egg.visible = true;
+      this._eventService.eggVisibilityChanged.next({ egg });
+    }
+    this._eventService.eggsUpdated.next(this.eggs);
+  }
+
+  hideAllEggs(): void {
+    if (!confirm(`Are you sure you want to hide all eggs? This will not hide the tiles they're in.`)) { return; }
+    for (const egg of this.eggs) {
+      egg.visible = false;
+      this._eventService.eggVisibilityChanged.next({ egg });
+    }
+    this._eventService.eggsUpdated.next(this.eggs);
   }
 
   hideAll(): void {
@@ -204,11 +226,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   private loadStorage(): void {
     const data = JSON.parse(localStorage.getItem('map') || '{}');
     const revealed = data.revealed || [] as Array<Array<boolean>>;
+
     for (let y = 0; y < revealed.length; y++) {
       for (let x = 0; x < revealed[y].length; x++) {
         this.toggleTileByCoords(x, y, !!revealed[y][x]);
       }
     }
+    this.toggleTileByCoords(5, 4, true);
   }
 
   private saveStorage(): void {
