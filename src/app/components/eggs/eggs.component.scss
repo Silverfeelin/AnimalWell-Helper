@@ -1,10 +1,11 @@
 :host {
-  --scale: 4;
   display: inline-block;
   position: relative;
+  vertical-align: top;
 }
 
-.eggs {
+.eggs-shrine {
+  --scale: 4;
   position: relative;
   display: inline-block;
   width: calc(112px * var(--scale));
@@ -39,25 +40,36 @@
   position: relative;
   box-sizing: border-box;
   background-color: #000;
-  border: 1px solid #f00;
+  border: 2px solid #f00;
   cursor: pointer;
 }
 
 .egg-code {
   position: absolute;
-  top: 50%;
+  font-size: 12px;
+  line-height: 12px;
+  user-select: none;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+}
+
+.eggs-buttons {
+}
+
+.obtained {
+  border-color: transparent;
+  background-color: transparent;
 }
 
 .selected {
   border-color: #ff0;
 }
 
-.obtained {
+.obtained.selected {
   border-color: #0f0;
-  background-color: transparent;
 }
+
 
 .egg-placeholder {
   opacity: 0;

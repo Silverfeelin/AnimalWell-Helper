@@ -21,8 +21,7 @@ interface ITile {
   standalone: true,
   imports: [],
   templateUrl: './map.component.html',
-  styleUrl: './map.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './map.component.scss'
 })
 export class MapComponent implements AfterViewInit {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
@@ -40,11 +39,13 @@ export class MapComponent implements AfterViewInit {
   }
 
   showAll(): void {
+    if (!confirm('Are you sure you want to show all map tiles?')) { return; }
     this.toggleAll(true);
     this.saveStorage();
   }
 
   hideAll(): void {
+    if (!confirm('Are you sure you want to hide all map tiles?')) { return; }
     this.toggleAll(false);
     this.toggleTileByCoords(5, 4, true);
     this.saveStorage();
@@ -102,6 +103,10 @@ export class MapComponent implements AfterViewInit {
           this.toggleTile(tile);
           this.saveStorage();
           this._changeDetectorRef.markForCheck();
+        });
+
+        rectangle.on('dblclick', (event: L.LeafletMouseEvent) => {
+          DomEvent.stopPropagation(event);
         });
       }
     }

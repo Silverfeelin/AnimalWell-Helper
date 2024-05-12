@@ -15,8 +15,7 @@ interface IFlame {
   standalone: true,
   imports: [],
   templateUrl: './inventory.component.html',
-  styleUrl: './inventory.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './inventory.component.scss'
 })
 export class InventoryComponent {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

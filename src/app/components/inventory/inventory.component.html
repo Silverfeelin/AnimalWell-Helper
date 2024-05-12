@@ -1,13 +1,15 @@
-<img class="img-inventory" src="/assets/game/inventory.png">
+<div class="inventory margin">
+  <img class="img-inventory" src="/assets/game/inventory.png">
 
-<div class="item-grid">
-  @for (item of items; track $index) {
-    <div class="item-block" [class.obtained]="item.obtained" (click)="toggleObtained(item)"></div>
-  }
-</div>
+  <div class="item-grid">
+    @for (item of items; track $index) {
+      <div class="item-block" [class.obtained]="item.obtained" (click)="toggleObtained(item)"></div>
+    }
+  </div>
 
-<div class="flames-grid">
-  @for (flame of flames; track $index) {
-    <div class="flame-block" [class.obtained]="flame.obtained" (click)="toggleObtained(flame)"></div>
-  }
+  <div class="flames-grid">
+    @for (flame of flames; track $index) {
+      <div class="flame-block" [class.obtained]="flame.obtained" (click)="toggleObtained(flame)"></div>
+    }
+  </div>
 </div>

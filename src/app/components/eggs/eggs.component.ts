@@ -10,8 +10,7 @@ import { HttpClient } from '@angular/common/http';
     EggControlsComponent
   ],
   templateUrl: './eggs.component.html',
-  styleUrl: './eggs.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './eggs.component.scss'
 })
 export class EggsComponent implements OnInit {
   selectedEgg?: IEgg;
@@ -27,11 +26,48 @@ export class EggsComponent implements OnInit {
   ngOnInit(): void {
     this._http.get<{items: Array<IEgg>}>('/assets/eggs.json').subscribe(data => {
       this.eggs = data.items;
+      this.loadStorage();
       this._changeDetectorRef.markForCheck();
     });
   }
 
   selectEgg(egg: IEgg): void {
     this.selectedEgg = egg;
+  }
+
+  toggleFound(egg: IEgg): void {
+    egg.obtained = !egg.obtained;
+    this.saveStorage();
+  }
+
+  onEggUpdated(egg: IEgg): void {
+    this.saveStorage();
+  }
+
+  unlockAll(): void {
+    if (!confirm('Are you sure you want to mark all eggs as found?')) { return; }
+    this.eggs.forEach(egg => egg.obtained = true);
+    this.saveStorage();
+  }
+
+  lockAll(): void {
+    if (!confirm('Are you sure you want to mark all eggs as missing?')) { return; }
+    this.eggs.forEach(egg => egg.obtained = false);
+    this.saveStorage();
+  }
+
+  private saveStorage(): void {
+    const data = {
+      obtained: this.eggs.filter(egg => egg.obtained).map(egg => egg.code)
+    };
+    localStorage.setItem('eggs', JSON.stringify(data));
+  }
+
+  private loadStorage(): void {
+    const data = JSON.parse(localStorage.getItem('eggs') || '{}');
+    const obtained = new Set(data.obtained || []);
+    this.eggs.forEach(egg => {
+      egg.obtained = obtained.has(egg.code);
+    });
   }
 }

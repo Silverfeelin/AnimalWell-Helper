@@ -1,3 +1,19 @@
-<div>
-  {{ egg?.code }}
+<div class="container border">
+  <div class="flex flex-column">
+    <div class="row">
+      <b>Egg</b> @if (egg) { ({{ egg.code }}) }
+    </div>
+    @if (egg) {
+      <div class="row">
+        <div class="flex">
+          <button class="btn btn-primary" (click)="toggleFound()">
+            <span class="mono">({{ egg.obtained ? 'X' : 'O'}})</span>
+            Found
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div>Please select an egg first.</div>
+    }
+  </div>
 </div>

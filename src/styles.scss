@@ -12,3 +12,59 @@ html {
   font-family: 'Roboto Mono', monospace;
 }
 
+@mixin border {
+  border-image: url('/assets/border.png') round;
+  border-image-slice: 3;
+  border-radius: 16px;
+  border-image-width: calc(3px * var(--scale));
+  image-rendering: pixelated;
+}
+
+.border {
+  @include border;
+}
+
+.container {
+  margin: 8px;
+  display: inline-block;
+  padding: 8px;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  gap: 8px;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.scale-1 { --scale: 1; }
+.scale-2 { --scale: 2; }
+.scale-3 { --scale: 3; }
+.scale-4 { --scale: 4; }
+
+.margin { margin: 8px; }
+.pad { padding: 8px !important; }
+.mt { margin-top: 8px !important; }
+.mb { margin-bottom: 8px !important; }
+.mt-0 { margin-top: 0 !important; }
+.mr-0 { margin-right: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.ml-0 { margin-left: 0 !important; }
+.w-100 { width: 100% !important; }
+
+button {
+  @include border;
+  font-size: 14px;
+  padding: 4px 8px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: #444;
+  }
+}
