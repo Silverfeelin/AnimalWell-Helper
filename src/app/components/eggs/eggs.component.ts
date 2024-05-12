@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, On
 import { IEgg } from './egg.interface';
 import { EggControlsComponent } from './egg-controls/egg-controls.component';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-eggs',
@@ -17,6 +18,7 @@ export class EggsComponent implements OnInit {
   eggs: Array<IEgg> = [];
 
   constructor(
+    private readonly _dataService: DataService,
     private readonly _http: HttpClient,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
@@ -24,8 +26,8 @@ export class EggsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._http.get<{items: Array<IEgg>}>('/assets/eggs.json').subscribe(data => {
-      this.eggs = data.items;
+    this._dataService.getEggs().subscribe(eggs => {
+      this.eggs = eggs;
       this.loadStorage();
       this._changeDetectorRef.markForCheck();
     });

@@ -68,3 +68,13 @@ button {
     background: #444;
   }
 }
+
+.spoiler {
+  color: #fff;
+  background: #fff;
+  cursor: pointer;
+
+  &.spoiled {
+    background: unset;
+  }
+}

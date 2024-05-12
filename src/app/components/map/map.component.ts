@@ -1,5 +1,9 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, isDevMode } from '@angular/core';
 import L, { DomEvent, LatLngBoundsExpression } from 'leaflet';
+import { DataService } from '../../services/data.service';
+import { IEgg } from '../eggs/egg.interface';
+import { EventService } from '../../services/event.service';
+import { SubscriptionLike } from 'rxjs';
 
 const mapWidth = 640;
 const mapHeight = 352;
@@ -23,19 +27,55 @@ interface ITile {
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
   map!: L.Map;
   tiles: Array<Array<ITile>> = [];
+  eggs: Array<IEgg> = [];
+  eggMarkers: { [key: string]: { tile: ITile, marker: L.Marker } } = {};
+
+  private readonly _subscriptions: Array<SubscriptionLike> = [];
 
   constructor(
+    private readonly _dataService: DataService,
+    private readonly _eventService: EventService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
   ngAfterViewInit(): void {
+    this._dataService.getEggs().subscribe(eggs => {
+      this.eggs = eggs;
+      this.onData();
+    });
+  }
+
+  onData(): void {
     this.renderMap();
+    this._subscriptions.push(this._eventService.eggVisibilityChanged.subscribe({
+      next: egg => {
+        const m = this.eggMarkers[egg.code];
+        if (!m) { return; }
+
+        // Show or remove egg.
+        egg.visible ? m.marker.addTo(m.tile.layer) : m.marker.remove();
+
+        // Go to egg
+        if (egg.visible) {
+          if (!m.tile.revealed) {
+            this.toggleTile(m.tile, true);
+          }
+          this.map.flyTo(m.marker.getLatLng(), 3);
+          m.marker.openPopup();
+        }
+      }
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.forEach(sub => sub.unsubscribe());
+    this._subscriptions.length = 0;
   }
 
   showAll(): void {
@@ -76,11 +116,6 @@ export class MapComponent implements AfterViewInit {
     L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
     this.map.fitBounds(bounds);
 
-    // Debug
-    this.map.on('click', (event: L.LeafletMouseEvent) => {
-      console.log('Clicked at:', event.latlng);
-    });
-
     // Draw rectangle around map
     L.rectangle(bounds, { color: '#f00', fillOpacity: 0, stroke: true }).addTo(this.map);
 
@@ -100,16 +135,55 @@ export class MapComponent implements AfterViewInit {
 
         rectangle.on('click', (event: L.LeafletMouseEvent) => {
           DomEvent.stopPropagation(event);
-          this.toggleTile(tile);
-          this.saveStorage();
-          this._changeDetectorRef.markForCheck();
+
+          if (isDevMode()) {
+            console.log('Clicked at:', event.latlng);
+            navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}]`);
+          }
         });
 
         rectangle.on('dblclick', (event: L.LeafletMouseEvent) => {
           DomEvent.stopPropagation(event);
+
+          this.toggleTile(tile);
+          this.saveStorage();
+          this._changeDetectorRef.markForCheck();
         });
       }
     }
+
+    // Draw eggs
+    this.eggs.forEach(egg => {
+      if (!egg.coords?.[0]) { return; }
+      const tileX = Math.floor(egg.coords[0] / tileWidth);
+      const tileY = Math.floor(egg.coords[1] / tileHeight);
+      const tile = this.tiles[tileY][tileX];
+
+      const marker = L.marker([egg.coords[1], egg.coords[0]], {
+        icon: L.icon({
+          iconUrl: '/assets/game/egg.png',
+          iconSize: [24, 27],
+          iconAnchor: [12, 13],
+        })
+      });
+
+      const popup = L.popup({
+        content: _marker => {
+          return egg.code
+        },
+        offset: [0, -6]
+      });
+      marker.bindPopup(popup);
+
+      this.eggMarkers[egg.code] = {
+        marker,
+        tile
+      };
+
+      if (egg.visible) {
+        marker.addTo(this.eggMarkers[egg.code].tile.layer);
+      }
+    });
 
     this.loadStorage();
   }

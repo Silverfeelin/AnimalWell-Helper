@@ -28,7 +28,7 @@ export class InventoryComponent {
     { name: 'Disc', obtained: false },
     { name: 'Bubble Wand', obtained: false },
     { name: 'Yoyo', obtained: false },
-    { name: 'Slinky', obtained: false },
+    { name: 'Slink', obtained: false },
     { name: 'Remote', obtained: false },
     { name: 'Bouncy Ball', obtained: false },
     { name: 'Wheel', obtained: false },

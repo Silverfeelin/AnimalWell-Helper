@@ -9,34 +9,45 @@
       "placeholder": true
     },
     {
-      "code": "3A"
+      "code": "3A",
+      "coords": [63.5, 336.5],
+      "items": [ "Slink", "Disk" ]
     },
     {
-      "code": "4A"
+      "code": "4A",
+      "coords": [97.5, 332.5]
     },
     {
-      "code": "5A"
+      "code": "5A",
+      "coords": [201.5, 332.5]
     },
     {
-      "code": "6A"
+      "code": "6A",
+      "coords": [387.5, 340.5]
     },
     {
-      "code": "7A"
+      "code": "7A",
+      "coords": [371.5, 337.5]
     },
     {
-      "code": "8A"
+      "code": "8A",
+      "coords": [492.5, 347.5]
     },
     {
-      "code": "9A"
+      "code": "9A",
+      "coords": [6.5, 319.5]
     },
     {
-      "code": "10A"
+      "code": "10A",
+      "coords": [618.5, 323.5]
     },
     {
-      "code": "11A"
+      "code": "11A",
+      "coords": [6.5, 305.5]
     },
     {
-      "code": "12A"
+      "code": "12A",
+      "coords": [77.5, 291.5]
     },
     {
       "code": "P3",
@@ -51,170 +62,224 @@
       "placeholder": true
     },
     {
-      "code": "2B"
+      "code": "2B",
+      "coords": [273.5, 291.5]
     },
     {
-      "code": "3B"
+      "code": "3B",
+      "coords": [629.5, 289.5]
     },
     {
-      "code": "4B"
+      "code": "4B",
+      "coords": [117.5, 265.5]
     },
     {
-      "code": "5B"
+      "code": "5B",
+      "coords": [204.5, 270.5]
     },
     {
-      "code": "6B"
+      "code": "6B",
+      "coords": [350.5, 265.5]
     },
     {
-      "code": "7B"
+      "code": "7B",
+      "coords": [390.5, 276.5]
     },
     {
-      "code": "8B"
+      "code": "8B",
+      "coords": [602.5, 266.5]
     },
     {
-      "code": "9B"
+      "code": "9B",
+      "coords": [30.5, 248.5]
     },
     {
-      "code": "10B"
+      "code": "10B",
+      "coords": [74.5, 247.5]
     },
     {
-      "code": "11B"
+      "code": "11B",
+      "coords": [222.5, 243.5]
     },
     {
-      "code": "12B"
+      "code": "12B",
+      "coords": [326.5, 245.5]
     },
     {
-      "code": "13B"
+      "code": "13B",
+      "coords": [395.5, 243.5]
     },
     {
       "code": "P6",
       "placeholder": true
     },
     {
-      "code": "1C"
+      "code": "1C",
+      "coords": [510.5, 260.5]
     },
     {
-      "code": "2C"
+      "code": "2C",
+      "coords": [501.5, 243.5]
     },
     {
-      "code": "3C"
+      "code": "3C",
+      "coords": [536.5, 261.5]
     },
     {
-      "code": "4C"
+      "code": "4C",
+      "coords": [15.5, 226.5]
     },
     {
-      "code": "5C"
+      "code": "5C",
+      "coords": [72.5, 237.5]
     },
     {
-      "code": "6C"
+      "code": "6C",
+      "coords": [415.5, 239.5]
     },
     {
-      "code": "7C"
+      "code": "7C",
+      "coords": [448.5, 229.5]
     },
     {
-      "code": "8C"
+      "code": "8C",
+      "coords": [27.5, 216.5]
     },
     {
-      "code": "9C"
+      "code": "9C",
+      "coords": [57.5, 201.5]
     },
     {
-      "code": "10C"
+      "code": "10C",
+      "coords": [196.5, 202.5]
     },
     {
-      "code": "11C"
+      "code": "11C",
+      "coords": [337.5, 203.5]
     },
     {
-      "code": "12C"
+      "code": "12C",
+      "coords": [329.5, 199.5]
     },
     {
-      "code": "13C"
+      "code": "13C",
+      "coords": [539.5, 214.5]
     },
     {
-      "code": "14C"
+      "code": "14C",
+      "coords": [82.5, 195.5]
     },
     {
-      "code": "1D"
+      "code": "1D",
+      "coords": [287.5, 192.5]
     },
     {
-      "code": "2D"
+      "code": "2D",
+      "coords": [155.5, 160.5]
     },
     {
-      "code": "3D"
+      "code": "3D",
+      "coords": [270.5, 157.5]
     },
     {
-      "code": "4D"
+      "code": "4D",
+      "coords": [353.5, 155.5]
     },
     {
-      "code": "5D"
+      "code": "5D",
+      "coords": [515.5, 155.5]
     },
     {
-      "code": "6D"
+      "code": "6D",
+      "coords": [636.5, 168.5]
     },
     {
-      "code": "7D"
+      "code": "7D",
+      "coords": [25.5, 148.5]
     },
     {
-      "code": "8D"
+      "code": "8D",
+      "coords": [57.5, 150.5]
     },
     {
-      "code": "9D"
+      "code": "9D",
+      "coords": [145.5, 139.5]
     },
     {
-      "code": "10D"
+      "code": "10D",
+      "coords": [461.5, 142.5]
     },
     {
-      "code": "11D"
+      "code": "11D",
+      "coords": [490.5, 148.5]
     },
     {
-      "code": "12D"
+      "code": "12D",
+      "coords": [636.5, 151.5]
     },
     {
-      "code": "13D"
+      "code": "13D",
+      "coords": [314.5, 123.5]
     },
     {
-      "code": "14D"
+      "code": "14D",
+      "coords": [407.5, 116.5]
     },
     {
-      "code": "1E"
+      "code": "1E",
+      "coords": [557.5, 128.5]
     },
     {
-      "code": "2E"
+      "code": "2E",
+      "coords": [637.5, 112.5]
     },
     {
-      "code": "3E"
+      "code": "3E",
+      "coords": [175.5, 92.5]
     },
     {
-      "code": "4E"
+      "code": "4E",
+      "coords": [180.5, 74.5]
     },
     {
-      "code": "5E"
+      "code": "5E",
+      "coords": [207.5, 85.5]
     },
     {
-      "code": "6E"
+      "code": "6E",
+      "coords": [282.5, 85.5]
     },
     {
-      "code": "7E"
+      "code": "7E",
+      "coords": [483.5, 67.5]
     },
     {
-      "code": "8E"
+      "code": "8E",
+      "coords": [626.5, 68.5]
     },
     {
-      "code": "9E"
+      "code": "9E",
+      "coords": [476.5, 60.5]
     },
     {
-      "code": "10E"
+      "code": "10E",
+      "coords": [508.5, 59.5]
     },
     {
-      "code": "11E"
+      "code": "11E",
+      "coords": [555.5, 48.5]
     },
     {
-      "code": "12E"
+      "code": "12E",
+      "coords": [565.5, 52.5]
     },
     {
-      "code": "13E"
+      "code": "13E",
+      "coords": [152.5, 2.5]
     },
     {
-      "code": "14E"
+      "code": "14E",
+      "coords": [437.5, 8.5]
     }
   ]
 }

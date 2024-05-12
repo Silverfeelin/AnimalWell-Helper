@@ -21,9 +21,15 @@ export class EggControlsComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
   }
 
-  toggleFound(): void{
+  toggleFound(): void {
     if (!this.egg) { return; }
     this.egg.obtained = !this.egg.obtained;
     this.eggUpdated.emit(this.egg);
+  }
+
+  toggleVisible(): void {
+    if (!this.egg) { return; }
+    this.egg.visible = !this.egg.visible;
+    this._eventService.eggVisibilityChanged.next(this.egg);
   }
 }
