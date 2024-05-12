@@ -68,6 +68,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
             this.saveStorage();
           }
           this.map.flyTo(m.marker.getLatLng(), 3);
+          this.mapElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
           m.marker.openPopup();
         }
       }

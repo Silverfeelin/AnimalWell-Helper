@@ -19,4 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'Animal Well Helper';
+
+  scrollTop(): void {
+    window.scrollTo(0, 0);
+  }
 }
