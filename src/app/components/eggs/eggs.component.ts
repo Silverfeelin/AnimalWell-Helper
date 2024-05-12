@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { IEgg } from './egg.interface';
 import { EggControlsComponent } from './egg-controls/egg-controls.component';
 import { HttpClient } from '@angular/common/http';
@@ -60,7 +60,8 @@ export class EggsComponent implements OnInit {
 
   private saveStorage(): void {
     const data = {
-      obtained: this.eggs.filter(egg => egg.obtained).map(egg => egg.code)
+      obtained: this.eggs.filter(egg => egg.obtained).map(egg => egg.code),
+      visible: this.eggs.filter(egg => egg.visible).map(egg => egg.code)
     };
     localStorage.setItem('eggs', JSON.stringify(data));
   }
@@ -68,8 +69,10 @@ export class EggsComponent implements OnInit {
   private loadStorage(): void {
     const data = JSON.parse(localStorage.getItem('eggs') || '{}');
     const obtained = new Set(data.obtained || []);
+    const visible = new Set(data.visible || []);
     this.eggs.forEach(egg => {
       egg.obtained = obtained.has(egg.code);
+      egg.visible = visible.has(egg.code);
     });
   }
 }

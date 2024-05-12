@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IEgg } from '../egg.interface';
 import { EventService } from '../../../services/event.service';
 
@@ -9,7 +9,7 @@ import { EventService } from '../../../services/event.service';
   templateUrl: './egg-controls.component.html',
   styleUrl: './egg-controls.component.scss'
 })
-export class EggControlsComponent implements OnChanges {
+export class EggControlsComponent {
   @Input() egg?: IEgg;
 
   @Output() eggUpdated = new EventEmitter<IEgg>();
@@ -17,9 +17,6 @@ export class EggControlsComponent implements OnChanges {
   constructor(
     private readonly _eventService: EventService
   ) { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-  }
 
   toggleFound(): void {
     if (!this.egg) { return; }
@@ -31,5 +28,6 @@ export class EggControlsComponent implements OnChanges {
     if (!this.egg) { return; }
     this.egg.visible = !this.egg.visible;
     this._eventService.eggVisibilityChanged.next(this.egg);
+    this.eggUpdated.emit(this.egg);
   }
 }

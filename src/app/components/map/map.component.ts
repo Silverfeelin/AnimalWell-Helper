@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, isDevMode } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, isDevMode } from '@angular/core';
 import L, { DomEvent, LatLngBoundsExpression } from 'leaflet';
 import { DataService } from '../../services/data.service';
 import { IEgg } from '../eggs/egg.interface';
@@ -65,6 +65,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         if (egg.visible) {
           if (!m.tile.revealed) {
             this.toggleTile(m.tile, true);
+            this.saveStorage();
           }
           this.map.flyTo(m.marker.getLatLng(), 3);
           m.marker.openPopup();
