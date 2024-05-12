@@ -1,0 +1,9 @@
+.map {
+  height: max(calc(100vh - 100px), 600px);
+  width: 100%;
+  background-color: black;
+}
+
+:host ::ng-deep .leaflet-image-layer {
+  image-rendering: pixelated !important;
+}

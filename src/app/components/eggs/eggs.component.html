@@ -1,0 +1,12 @@
+<div class="eggs mono">
+  <img class="img-eggs" src="/assets/game/eggs.png" [style.opacity]="eggs.length ? 1 : 0">
+  <div class="egg-grid">
+    @for (egg of eggs; track egg.code) {
+        <div class="egg" [class.obtained]="egg.obtained" [class.selected]="selectedEgg === egg" [class.egg-placeholder]="egg.placeholder" (click)="selectEgg(egg)">
+          <span class="egg-code">{{egg.code}}</span>
+        </div>
+    }
+  </div>
+</div>
+<app-egg-controls [egg]="selectedEgg"></app-egg-controls>
+
