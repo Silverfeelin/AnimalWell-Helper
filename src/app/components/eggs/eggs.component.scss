@@ -63,15 +63,16 @@
   transform: translateX(-50%);
 }
 
-.selected {
-  border-color: #ff0;
+.obtained {
   background-color: transparent;
+  border-color: transparent;
 }
 
-.obtained {
-  border-color: #0f0;;
-  background-color: transparent;
+.selected {
+  border-width: 2px;
+  border-color: #ff0;
 }
+
 
 .egg-placeholder {
   opacity: 0;
