@@ -136,7 +136,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   showAllEggs(): void {
-    if (!confirm(`Are you sure you want to show all eggs? This also reveal the tiles they're in.`)) { return; }
+    if (!confirm(`Are you sure you want to show all eggs? Any eggs in hidden tiles will show up once you reveal those tiles.`)) { return; }
     for (const egg of this.eggs) {
       egg.visible = true;
     }
@@ -144,7 +144,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   hideAllEggs(): void {
-    if (!confirm(`Are you sure you want to hide all eggs? This will not hide the tiles they're in.`)) { return; }
+    if (!confirm(`Are you sure you want to hide all eggs?`)) { return; }
     for (const egg of this.eggs) {
       egg.visible = false;
     }
