@@ -4,6 +4,7 @@
       <b>{{ egg?.name || 'Egg' }}</b> @if (egg) { ({{ egg.code }}) }
     </div>
     @if (egg) {
+      <!-- Required items -->
       <div class="row">
         <div class="flex">
           <span>Required items:</span>
@@ -18,6 +19,7 @@
           }
         </div>
       </div>
+      <!-- Tracking -->
       <div class="row">
         <div class="flex">
           <button class="btn btn-primary" (click)="toggleFound()">
@@ -27,6 +29,17 @@
           <button class="btn btn-primary" (click)="toggleVisible()">
             <span class="mono">({{ egg.visible ? 'X' : 'O'}})</span>
             Show on map
+          </button>
+        </div>
+      </div>
+      <!-- Reveal -->
+      <div class="row">
+        <div class="flex">
+          <button class="btn btn-primary" (click)="gotoQuadrant()">
+            Go to map quadrant
+          </button>
+          <button class="btn btn-primary" (click)="gotoTile()">
+            Go to map tile
           </button>
         </div>
       </div>
