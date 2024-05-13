@@ -106,13 +106,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     // Show or remove egg.
     egg.visible ? m.marker.addTo(m.tile.layer) : m.tile.layer.removeLayer(m.marker);
     m.marker.setIcon(egg.obtained ? this.eggFoundIcon : this.eggIcon);
-
-    // Reveal egg
-    if (egg.visible) {
-      if (!m.tile.revealed) {
-        this.toggleTile(m.tile, true);
-      }
-    }
   }
 
   ngOnDestroy(): void {
