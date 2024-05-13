@@ -40,6 +40,7 @@ export class EggsComponent implements OnInit {
   }
 
   selectEgg(egg: IEgg): void {
+    if (egg.placeholder) { this.selectedEgg = undefined; return; }
     this.selectedEgg = egg;
   }
 
