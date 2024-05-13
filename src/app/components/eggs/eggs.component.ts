@@ -46,6 +46,7 @@ export class EggsComponent implements OnInit {
 
   toggleFound(egg: IEgg): void {
     egg.obtained = !egg.obtained;
+    this._eventService.eggsUpdated.next([egg]);
     this.saveStorage();
   }
 
@@ -56,13 +57,13 @@ export class EggsComponent implements OnInit {
   unlockAll(): void {
     if (!confirm('Are you sure you want to mark all eggs as found?')) { return; }
     this.eggs.forEach(egg => egg.obtained = true);
-    this.saveStorage();
+    this._eventService.eggsUpdated.next(this.eggs);
   }
 
   lockAll(): void {
     if (!confirm('Are you sure you want to mark all eggs as missing?')) { return; }
     this.eggs.forEach(egg => egg.obtained = false);
-    this.saveStorage();
+    this._eventService.eggsUpdated.next(this.eggs);
   }
 
   private saveStorage(): void {

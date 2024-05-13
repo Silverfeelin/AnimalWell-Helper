@@ -31,6 +31,17 @@ interface ITile {
 export class MapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
+  eggIcon = L.icon({
+    iconUrl: '/assets/icons/marker-egg.svg',
+    iconSize: [24, 33],
+    iconAnchor: [12, 33],
+  });
+  eggFoundIcon = L.icon({
+    iconUrl: '/assets/icons/marker-egg-found.svg',
+    iconSize: [24, 33],
+    iconAnchor: [12, 33],
+  });
+
   map!: L.Map;
   tiles: Array<Array<ITile>> = [];
   eggs: Array<IEgg> = [];
@@ -94,6 +105,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Show or remove egg.
     egg.visible ? m.marker.addTo(m.tile.layer) : m.tile.layer.removeLayer(m.marker);
+    m.marker.setIcon(egg.obtained ? this.eggFoundIcon : this.eggIcon);
 
     // Reveal egg
     if (egg.visible) {
@@ -227,17 +239,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       const tileY = Math.floor(egg.coords[1] / tileHeight);
       const tile = this.tiles[tileY][tileX];
 
+      const icon = egg.obtained ? this.eggFoundIcon : this.eggIcon;
       const marker = L.marker([egg.coords[1], egg.coords[0]], {
-        icon: L.icon({
-          iconUrl: '/assets/game/egg.png',
-          iconSize: [24, 27],
-          iconAnchor: [12, 13],
-        })
+        icon
       });
 
       const popup = L.popup({
         content: _marker => { return this.createEggPopup(egg); },
-        offset: [0, -6]
+        offset: [0, -28]
       });
       marker.bindPopup(popup);
 
@@ -249,6 +258,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       if (egg.visible) {
         marker.addTo(this.eggMarkers[egg.code].tile.layer);
       }
+
+      marker.addEventListener('dblclick', (event: L.LeafletMouseEvent) => {
+        DomEvent.stopPropagation(event);
+        egg.obtained = !egg.obtained;
+        this._eventService.eggsUpdated.next([egg]);
+      });
     });
 
     this.loadStorage();
@@ -268,7 +283,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   private createEggPopup(egg: IEgg): HTMLElement {
     const div = document.createElement('div');
     const label = document.createElement('label');
-    label.innerText = `Egg: ${egg.code}`;
+    label.innerText = `${egg.name} (${egg.code})`;
     div.appendChild(label);
     return div;
   }
