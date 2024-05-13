@@ -11,6 +11,10 @@
   background-size: calc(128px * var(--scale)) calc(100px * var(--scale));
 }
 
+.hide-background {
+  background-image: none;
+}
+
 .egg-shrine-buttons {
   position: absolute;
   bottom: calc(var(--border-width) * 2);
@@ -31,10 +35,10 @@
 
 .egg-grid {
   --egg-width: 8px;
-  --egg-height: 11px;
+  --egg-height: 14px;
 
   position: absolute;
-  top: calc(3px + 9px * var(--scale));
+  top: calc(3px + 6px * var(--scale));
   left: calc(3px + 8px * var(--scale));
   right: 3px;
   bottom: 3px;
@@ -42,7 +46,7 @@
   grid-template-columns: repeat(14, calc(var(--egg-width) * var(--scale)));
   grid-template-rows: repeat(5, calc(var(--egg-height) * var(--scale)));
   gap: 0;
-  row-gap: calc(5px * var(--scale));
+  row-gap: calc(2px * var(--scale));
 }
 
 .egg {

@@ -3,7 +3,7 @@
 </div>
 
 <div class="flex flex-wrap us-none">
-  <div class="egg-shrine mono border">
+  <div class="egg-shrine mono border" [class.hide-background]="!eggs.length">
     <div class="egg-grid">
       @for (egg of eggs; track egg.code) {
           <div class="egg"
