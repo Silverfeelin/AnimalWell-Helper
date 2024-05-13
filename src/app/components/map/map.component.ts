@@ -5,6 +5,7 @@ import { IEgg } from '../eggs/egg.interface';
 import { EventService } from '../../services/event.service';
 import { SubscriptionLike } from 'rxjs';
 import { MapService } from '../../services/map.service';
+import GestureHandling from 'leaflet-gesture-handling';
 
 const mapWidth = 640;
 const mapHeight = 352;
@@ -20,6 +21,8 @@ interface ITile {
   rectangle: L.Rectangle;
   revealed?: boolean;
 }
+
+L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 @Component({
   selector: 'app-map',
@@ -173,9 +176,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       maxZoom: 4,
       zoom: 1,
       zoomControl: true,
+      gestureHandling: true,
       center,
       renderer: new L.SVG({ padding: 1000 })
-    });
+    } as unknown as L.MapOptions);
 
     // Add map image
     const bounds = [[0, 0], [mapHeight, mapWidth]] as LatLngBoundsExpression;
