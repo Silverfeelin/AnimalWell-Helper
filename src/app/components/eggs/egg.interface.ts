@@ -1,5 +1,6 @@
 export interface IEgg {
   code: string,
+  name: string,
   obtained?: boolean,
   visible?: boolean;
   coords?: [number, number],

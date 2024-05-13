@@ -1,18 +1,18 @@
 <div class="container border">
   <div class="flex flex-column">
     <div class="row">
-      <b>Egg</b> @if (egg) { ({{ egg.code }}) }
+      <b>{{ egg?.name || 'Egg' }}</b> @if (egg) { ({{ egg.code }}) }
     </div>
     @if (egg) {
       <div class="row">
         <div class="flex">
-          <span>Requires items:</span>
+          <span>Required items:</span>
           @if (!egg.items) {
             <span>Unknown</span>
           } @else if (!egg.items.length) {
             <span>None</span>
           } @else {
-            @for (item of egg.items; track $index) {
+            @for (item of egg.items; track item) {
               <span class="spoiler" onclick="this.classList.toggle('spoiled')">{{ item }}</span>
             }
           }

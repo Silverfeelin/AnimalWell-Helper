@@ -1,15 +1,22 @@
-:host {
-  display: inline-block;
+.egg-shrine {
   position: relative;
-  vertical-align: top;
+  display: inline-block;
+  padding: 3px;
+  width: calc(128px * var(--scale));
+  height: calc(100px * var(--scale));
+  box-sizing: content-box;
+  background-image: url('/assets/game/eggs.png');
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+  background-size: calc(128px * var(--scale)) calc(100px * var(--scale));
 }
 
-.eggs-shrine {
-  --scale: 4;
-  position: relative;
-  display: inline-block;
-  width: calc(112px * var(--scale));
-  height: calc(88px * var(--scale));
+.egg-shrine-buttons {
+  position: absolute;
+  bottom: calc(var(--border-width) * 2);
+  left: calc(var(--border-width) * 2);
+  right: calc(var(--border-width) * 2);
+  gap: var(--border-width)
 }
 
 .img-eggs {
@@ -27,8 +34,10 @@
   --egg-height: 11px;
 
   position: absolute;
-  top: calc(5px * var(--scale));
-  left: 0;
+  top: calc(3px + 9px * var(--scale));
+  left: calc(3px + 8px * var(--scale));
+  right: 3px;
+  bottom: 3px;
   display: grid;
   grid-template-columns: repeat(14, calc(var(--egg-width) * var(--scale)));
   grid-template-rows: repeat(5, calc(var(--egg-height) * var(--scale)));
@@ -40,7 +49,7 @@
   position: relative;
   box-sizing: border-box;
   background-color: #000;
-  border: 2px solid #f00;
+  border: 1px solid #f00;
   cursor: pointer;
 }
 
@@ -54,17 +63,15 @@
   transform: translateX(-50%);
 }
 
-.obtained {
-  border-color: #0f0;;
-  background-color: transparent;
-}
-
 .selected {
   border-color: #ff0;
   background-color: transparent;
 }
 
-
+.obtained {
+  border-color: #0f0;;
+  background-color: transparent;
+}
 
 .egg-placeholder {
   opacity: 0;

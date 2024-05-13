@@ -18,6 +18,14 @@ export class DataService {
     if (!this._eggSubject) {
       this._eggSubject = new ReplaySubject<Array<IEgg>>(1);
       this._http.get<{items: Array<IEgg>}>('/assets/eggs.json').subscribe(data => {
+        data.items.forEach(egg => {
+          // if egg.items is array
+          egg.items?.forEach((item, i) => {
+            if (Array.isArray(item)) {
+              egg.items![i] = item.join(' or ');
+            }
+          });
+        });
         this._eggs = data.items;
         this._eggSubject!.next(this._eggs);
       });

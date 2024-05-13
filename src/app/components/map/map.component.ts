@@ -206,9 +206,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       });
 
       const popup = L.popup({
-        content: _marker => {
-          return egg.code
-        },
+        content: _marker => { return this.createEggPopup(egg); },
         offset: [0, -6]
       });
       marker.bindPopup(popup);
@@ -235,6 +233,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     tile.revealed = reveal ?? !tile.revealed;
     tile.rectangle.setStyle({ fillOpacity: tile.revealed ? 0 : 1, color: tile.revealed ? '#0000' : '#f008'});
     tile.revealed ? tile.layer.addTo(this.map) : tile.layer.removeFrom(this.map);
+  }
+
+  private createEggPopup(egg: IEgg): HTMLElement {
+    const div = document.createElement('div');
+    const label = document.createElement('label');
+    label.innerText = `Egg: ${egg.code}`;
+    div.appendChild(label);
+    return div;
   }
 
   private loadStorage(): void {
