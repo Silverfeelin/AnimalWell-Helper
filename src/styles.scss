@@ -71,11 +71,14 @@ button {
 }
 
 .spoiler {
-  color: #fff;
+  color: transparent;
   background: #fff;
   cursor: pointer;
+  user-select: none;
 
   &.spoiled {
+    color: #fff;
     background: unset;
+    user-select: unset;
   }
 }

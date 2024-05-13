@@ -60,7 +60,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         if (!m) { return; }
 
         // Show or remove egg.
-        egg.visible ? m.marker.addTo(m.tile.layer) : m.marker.remove();
+        egg.visible ? m.marker.addTo(m.tile.layer) : m.tile.layer.removeLayer(m.marker);
 
         // Reveal egg
         if (egg.visible) {
@@ -88,6 +88,20 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     if (!confirm('Are you sure you want to show all map tiles?')) { return; }
     this.toggleAll(true);
     this.saveStorage();
+  }
+
+  showTileEggs(): void {
+    if (!confirm('Are you sure you want to show all eggs in the currently visible tiles?')) { return; }
+    const updatedEggs = [];
+    for (const egg of this.eggs) {
+      if (!egg.coords?.[0]) { continue; }
+      const m = this.eggMarkers[egg.code];
+      if (!m.tile.revealed) { continue; }
+      egg.visible = true;
+      this._eventService.eggVisibilityChanged.next({ egg });
+      updatedEggs.push(egg);
+    }
+    this._eventService.eggsUpdated.next(updatedEggs);
   }
 
   showAllEggs(): void {
