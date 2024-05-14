@@ -83,10 +83,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this._mapService.onGotoQuadrant.subscribe(({ x, y }) => {
       if (!this.map) { return; }
       const center = [ mapHeight / 2, mapWidth / 2];
-      const mx = x < center[0] ? 0 : 1;
-      const my = y < center[1] ? 0 : 1;
+      const mx = x < center[1] ? 0 : 1;
+      const my = y < center[0] ? 0 : 1;
 
       const dest: LatLngExpression = [center[0] / 2 + my * center[0], center[1] / 2 + mx * center[1]];
+      console.log('Going to:', dest);
       this.map.flyTo(dest, 2);
       this.mapElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
     });
