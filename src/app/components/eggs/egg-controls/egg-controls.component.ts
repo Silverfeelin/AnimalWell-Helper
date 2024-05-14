@@ -1,8 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { IEgg } from '../egg.interface';
-import { EventService } from '../../../services/event.service';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MapService } from '../../../services/map.service';
+import { EventService } from '@src/app/services/event.service';
+import { MapService } from '@src/app/services/map.service';
+import { IEgg } from '../egg.interface';
 
 @Component({
   selector: 'app-egg-controls',
@@ -29,13 +29,13 @@ export class EggControlsComponent implements OnChanges {
   toggleFound(): void {
     if (!this.egg) { return; }
     this.egg.obtained = !this.egg.obtained;
-    this._eventService.eggsUpdated.next([this.egg]);
+    this._eventService.onEggsUpdated.next([this.egg]);
   }
 
   toggleVisible(): void {
     if (!this.egg) { return; }
     this.egg.visible = !this.egg.visible;
-    this._eventService.eggsUpdated.next([this.egg]);
+    this._eventService.onEggsUpdated.next([this.egg]);
   }
 
   gotoQuadrant(): void {

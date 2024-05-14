@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { MapComponent } from './components/map/map.component';
-import { EggsComponent } from './components/eggs/eggs.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     RouterOutlet,
     InventoryComponent,
-    EggsComponent,
     MapComponent
   ],
   templateUrl: './app.component.html',
@@ -19,8 +16,4 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'Animal Well Helper';
-
-  scrollTop(): void {
-    window.scrollTo(0, 0);
-  }
 }

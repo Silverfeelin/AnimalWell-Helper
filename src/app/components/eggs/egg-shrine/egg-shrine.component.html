@@ -1,0 +1,23 @@
+<div class="container border d-block mb">
+  <h1 class="m-0">Egg Shrine</h1>
+</div>
+
+<div class="flex flex-wrap us-none">
+  <div class="egg-shrine mono border" [class.hide-background]="!eggs.length">
+    <div class="egg-grid">
+      @for (egg of eggs; track egg.code) {
+          <div class="egg"
+            [class.obtained]="egg.obtained" [class.selected]="selectedEgg === egg" [class.egg-placeholder]="egg.placeholder"
+            (click)="selectEgg(egg)" (dblclick)="toggleFound(egg)"
+          >
+            <span class="egg-code">{{egg.code}}</span>
+          </div>
+      }
+    </div>
+    <div class="flex egg-shrine-buttons">
+      <button class="btn btn-primary" (click)="unlockAll()">Mark all as found</button>
+      <button class="btn btn-primary" (click)="lockAll()">Mark all as missing</button>
+    </div>
+  </div>
+  <app-egg-controls [egg]="selectedEgg"></app-egg-controls>
+</div>

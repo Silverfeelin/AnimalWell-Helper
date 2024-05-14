@@ -1,8 +1,6 @@
 .map {
-  height: 100vh;
-  height: 100dvh;
-  width: 100vw;
-  width: 100dvw;
+  height: max(calc(100vh - 100px), 600px);
+  width: 100%;
   background-color: black;
 }
 
