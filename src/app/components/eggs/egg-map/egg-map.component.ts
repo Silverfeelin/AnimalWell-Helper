@@ -191,7 +191,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
           if (isDevMode()) {
             console.log('Clicked at:', event.latlng);
-            navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}]`);
+            navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}]`);
           }
         });
 
@@ -210,12 +210,12 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     const eggFoundIcon = MapHelper.getMarkerIcon('egg-found');
     this.eggs.forEach(egg => {
       if (!egg.coords?.[0]) { return; }
-      const tileX = Math.floor(egg.coords[0] / MapHelper.tileWidth);
-      const tileY = Math.floor(egg.coords[1] / MapHelper.tileHeight);
+      const tileX = Math.floor(egg.coords[1] / MapHelper.tileWidth);
+      const tileY = Math.floor(egg.coords[0] / MapHelper.tileHeight);
       const tile = this.tiles[tileY][tileX];
 
       const icon = egg.obtained ? eggFoundIcon : eggIcon;
-      const marker = L.marker([egg.coords[1], egg.coords[0]], {
+      const marker = L.marker(egg.coords, {
         icon
       });
 

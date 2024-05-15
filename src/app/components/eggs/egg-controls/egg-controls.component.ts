@@ -40,11 +40,11 @@ export class EggControlsComponent implements OnChanges {
 
   gotoQuadrant(): void {
     if (!this.egg?.coords?.[0]) { return; }
-    this._mapService.gotoQuadrant(this.egg.coords[0], this.egg.coords[1]);
+    this._mapService.gotoQuadrant(this.egg.coords[1], this.egg.coords[0]);
   }
 
   gotoTile(): void {
     if (!this.egg?.coords?.[0]) { return; }
-    this._mapService.gotoTile(this.egg.coords[0], this.egg.coords[1]);
+    this._mapService.gotoTile(this.egg.coords[1], this.egg.coords[0]);
   }
 }

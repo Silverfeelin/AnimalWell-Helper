@@ -71,7 +71,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         console.log('Clicked at:', event.latlng);
-        navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}]`);
+        navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}]`);
       });
     }
 
@@ -91,7 +91,26 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
 
   private drawMarkers(markers: Array<IMarker>, icon: string, hue: number): void {
+    // Create icon for marker group.
     MapHelper.createMarkerIcon(icon, { hue });
+
+    const popupCoords = new Map<L.Popup, Array<MarkerCoords>>();
+    // Draw lines to other coordinates of marker.
+    let lineLayer = L.layerGroup().addTo(this.map);
+    this.map.on('popupopen', (evt: L.PopupEvent) => {
+      lineLayer.clearLayers();
+      const coords = popupCoords.get(evt.popup);
+      const pos = evt.popup.getLatLng()!;
+      coords?.forEach(coord => {
+        // Draw line from pos to coord.
+        L.polyline([pos, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
+      });
+    });
+    this.map.on('popupclose', (evt: L.PopupEvent) => {
+      lineLayer.clearLayers();
+    });
+
+    // Draw markers
     markers.forEach(m => {
       if (!m.coords?.[0]) { return; }
 
@@ -101,16 +120,17 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
       const markers: Array<L.Marker> = [];
       coords.forEach(coord => {
-        const marker = L.marker([coord[1], coord[0]], {
+        const marker = L.marker(coord, {
           icon: m.found ? MapHelper.getMarkerIcon(`${icon}-found`) : MapHelper.getMarkerIcon(icon),
         }).addTo(this.map);
         markers.push(marker);
 
         const popup = L.popup({
           content: _marker => { return m.name || m.id; },
-          offset: [0, -39]
+          offset: [0, -37]
         });
         marker.bindPopup(popup);
+        popupCoords.set(popup, coords.filter(c => c !== coord));
 
         marker.on('dblclick', evt => {
           DomEvent.stop(evt);
@@ -124,14 +144,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         });
       });
     });
-  }
-
-  private createEggPopup(egg: IEgg): HTMLElement {
-    const div = document.createElement('div');
-    const label = document.createElement('label');
-    label.innerText = `${egg.name} (${egg.code})`;
-    div.appendChild(label);
-    return div;
   }
 
   private loadStorage(): void {
@@ -166,5 +178,31 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     url.searchParams.set('y', center.lat.toFixed(1));
     url.searchParams.set('z', zoom.toFixed(0));
     history.replaceState(history.state, '', `${url}`);
+  }
+
+
+  private calculatePosition(start: any, end: any, distance: any): L.LatLngExpression {
+    // Calculate the distance between the start and end coordinates
+    const totalDistance = Math.sqrt(Math.pow(end[0] - start[0], 2) + Math.pow(end[1] - start[1], 2));
+
+    // Calculate the ratio of the distance to the total distance
+    const ratio = distance / totalDistance;
+
+    // Calculate the coordinates of the point at the given distance from the start
+    const x = start[0] + ratio * (end[0] - start[0]);
+    const y = start[1] + ratio * (end[1] - start[1]);
+
+    return [x, y];
+  }
+
+  private calculateAngle(pointA: any, pointB: any): number {
+    // Calculate the difference in coordinates
+    const dx = pointB[0] - pointA[0];
+    const dy = pointB[1] - pointA[1];
+
+    // Calculate the angle using arctan
+    const angleRadians = Math.atan2(dy, dx);
+
+    return angleRadians;
   }
 }

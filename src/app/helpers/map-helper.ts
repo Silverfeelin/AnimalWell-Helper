@@ -18,12 +18,12 @@ export class MapHelper {
     const html = `
 <img src="/assets/icons/marker.png" class="marker" style="filter:hue-rotate(${options.hue || 0}deg);">
 <img class="marker-icon" src="/assets/game/icons/${name}.png" class="pixelated">`;
-MapHelper.icons[name] = L.divIcon({ html, className: 'map-marker', iconSize: [38, 44], iconAnchor: [16, 47] });
+MapHelper.icons[name] = L.divIcon({ html, className: 'map-marker', iconSize: [38, 44], iconAnchor: [19, 44] });
 
 const htmlFound = `
 <img src="/assets/icons/marker-found.png" class="marker">
 <img class="marker-icon" src="/assets/game/icons/${name}.png" class="pixelated">`;
-    MapHelper.icons[`${name}-found`] = L.divIcon({ html: htmlFound, className: 'map-marker found', iconSize: [38, 44], iconAnchor: [16, 47] });
+    MapHelper.icons[`${name}-found`] = L.divIcon({ html: htmlFound, className: 'map-marker found', iconSize: [38, 44], iconAnchor: [19, 44] });
   }
 
   static getMarkerIcon(name: string): L.DivIcon {

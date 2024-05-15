@@ -46,6 +46,11 @@ h1 {
   @include border;
 }
 
+.border-square {
+  border: 3px solid #fff;
+  border-radius: 0;
+}
+
 @mixin container {
   display: inline-block;
   padding: calc(3px * var(--scale));
@@ -76,6 +81,7 @@ h1 {
 .d-inline-block { display: inline-block !important; }
 .margin { margin: calc(3px * var(--scale)) !important; }
 .pad { padding: calc(3px * var(--scale)) !important; }
+.p-0 { padding: 0 !important; }
 .mt { margin-top: calc(3px * var(--scale)) !important; }
 .mb { margin-bottom: calc(3px * var(--scale)) !important; }
 .m-0 { margin: 0 !important; }
