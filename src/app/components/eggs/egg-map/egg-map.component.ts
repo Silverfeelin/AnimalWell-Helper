@@ -35,14 +35,12 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
   eggIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg.svg',
-    iconSize: [24, 33],
-    iconAnchor: [12, 33],
+    iconUrl: '/assets/icons/marker-egg.png',
+    iconSize: [32, 47], iconAnchor: [16, 47]
   });
   eggFoundIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg-found.svg',
-    iconSize: [24, 33],
-    iconAnchor: [12, 33],
+    iconUrl: '/assets/icons/marker-egg-found.png',
+    iconSize: [32, 47], iconAnchor: [16, 47]
   });
 
   map!: L.Map;
@@ -236,7 +234,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
       const popup = L.popup({
         content: _marker => { return this.createEggPopup(egg); },
-        offset: [0, -28]
+        offset: [0, -39]
       });
       marker.bindPopup(popup);
 
@@ -283,7 +281,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   }
 
   private loadStorage(): void {
-    const data = JSON.parse(localStorage.getItem('map') || '{}');
+    const data = JSON.parse(localStorage.getItem('egg-map') || '{}');
     const revealed = data.revealed || [] as Array<Array<boolean>>;
 
     for (let y = 0; y < revealed.length; y++) {
@@ -298,7 +296,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     const data = {
       revealed: this.tiles.map(row => row.map(tile => tile.revealed ? 1 : 0))
     };
-    localStorage.setItem('map', JSON.stringify(data));
+    localStorage.setItem('egg-map', JSON.stringify(data));
   }
 
   private loadParamsFromQuery(): { x: number, y: number, z: number } | undefined {

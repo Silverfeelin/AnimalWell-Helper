@@ -6,11 +6,14 @@ import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../eggs/egg.interface';
+import { IMarker, MarkerCoords } from './marker.interface';
 
 const mapWidth = 640;
 const mapHeight = 352;
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
+
+const icons: { [key: string]: L.Icon } = {};
 
 @Component({
   selector: 'app-map',
@@ -22,19 +25,8 @@ L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 export class MapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
-  eggIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg.svg',
-    iconSize: [24, 33],
-    iconAnchor: [12, 33],
-  });
-  eggFoundIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg-found.svg',
-    iconSize: [24, 33],
-    iconAnchor: [12, 33],
-  });
-
   map!: L.Map;
-  eggs: Array<IEgg> = [];
+  markers = this._dataService.markers;
 
   private readonly _subscriptions: Array<SubscriptionLike> = [];
 
@@ -44,7 +36,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     private readonly _mapService: MapService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    this.eggs = _dataService.eggs;
+    this.loadStorage();
   }
 
   ngAfterViewInit(): void {
@@ -71,7 +63,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       maxZoom: 4,
       zoom: coords.z,
       zoomControl: true,
-      gestureHandling: true,
+      gestureHandling: false,
       center: [coords.y, coords.x],
       renderer: new L.SVG({ padding: 1000 })
     } as unknown as L.MapOptions);
@@ -80,9 +72,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const bounds = [[0, 0], [mapHeight, mapWidth]] as LatLngBoundsExpression;
     L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
 
-    // Draw rectangle around map
-    L.rectangle(bounds, { color: '#f00', fillOpacity: 0, stroke: true, weight: 1 }).addTo(this.map);
-
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         console.log('Clicked at:', event.latlng);
@@ -90,22 +79,58 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       });
     }
 
-    // Draw eggs
-    this.eggs.forEach(egg => {
-      if (!egg.coords?.[0]) { return; }
-      const icon = egg.obtained ? this.eggFoundIcon : this.eggIcon;
-      const marker = L.marker([egg.coords[1], egg.coords[0]], {
-        icon
-      }).addTo(this.map);
-
-      const popup = L.popup({
-        content: _marker => { return this.createEggPopup(egg); },
-        offset: [0, -28]
-      });
-      marker.bindPopup(popup);
-    });
+    // Draw markers
+    this.drawMarkers(this.markers.eggs, 'egg');
+    this.drawMarkers(this.markers.bunnies, 'bunny');
+    this.drawMarkers(this.markers.telephones, 'telephone');
+    this.drawMarkers(this.markers.matches, 'match');
+    this.drawMarkers(this.markers.candles, 'candle');
+    this.drawMarkers(this.markers.sMedals, 'medal-s');
+    this.drawMarkers(this.markers.kMedals, 'medal-k');
+    this.drawMarkers(this.markers.eMedals, 'medal-e');
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
+  }
+
+
+  private drawMarkers(markers: Array<IMarker>, icon: string): void {
+    this.createIcon(icon);
+    markers.forEach(m => {
+      if (!m.coords?.[0]) { return; }
+
+      const coords = typeof m.coords[0] === 'number'
+        ? [m.coords] as Array<MarkerCoords>
+        : m.coords as Array<MarkerCoords>;
+
+      const markers: Array<L.Marker> = [];
+      coords.forEach(coord => {
+        const marker = L.marker([coord[1], coord[0]], {
+          icon: m.found ? icons[`${icon}-found`] : icons[icon]
+        }).addTo(this.map);
+        markers.push(marker);
+
+        const popup = L.popup({
+          content: _marker => { return m.name || m.id; },
+          offset: [0, -39]
+        });
+        marker.bindPopup(popup);
+
+        marker.on('dblclick', evt => {
+          DomEvent.stop(evt);
+          m.found = !m.found;
+
+          markers.forEach(n => {
+            n.setIcon(m.found ? icons[`${icon}-found`] : icons[icon]);
+          });
+          this.saveStorage();
+        });
+      });
+    });
+  }
+
+  private createIcon(icon: string): void {
+    icons[icon] ??= L.icon({ iconUrl: `/assets/icons/marker-${icon}.png`, iconSize: [32, 47], iconAnchor: [16, 47] });
+    icons[`${icon}-found`] ??= L.icon({ iconUrl: `/assets/icons/marker-${icon}-found.png`, iconSize: [32, 47], iconAnchor: [16, 47] });
   }
 
   private createEggPopup(egg: IEgg): HTMLElement {
@@ -114,6 +139,21 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     label.innerText = `${egg.name} (${egg.code})`;
     div.appendChild(label);
     return div;
+  }
+
+  private loadStorage(): void {
+    const found = new Set(JSON.parse(localStorage.getItem('map.found')  || '[]'));
+    for (const group of Object.values(this.markers)) {
+      for (const marker of group) {
+        marker.found = found.has(marker.id);
+      }
+    }
+  }
+
+  private saveStorage(): void {
+    const markers = Object.values(this.markers).flat();
+    const found = markers.filter(m => m.found).map(m => m.id);
+    localStorage.setItem('map.found', JSON.stringify(found));
   }
 
   private loadParamsFromQuery(): { x: number, y: number, z: number } | undefined {
