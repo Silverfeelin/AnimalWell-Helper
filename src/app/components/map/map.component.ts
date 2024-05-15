@@ -7,13 +7,9 @@ import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../eggs/egg.interface';
 import { IMarker, MarkerCoords } from './marker.interface';
-
-const mapWidth = 640;
-const mapHeight = 352;
+import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
-
-const icons: { [key: string]: L.Icon } = {};
 
 @Component({
   selector: 'app-map',
@@ -55,7 +51,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   private renderMap(): void {
     // Create map
-    const coords = this.loadParamsFromQuery() || { x: mapWidth / 2, y: mapHeight / 2, z: 1 };
+    const coords = this.loadParamsFromQuery() || { x: MapHelper.mapWidth / 2, y: MapHelper.mapHeight / 2, z: 1 };
     this.map = L.map(this.mapElement.nativeElement, {
       attributionControl: false,
       crs: L.CRS.Simple,
@@ -69,7 +65,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     } as unknown as L.MapOptions);
 
     // Add map image
-    const bounds = [[0, 0], [mapHeight, mapWidth]] as LatLngBoundsExpression;
+    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
     L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
 
     if (isDevMode()) {
@@ -80,21 +76,22 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
 
     // Draw markers
-    this.drawMarkers(this.markers.eggs, 'egg');
-    this.drawMarkers(this.markers.bunnies, 'bunny');
-    this.drawMarkers(this.markers.telephones, 'telephone');
-    this.drawMarkers(this.markers.matches, 'match');
-    this.drawMarkers(this.markers.candles, 'candle');
-    this.drawMarkers(this.markers.sMedals, 'medal-s');
-    this.drawMarkers(this.markers.kMedals, 'medal-k');
-    this.drawMarkers(this.markers.eMedals, 'medal-e');
+    this.drawMarkers(this.markers.eggs, 'egg', 205);
+    this.drawMarkers(this.markers.bunnies, 'bunny', 310);
+    this.drawMarkers(this.markers.telephones, 'telephone', 295);
+    this.drawMarkers(this.markers.teleporters, 'teleporter', 270);
+    this.drawMarkers(this.markers.matches, 'match', 45);
+    this.drawMarkers(this.markers.candles, 'candle', 0);
+    this.drawMarkers(this.markers.sMedals, 'medal-s', 160);
+    this.drawMarkers(this.markers.kMedals, 'medal-k', 160);
+    this.drawMarkers(this.markers.eMedals, 'medal-e', 160);
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
 
-  private drawMarkers(markers: Array<IMarker>, icon: string): void {
-    this.createIcon(icon);
+  private drawMarkers(markers: Array<IMarker>, icon: string, hue: number): void {
+    MapHelper.createMarkerIcon(icon, { hue });
     markers.forEach(m => {
       if (!m.coords?.[0]) { return; }
 
@@ -105,7 +102,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       const markers: Array<L.Marker> = [];
       coords.forEach(coord => {
         const marker = L.marker([coord[1], coord[0]], {
-          icon: m.found ? icons[`${icon}-found`] : icons[icon]
+          icon: m.found ? MapHelper.getMarkerIcon(`${icon}-found`) : MapHelper.getMarkerIcon(icon),
         }).addTo(this.map);
         markers.push(marker);
 
@@ -119,18 +116,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           DomEvent.stop(evt);
           m.found = !m.found;
 
+          const mIcon = m.found ? MapHelper.getMarkerIcon(`${icon}-found`) : MapHelper.getMarkerIcon(icon);
           markers.forEach(n => {
-            n.setIcon(m.found ? icons[`${icon}-found`] : icons[icon]);
+            n.setIcon(mIcon);
           });
           this.saveStorage();
         });
       });
     });
-  }
-
-  private createIcon(icon: string): void {
-    icons[icon] ??= L.icon({ iconUrl: `/assets/icons/marker-${icon}.png`, iconSize: [32, 47], iconAnchor: [16, 47] });
-    icons[`${icon}-found`] ??= L.icon({ iconUrl: `/assets/icons/marker-${icon}-found.png`, iconSize: [32, 47], iconAnchor: [16, 47] });
   }
 
   private createEggPopup(egg: IEgg): HTMLElement {

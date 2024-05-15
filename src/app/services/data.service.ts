@@ -8,11 +8,12 @@ type MarkerConfig = {
   eggs: Array<IMarker>,
   bunnies: Array<IMarker>,
   telephones: Array<IMarker>,
+  teleporters: Array<IMarker>,
   matches: Array<IMarker>,
   candles: Array<IMarker>,
   sMedals: Array<IMarker>,
   kMedals: Array<IMarker>,
-  eMedals: Array<IMarker>
+  eMedals: Array<IMarker>,
 };
 
 @Injectable({

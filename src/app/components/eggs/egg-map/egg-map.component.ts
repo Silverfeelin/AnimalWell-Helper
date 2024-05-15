@@ -5,13 +5,7 @@ import GestureHandling from 'leaflet-gesture-handling';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../egg.interface';
-
-const mapWidth = 640;
-const mapHeight = 352;
-const tileWidth = 40;
-const tileHeight = 22;
-const tilesX = 16;
-const tilesY = 16;
+import { MapHelper } from '@src/app/helpers/map-helper';
 
 interface ITile {
   x: number;
@@ -35,15 +29,6 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
-  eggIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg.png',
-    iconSize: [32, 47], iconAnchor: [16, 47]
-  });
-  eggFoundIcon = L.icon({
-    iconUrl: '/assets/icons/marker-egg-found.png',
-    iconSize: [32, 47], iconAnchor: [16, 47]
-  });
-
   map!: L.Map;
   tiles: Array<Array<ITile>> = [];
   eggMarkers: { [key: string]: { tile: ITile, marker: L.Marker } } = {};
@@ -55,6 +40,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     private readonly _mapService: MapService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
+    MapHelper.createMarkerIcon('egg', { hue: 205 });
   }
 
   ngAfterViewInit(): void {
@@ -72,7 +58,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
     this._mapService.onGotoQuadrant.subscribe(({ x, y }) => {
       if (!this.map) { return; }
-      const center = [ mapHeight / 2, mapWidth / 2];
+      const center = [ MapHelper.mapHeight / 2, MapHelper.mapWidth / 2];
       const mx = x < center[1] ? 0 : 1;
       const my = y < center[0] ? 0 : 1;
 
@@ -82,8 +68,8 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     });
 
     this._mapService.onGotoTile.subscribe(({ x, y }) => {
-      const tileX = Math.floor(x / tileWidth);
-      const tileY = Math.floor(y / tileHeight);
+      const tileX = Math.floor(x / MapHelper.tileWidth);
+      const tileY = Math.floor(y / MapHelper.tileHeight);
       const tile = this.tiles[tileY][tileX];
 
       if (!tile.revealed) {
@@ -103,7 +89,8 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
     // Show or remove egg.
     egg.visible ? m.marker.addTo(m.tile.layer) : m.tile.layer.removeLayer(m.marker);
-    m.marker.setIcon(egg.obtained ? this.eggFoundIcon : this.eggIcon);
+    const icon = MapHelper.getMarkerIcon(egg.obtained ? 'egg-found' : 'egg');
+    m.marker.setIcon(icon);
   }
 
   ngOnDestroy(): void {
@@ -153,8 +140,8 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   }
 
   toggleAll(reveal: boolean): void {
-    for (let y = 0; y < tilesY; y++) {
-      for (let x = 0; x < tilesX; x++) {
+    for (let y = 0; y < MapHelper.tilesY; y++) {
+      for (let x = 0; x < MapHelper.tilesX; x++) {
         this.toggleTileByCoords(x, y, reveal);
       }
     }
@@ -163,7 +150,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   private renderMap(): void {
     // Create map
     const xyz = this.loadParamsFromQuery();
-    const { x, y } = xyz || { x: 5.5 * tileWidth, y: 4.5 * tileHeight };
+    const { x, y } = xyz || { x: 5.5 * MapHelper.tileWidth, y: 4.5 * MapHelper.tileHeight };
     const zoom = xyz?.z	|| 3;
 
     this.map = L.map(this.mapElement.nativeElement, {
@@ -179,18 +166,18 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     } as unknown as L.MapOptions);
 
     // Add map image
-    const bounds = [[0, 0], [mapHeight, mapWidth]] as LatLngBoundsExpression;
+    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
     L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
 
     // Draw rectangle around map
     L.rectangle(bounds, { color: '#f00', fillOpacity: 0, stroke: true, weight: 1 }).addTo(this.map);
 
     // Draw map tile rectangles.
-    for (let y = 0; y < tilesY; y++) {
+    for (let y = 0; y < MapHelper.tilesY; y++) {
       this.tiles[y] = [];
-      for (let x = 0; x < tilesX; x++) {
+      for (let x = 0; x < MapHelper.tilesX; x++) {
         const layer = L.layerGroup().addTo(this.map);
-        const rectangle = L.rectangle([[y * tileHeight, x * tileWidth], [(y+1) * tileHeight, (x+1) * tileWidth]], {
+        const rectangle = L.rectangle([[y * MapHelper.tileHeight, x * MapHelper.tileWidth], [(y+1) * MapHelper.tileHeight, (x+1) * MapHelper.tileWidth]], {
           color: '#f00',
           fillColor: '#000', fillOpacity: 1,
           stroke: true, weight: 1
@@ -219,13 +206,15 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     }
 
     // Draw eggs
+    const eggIcon = MapHelper.getMarkerIcon('egg');
+    const eggFoundIcon = MapHelper.getMarkerIcon('egg-found');
     this.eggs.forEach(egg => {
       if (!egg.coords?.[0]) { return; }
-      const tileX = Math.floor(egg.coords[0] / tileWidth);
-      const tileY = Math.floor(egg.coords[1] / tileHeight);
+      const tileX = Math.floor(egg.coords[0] / MapHelper.tileWidth);
+      const tileY = Math.floor(egg.coords[1] / MapHelper.tileHeight);
       const tile = this.tiles[tileY][tileX];
 
-      const icon = egg.obtained ? this.eggFoundIcon : this.eggIcon;
+      const icon = egg.obtained ? eggFoundIcon : eggIcon;
       const marker = L.marker([egg.coords[1], egg.coords[0]], {
         icon
       });
@@ -332,7 +321,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   private decodeTiles(encodedValue: string): boolean[] {
     const value = parseInt(encodedValue, 36);
     const revealed: boolean[] = [];
-    const maxTiles = tilesX * tilesY;
+    const maxTiles = MapHelper.tilesX * MapHelper.tilesY;
     for (let i = 0; i < maxTiles; i++) {
       revealed.push((value & (1 << i)) !== 0);
     }
