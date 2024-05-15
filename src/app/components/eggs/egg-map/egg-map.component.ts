@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, isDevMode } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild, isDevMode } from '@angular/core';
 import L, { DomEvent, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import { SubscriptionLike } from 'rxjs';
 import GestureHandling from 'leaflet-gesture-handling';
-import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../egg.interface';
@@ -32,6 +31,8 @@ L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
   styleUrl: './egg-map.component.scss'
 })
 export class EggMapComponent implements AfterViewInit, OnDestroy {
+  @Input() eggs: Array<IEgg> = [];
+
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
   eggIcon = L.icon({
@@ -45,18 +46,15 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
   map!: L.Map;
   tiles: Array<Array<ITile>> = [];
-  eggs: Array<IEgg> = [];
   eggMarkers: { [key: string]: { tile: ITile, marker: L.Marker } } = {};
 
   private readonly _subscriptions: Array<SubscriptionLike> = [];
 
   constructor(
-    private readonly _dataService: DataService,
     private readonly _eventService: EventService,
     private readonly _mapService: MapService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    this.eggs = _dataService.eggs;
   }
 
   ngAfterViewInit(): void {

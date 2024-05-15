@@ -26,7 +26,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
   map!: L.Map;
-  markers = this._dataService.markers;
+  markers = this._dataService.getMarkers();
 
   private readonly _subscriptions: Array<SubscriptionLike> = [];
 

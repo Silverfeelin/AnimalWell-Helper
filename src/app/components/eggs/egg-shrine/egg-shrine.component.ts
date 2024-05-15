@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { DataService } from '@src/app/services/data.service';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { EventService } from '@src/app/services/event.service';
 import { IEgg } from '../egg.interface';
 import { EggControlsComponent } from '../egg-controls/egg-controls.component';
@@ -15,12 +14,11 @@ import { EggControlsComponent } from '../egg-controls/egg-controls.component';
   styleUrl: './egg-shrine.component.scss'
 })
 export class EggShrineComponent {
+  @Input() eggs: Array<IEgg> = [];
 
   selectedEgg?: IEgg;
-  eggs: Array<IEgg> = [];
 
   constructor(
-    private readonly _dataService: DataService,
     private readonly _eventService: EventService,
     private readonly _http: HttpClient,
     private readonly _changeDetectorRef: ChangeDetectorRef
@@ -29,7 +27,6 @@ export class EggShrineComponent {
   }
 
   ngOnInit(): void {
-    this.eggs = this._dataService.eggs;
     this.loadStorage();
 
     this._eventService.onEggsUpdated.subscribe({
