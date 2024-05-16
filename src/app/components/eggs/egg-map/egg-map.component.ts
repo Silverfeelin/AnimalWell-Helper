@@ -6,6 +6,7 @@ import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../egg.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
+import { Router } from '@angular/router';
 
 interface ITile {
   x: number;
@@ -38,6 +39,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly _eventService: EventService,
     private readonly _mapService: MapService,
+    private readonly _router: Router,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
     MapHelper.createMarkerIcon('egg', { bgFilter: 'hue-rotate(205deg)' });
@@ -145,6 +147,11 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
         this.toggleTileByCoords(x, y, reveal);
       }
     }
+  }
+
+  navigateToMap(): void {
+    if (!confirm('Are you sure you want to navigate to the map page? This will show the entire map with many markers, not just eggs!')) { return; }
+    this._router.navigate(['/map']);
   }
 
   private renderMap(): void {
