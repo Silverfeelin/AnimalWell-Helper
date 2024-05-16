@@ -178,6 +178,192 @@
       "coords": [25.5, 95.5]
     }
   ],
+  "items": [
+    {
+      "id": "I1",
+      "name": "B. Wand",
+      "icon": "b-wand",
+      "coords": [135.5, 59.5]
+    },
+    {
+      "id": "I2",
+      "name": "Disc",
+      "icon": "disc",
+      "coords": [226.5, 260.5]
+    },
+    {
+      "id": "I3",
+      "name": "Slink",
+      "icon": "slink",
+      "coords": [259.5, 458.5]
+    },
+    {
+      "id": "I4",
+      "name": "Yoyo",
+      "icon": "yoyo",
+      "coords": [35.5, 503.5]
+    },
+    {
+      "id": "I5",
+      "name": "Flute",
+      "icon": "flute",
+      "coords": [213.5, 211.5]
+    },
+    {
+      "id": "I6",
+      "name": "Map",
+      "icon": "map",
+      "coords": [164.5, 369.5]
+    },
+    {
+      "id": "I7",
+      "name": "Stamps",
+      "icon": "stamp",
+      "coords": [201.5, 309.5]
+    },
+    {
+      "id": "I8",
+      "name": "Pencil",
+      "icon": "pencil",
+      "coords": [206.5, 270.5]
+    },
+    {
+      "id": "I9",
+      "name": "Remote",
+      "icon": "remote",
+      "coords": [70.5, 246.5]
+    },
+    {
+      "id": "I10",
+      "name": "B. Ball",
+      "icon": "b-ball",
+      "coords": [271.5, 22.5]
+    },
+    {
+      "id": "I11",
+      "name": "Wheel",
+      "icon": "wheel",
+      "coords": [100.5, 20.5]
+    },
+    {
+      "id": "I12",
+      "name": "UV Lantern",
+      "icon": "uv-lantern",
+      "coords": [12.5, 7.5]
+    },
+    {
+      "id": "I13",
+      "name": "Lantern",
+      "icon": "lantern",
+      "coords": [114.5, 367.5]
+    },
+    {
+      "id": "I14",
+      "name": "Top",
+      "icon": "top",
+      "coords": [211.5, 274.5]
+    },
+    {
+      "id": "I15",
+      "name": "House key",
+      "icon": "key-house",
+      "coords": [4.5, 206.5]
+    },
+    {
+      "id": "I16",
+      "name": "F. Pack",
+      "icon": "f-pack",
+      "coords": [3.5, 277.5]
+    },
+    {
+      "id": "I17",
+      "name": "65th Egg",
+      "icon": "egg-65",
+      "coords": [213.5, 264.5]
+    },
+    {
+      "id": "I18",
+      "name": "Office key",
+      "icon": "key-office",
+      "coords": [221.5, 328.5]
+    },
+    {
+      "id": "I19",
+      "name": "B. B. Wand",
+      "icon": "bb-wand",
+      "coords": [37.5, 164.5]
+    }
+  ],
+  "keys": [
+    {
+      "id": "KEY1",
+      "name": "Key",
+      "coords": [166.5, 475.5],
+      "destination": [137.5, 486.5]
+    },
+    {
+      "id": "KEY2",
+      "name": "Key",
+      "coords": [100.5, 523.5],
+      "destination": [103.5, 512.5]
+    },
+    {
+      "id": "KEY3",
+      "name": "Key",
+      "coords": [101.5, 455.5],
+      "destination": [103.5, 507.5]
+    },
+    {
+      "id": "KEY4",
+      "name": "Key",
+      "coords": [266.5, 42.5],
+      "destination": [346.5, 209.5]
+    },
+    {
+      "id": "KEY5",
+      "name": "Key",
+      "coords": [209.5, 616.5],
+      "destination": [214.5, 564.5]
+    },
+    {
+      "id": "KEY6",
+      "name": "Key",
+      "coords": [259.5, 532.5],
+      "destination": [257.5, 558.5]
+    }
+  ],
+  "doors": [
+    {
+      "id": "DOO1",
+      "name": "Door",
+      "coords": [137.5, 486.5]
+    },
+    {
+      "id": "DOO2",
+      "name": "Door",
+      "coords": [103.5, 507.5]
+    },
+    {
+      "id": "DOO3",
+      "name": "Door",
+      "coords": [103.5, 512.5]
+    },
+    {
+      "id": "DOO4",
+      "name": "Door",
+      "coords": [346.5, 209.5]
+    },
+    {
+      "id": "DOO5",
+      "name": "Door",
+      "coords": [214.5, 564.5]
+    },
+    {
+      "id": "DOO6",
+      "name": "Door",
+      "coords": [257.5, 558.5]
+    }
+  ],
   "teleporters": [
     {
       "id": "T1",

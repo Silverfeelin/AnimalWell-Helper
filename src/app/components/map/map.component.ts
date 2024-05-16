@@ -79,6 +79,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Draw markers
     this.drawMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)').addTo(this.map);
+    this.drawMarkers(this.markers.keys, 'key', 'hue-rotate(310deg)').addTo(this.map);
+    this.drawMarkers(this.markers.doors, 'door', 'hue-rotate(310deg)').addTo(this.map);
+    this.drawMarkers(this.markers.items, 'item', 'hue-rotate(270deg)').addTo(this.map);
     this.drawMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)').addTo(this.map);
     this.drawMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)').addTo(this.map);
     this.drawMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)').addTo(this.map);
@@ -183,6 +186,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     return layers;
   }
 
+  // #region Storage
+
   private loadStorage(): void {
     const found = new Set(JSON.parse(localStorage.getItem('map.found')  || '[]'));
     for (const group of Object.values(this.markers)) {
@@ -197,6 +202,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const found = markers.filter(m => m.found).map(m => m.id);
     localStorage.setItem('map.found', JSON.stringify(found));
   }
+
+  // #endregion
+
+  // #region URL
 
   private loadParamsFromQuery(): { x: number, y: number, z: number } | undefined {
     const url = new URL(location.href);
@@ -217,29 +226,5 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     history.replaceState(history.state, '', `${url}`);
   }
 
-
-  private calculatePosition(start: any, end: any, distance: any): L.LatLngExpression {
-    // Calculate the distance between the start and end coordinates
-    const totalDistance = Math.sqrt(Math.pow(end[0] - start[0], 2) + Math.pow(end[1] - start[1], 2));
-
-    // Calculate the ratio of the distance to the total distance
-    const ratio = distance / totalDistance;
-
-    // Calculate the coordinates of the point at the given distance from the start
-    const x = start[0] + ratio * (end[0] - start[0]);
-    const y = start[1] + ratio * (end[1] - start[1]);
-
-    return [x, y];
-  }
-
-  private calculateAngle(pointA: any, pointB: any): number {
-    // Calculate the difference in coordinates
-    const dx = pointB[0] - pointA[0];
-    const dy = pointB[1] - pointA[1];
-
-    // Calculate the angle using arctan
-    const angleRadians = Math.atan2(dy, dx);
-
-    return angleRadians;
-  }
+  // #endregion
 }

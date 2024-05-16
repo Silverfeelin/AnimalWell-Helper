@@ -32,7 +32,7 @@ export class InventoryComponent {
     { name: 'Remote', obtained: false },
     { name: 'Bouncy Ball', obtained: false },
     { name: 'Wheel', obtained: false },
-    { name: 'UV Wand', obtained: false },
+    { name: 'UV Lantern', obtained: false },
   ]
 
   flames: Array<IFlame> = [
