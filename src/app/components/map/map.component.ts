@@ -58,11 +58,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       minZoom: 0,
       maxZoom: 4,
       zoom: coords.z,
-      zoomControl: true,
+      zoomControl: false,
       gestureHandling: false,
       center: [coords.y, coords.x],
       renderer: new L.SVG({ padding: 1000 })
     } as unknown as L.MapOptions);
+
+    L.control.zoom({ position: 'topright' }).addTo(this.map);
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
