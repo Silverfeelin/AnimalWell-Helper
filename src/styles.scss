@@ -32,6 +32,8 @@ h1 {
   font-family: 'Roboto Mono', monospace;
 }
 
+.pixelated { image-rendering: pixelated !important; }
+
 @mixin border {
   border-image: url('/assets/border.png') round;
   border-image-slice: 3;
@@ -42,6 +44,11 @@ h1 {
 
 .border {
   @include border;
+}
+
+.border-square {
+  border: 3px solid #fff;
+  border-radius: 0;
 }
 
 @mixin container {
@@ -74,6 +81,7 @@ h1 {
 .d-inline-block { display: inline-block !important; }
 .margin { margin: calc(3px * var(--scale)) !important; }
 .pad { padding: calc(3px * var(--scale)) !important; }
+.p-0 { padding: 0 !important; }
 .mt { margin-top: calc(3px * var(--scale)) !important; }
 .mb { margin-bottom: calc(3px * var(--scale)) !important; }
 .m-0 { margin: 0 !important; }
@@ -109,5 +117,24 @@ button {
     color: #fff;
     background: unset;
     user-select: unset;
+  }
+}
+
+.map-marker {
+  .marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+  }
+
+  .marker-icon {
+    position: absolute;
+    image-rendering: pixelated;
+    top: calc(50% - 3px);
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
   }
 }

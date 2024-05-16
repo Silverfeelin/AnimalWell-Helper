@@ -3,19 +3,26 @@
 </div>
 
 <div class="container border d-block mt">
-  <div class="flex flex-wrap">
+  <div class="flex flex-column">
     <div class="flex flex-wrap">
-      <button (click)="showAll()">Show all tiles</button>
-      <button (click)="hideAll()">Hide all tiles</button>
+      <div class="flex flex-wrap">
+        <button (click)="navigateToMap()">Go to full map (spoiler warning)</button>
+      </div>
     </div>
     <div class="flex flex-wrap">
-      <button (click)="showTileEggs()">Show eggs in visible tiles</button>
-      <button (click)="showAllEggs()">Show all eggs</button>
-      <button (click)="hideAllEggs()">Hide all eggs</button>
+      <div class="flex flex-wrap">
+        <button (click)="showAll()">Show all tiles</button>
+        <button (click)="hideAll()">Hide all tiles</button>
+      </div>
+      <div class="flex flex-wrap">
+        <button (click)="showTileEggs()">Show eggs in visible tiles</button>
+        <button (click)="showAllEggs()">Show all eggs</button>
+        <button (click)="hideAllEggs()">Hide all eggs</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container border map-width ml-0 mr-0 mt">
+<div class="container border-square p-0 map-width ml-0 mr-0 mt">
   <div class="map" #map></div>
 </div>

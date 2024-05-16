@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { EggMapComponent } from './egg-map/egg-map.component';
 import { EggShrineComponent } from './egg-shrine/egg-shrine.component';
+import { DataService } from '@src/app/services/data.service';
+import { IEgg } from './egg.interface';
 
 @Component({
   selector: 'app-eggs',
@@ -13,8 +15,10 @@ import { EggShrineComponent } from './egg-shrine/egg-shrine.component';
   styleUrl: './eggs.component.scss'
 })
 export class EggsComponent {
-  constructor() {
-
+  eggs: Array<IEgg> = [];
+  constructor(
+    private readonly _dataService: DataService
+  ) {
+    this.eggs = this._dataService.getEggs();
   }
-
 }

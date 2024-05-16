@@ -1,417 +1,417 @@
 {
   "items": [
     {
-      "code": "P1",
+      "code": "PE1",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P2",
+      "code": "PE2",
       "name": "Placeholder",
       "placeholder": true
     },
     {
       "code": "3A",
       "name": "Reference Egg",
-      "coords": [63.5, 336.5],
+      "coords": [336.5, 63.5],
       "items": [ "Slink", "Disc" ]
     },
     {
       "code": "4A",
       "name": "Brown Egg",
-      "coords": [97.5, 332.5],
+      "coords": [332.5, 97.5],
       "items": [ "Slink" ]
     },
     {
       "code": "5A",
       "name": "Raw Egg",
-      "coords": [201.5, 332.5],
+      "coords": [332.5, 201.5],
       "items": [ "Slink" ]
     },
     {
       "code": "6A",
       "name": "Pickled Egg",
-      "coords": [387.5, 340.5],
+      "coords": [340.5, 387.5],
       "items": []
     },
     {
       "code": "7A",
       "name": "Big Egg",
-      "coords": [371.5, 337.5],
+      "coords": [337.5, 371.5],
       "items": [ "Remote", "Yoyo" ]
     },
     {
       "code": "8A",
       "name": "Swan Egg",
-      "coords": [492.5, 347.5],
+      "coords": [347.5, 492.5],
       "items": [ "Flute" ]
     },
     {
       "code": "9A",
       "name": "Forbidden Egg",
-      "coords": [6.5, 319.5],
+      "coords": [319.5, 6.5],
       "items": [ "Disc" ]
     },
     {
       "code": "10A",
       "name": "Shadow Egg",
-      "coords": [618.5, 323.5],
+      "coords": [323.5, 618.5],
       "items": [ "Slink" ]
     },
     {
       "code": "11A",
       "name": "Vanity Egg",
-      "coords": [6.5, 305.5],
+      "coords": [305.5, 6.5],
       "items": [ "Bouncy Ball"]
     },
     {
       "code": "12A",
       "name": "Egg As A Service",
-      "coords": [77.5, 291.5],
+      "coords": [291.5, 77.5],
       "items": []
     },
     {
-      "code": "P3",
+      "code": "PE3",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P4",
+      "code": "PE4",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P5",
+      "code": "PE5",
       "name": "Placeholder",
       "placeholder": true
     },
     {
       "code": "2B",
       "name": "Depraved Egg",
-      "coords": [273.5, 291.5],
+      "coords": [291.5, 273.5],
       "items": [ "Disc" ]
     },
     {
       "code": "3B",
       "name": "Chaos Egg",
-      "coords": [629.5, 289.5],
+      "coords": [289.5, 629.5],
       "items": [ "Slink"]
     },
     {
       "code": "4B",
       "name": "Upside Down Egg",
-      "coords": [117.5, 265.5],
+      "coords": [265.5, 117.5],
       "items": [ "Remote" ]
     },
     {
       "code": "5B",
       "name": "Evil Egg",
-      "coords": [204.5, 270.5],
+      "coords": [270.5, 204.5],
       "items": [ "Flute" ]
     },
     {
       "code": "6B",
       "name": "Sweet Egg",
-      "coords": [350.5, 265.5],
+      "coords": [265.5, 350.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "7B",
       "name": "Chocolate Egg",
-      "coords": [390.5, 276.5],
+      "coords": [276.5, 390.5],
       "items": []
     },
     {
       "code": "8B",
       "name": "Value Egg",
-      "coords": [602.5, 266.5],
+      "coords": [266.5, 602.5],
       "items": [ "Firecrackers" ]
     },
     {
       "code": "9B",
       "name": "Plant Egg",
-      "coords": [30.5, 248.5],
+      "coords": [248.5, 30.5],
       "items": [ "Slink", "Disc" ]
     },
     {
       "code": "10B",
       "name": "Red Egg",
-      "coords": [74.5, 247.5],
+      "coords": [247.5, 74.5],
       "items": [ "Disc" ]
     },
     {
       "code": "11B",
       "name": "Orange Egg",
-      "coords": [222.5, 243.5],
+      "coords": [243.5, 222.5],
       "items": [ "Top" ]
     },
     {
       "code": "12B",
       "name": "Sour Egg",
-      "coords": [326.5, 245.5],
+      "coords": [245.5, 326.5],
       "items": []
     },
     {
       "code": "13B",
       "name": "Post Modern Egg",
-      "coords": [395.5, 243.5],
+      "coords": [243.5, 395.5],
       "items": [ "Remote", "Yoyo", "Top" ]
     },
     {
-      "code": "P6",
+      "code": "PE6",
       "name": "Placeholder",
       "placeholder": true
     },
     {
       "code": "1C",
       "name": "Universal Basic Egg",
-      "coords": [510.5, 260.5],
+      "coords": [260.5, 510.5],
       "items": [ "Yoyo" ]
     },
     {
       "code": "2C",
       "name": "Laissez-faire Egg",
-      "coords": [501.5, 243.5],
+      "coords": [243.5, 501.5],
       "items": [ "Firecrackers" ]
     },
     {
       "code": "3C",
       "name": "Zen Egg",
-      "coords": [536.5, 261.5],
+      "coords": [261.5, 536.5],
       "items": [ "Slink", "Bubble Wand" ]
     },
     {
       "code": "4C",
       "name": "Future Egg",
-      "coords": [15.5, 226.5],
+      "coords": [226.5, 15.5],
       "items": []
     },
     {
       "code": "5C",
       "name": "Friendship Egg",
-      "coords": [72.5, 237.5],
+      "coords": [237.5, 72.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "6C",
       "name": "Truth Egg",
-      "coords": [415.5, 239.5],
+      "coords": [239.5, 415.5],
       "items": [ "Disc" ]
     },
     {
       "code": "7C",
       "name": "Transcendental Egg",
-      "coords": [448.5, 229.5],
+      "coords": [229.5, 448.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "8C",
       "name": "Ancient Egg",
-      "coords": [27.5, 216.5],
+      "coords": [216.5, 27.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "9C",
       "name": "Magic Egg",
-      "coords": [57.5, 201.5],
+      "coords": [201.5, 57.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "10C",
       "name": "Mystic Egg",
-      "coords": [196.5, 202.5],
+      "coords": [202.5, 196.5],
       "items": []
     },
     {
       "code": "11C",
       "name": "Holiday Egg",
-      "coords": [337.5, 203.5],
+      "coords": [203.5, 337.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "12C",
       "name": "Rain Egg",
-      "coords": [329.5, 199.5],
+      "coords": [199.5, 329.5],
       "items": [ "Top" ]
     },
     {
       "code": "13C",
       "name": "Razzle Egg",
-      "coords": [539.5, 214.5],
+      "coords": [214.5, 539.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "14C",
       "name": "Dazzle Egg",
-      "coords": [82.5, 195.5],
+      "coords": [195.5, 82.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "1D",
       "name": "Virtual Egg",
-      "coords": [287.5, 192.5],
+      "coords": [192.5, 287.5],
       "items": [ "Disc" ]
     },
     {
       "code": "2D",
       "name": "Normal Egg",
-      "coords": [155.5, 160.5],
+      "coords": [160.5, 155.5],
       "items": []
     },
     {
       "code": "3D",
       "name": "Great Egg",
-      "coords": [270.5, 157.5],
+      "coords": [157.5, 270.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "4D",
       "name": "Gorgeous Egg",
-      "coords": [353.5, 155.5],
+      "coords": [155.5, 353.5],
       "items": []
     },
     {
       "code": "5D",
       "name": "Planet Egg",
-      "coords": [515.5, 155.5],
+      "coords": [155.5, 515.5],
       "items": [ "Yoyo" ]
     },
     {
       "code": "6D",
       "name": "Moon Egg",
-      "coords": [636.5, 168.5],
+      "coords": [168.5, 636.5],
       "items": [ "Disc" ]
     },
     {
       "code": "7D",
       "name": "Galaxy Egg",
-      "coords": [25.5, 148.5],
+      "coords": [148.5, 25.5],
       "items": [ "Remote", "Disc" ]
     },
     {
       "code": "8D",
       "name": "Sunset Egg",
-      "coords": [57.5, 150.5],
+      "coords": [150.5, 57.5],
       "items": [ "Yoyo" ]
     },
     {
       "code": "9D",
       "name": "Goodnight Egg",
-      "coords": [145.5, 139.5],
+      "coords": [139.5, 145.5],
       "items": [ "Yoyo" ]
     },
     {
       "code": "10D",
       "name": "Dream Egg",
-      "coords": [461.5, 142.5],
+      "coords": [142.5, 461.5],
       "items": [ "Disc" ]
     },
     {
       "code": "11D",
       "name": "Travel Egg",
-      "coords": [490.5, 148.5],
+      "coords": [148.5, 490.5],
       "items": []
     },
     {
       "code": "12D",
       "name": "Promise Egg",
-      "coords": [636.5, 151.5],
+      "coords": [151.5, 636.5],
       "items": [ "Yoyo" ]
     },
     {
       "code": "13D",
       "name": "Ice Egg",
-      "coords": [314.5, 123.5],
+      "coords": [123.5, 314.5],
       "items": [ "Remote" ]
     },
     {
       "code": "14D",
       "name": "Fire Egg",
-      "coords": [407.5, 116.5],
+      "coords": [116.5, 407.5],
       "items": [ ["Disc", "Bubble Wand"] ]
     },
     {
       "code": "1E",
       "name": "Bubble Egg",
-      "coords": [557.5, 128.5],
+      "coords": [128.5, 557.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "2E",
       "name": "Desert Egg",
-      "coords": [637.5, 112.5],
+      "coords": [112.5, 637.5],
       "items": []
     },
     {
       "code": "3E",
       "name": "Clover Egg",
-      "coords": [175.5, 92.5],
+      "coords": [92.5, 175.5],
       "items": []
     },
     {
       "code": "4E",
       "name": "Brick Egg",
-      "coords": [180.5, 74.5],
+      "coords": [74.5, 180.5],
       "items": [ "Bubble", "Wheel", "Disc" ]
     },
     {
       "code": "5E",
       "name": "Neon Egg",
-      "coords": [207.5, 85.5],
+      "coords": [85.5, 207.5],
       "items": [ "Bouncy Ball", "Remote" ]
     },
     {
       "code": "6E",
       "name": "Iridescent Egg",
-      "coords": [282.5, 85.5],
+      "coords": [85.5, 282.5],
       "items": [ "Remote" ]
     },
     {
       "code": "7E",
       "name": "Rust Egg",
-      "coords": [483.5, 67.5],
+      "coords": [67.5, 483.5],
       "items": []
     },
     {
       "code": "8E",
       "name": "Scarlet Egg",
-      "coords": [626.5, 68.5],
+      "coords": [68.5, 626.5],
       "items": [ "Wheel" ]
     },
     {
       "code": "9E",
       "name": "Sapphire Egg",
-      "coords": [476.5, 60.5],
+      "coords": [60.5, 476.5],
       "items": [ "Lantern" ]
     },
     {
       "code": "10E",
       "name": "Ruby Egg",
-      "coords": [508.5, 59.5],
+      "coords": [59.5, 508.5],
       "items": [ "Bubble Wand" ]
     },
     {
       "code": "11E",
       "name": "Jade Egg",
-      "coords": [555.5, 48.5],
+      "coords": [48.5, 555.5],
       "items": []
     },
     {
       "code": "12E",
       "name": "Obsidian Egg",
-      "coords": [565.5, 52.5],
+      "coords": [52.5, 565.5],
       "items": [ "Disc" ]
     },
     {
       "code": "13E",
       "name": "Crystal Egg",
-      "coords": [152.5, 2.5],
+      "coords": [2.5, 152.5],
       "items": [ "Bouncy Ball", "Top", "Wheel", "Remote" ]
     },
     {
       "code": "14E",
       "name": "Golden Egg",
-      "coords": [437.5, 8.5],
+      "coords": [8.5, 437.5],
       "items": [ "Wheel", "Slink" ]
     }
   ]
