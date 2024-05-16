@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IEgg } from '../components/eggs/egg.interface';
-import { IDestinationMarker, IMarker } from '../components/map/marker.interface';
+import { IDestinationMarker, IMarker, ISequenceMarker } from '../components/map/marker.interface';
 import eggJson from '@src/assets/eggs.json';
 import markerJson from '@src/assets/markers.json';
 
@@ -16,6 +16,7 @@ type MarkerConfig = {
   sMedals: Array<IMarker>,
   kMedals: Array<IMarker>,
   eMedals: Array<IMarker>,
+  totems: Array<ISequenceMarker>,
 };
 
 @Injectable({

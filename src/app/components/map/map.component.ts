@@ -6,7 +6,7 @@ import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../eggs/egg.interface';
-import { IDestinationMarker, IMarker, MarkerCoords } from './marker.interface';
+import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
@@ -89,12 +89,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.drawMarkers(this.markers.sMedals, 'medal-s', 'hue-rotate(160deg)');
     this.drawMarkers(this.markers.kMedals, 'medal-k', 'hue-rotate(160deg)');
     this.drawMarkers(this.markers.eMedals, 'medal-e', 'hue-rotate(160deg)');
+    this.drawMarkers(this.markers.totems, 'totem', 'grayscale(100%)');
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
   private drawMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): void {
-
     const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
     let lineLayer = L.layerGroup().addTo(this.map);
@@ -105,22 +105,16 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       if (!m) { return; }
 
       const destination = (m as IDestinationMarker).destination;
-      const hasDestination = !!destination;
+      const sequence = (m as ISequenceMarker).sequence;
 
       const pos = evt.popup.getLatLng()!;
-      const coords = typeof m.coords[0] === 'number'
+      const coords = typeof m.coords?.[0] === 'number'
         ? [m.coords] as Array<MarkerCoords>
         : m.coords as Array<MarkerCoords>;
 
-      if (!hasDestination)  {
-        coords?.forEach((coord, i) => {
-          if (coord[0] === pos.lat && coord[1] === pos.lng) { return; }
-          // Draw line from pos to coord.
-          L.polyline([pos, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
-        });
-      } else {
+      if (destination)  {
+        // Draw line from pos to destination.
         const dest = typeof destination[0] === 'number' ? [destination] as Array<MarkerCoords> : destination as Array<MarkerCoords>;
-
         if (dest.length === 1) {
           L.polyline([pos, dest[0]], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
         } else if (dest.length === coords.length) {
@@ -129,6 +123,20 @@ export class MapComponent implements AfterViewInit, OnDestroy {
             L.polyline([coords[i], d], { color, weight: 4, dashArray: '20, 10' }).addTo(lineLayer);
             });
         }
+      } else if (sequence) {
+        // Draw sequence of lines.
+        sequence.forEach((coord, i) => {
+          if (i === 0) { return; }
+          const prev = sequence[i - 1];
+          L.polyline([prev, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
+        });
+      } else {
+        // Draw line to all other coords.
+        coords?.forEach((coord, i) => {
+          if (coord[0] === pos.lat && coord[1] === pos.lng) { return; }
+          // Draw line from pos to coord.
+          L.polyline([pos, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
+        });
       }
     });
     this.map.on('popupclose', (evt: L.PopupEvent) => {
@@ -137,17 +145,20 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Draw markers
     markers.forEach(m => {
-      if (!m.coords?.[0]) { return; }
-
       // Create icon for marker.
       const useIcon = m.icon || icon;
       MapHelper.createMarkerIcon(useIcon, { bgFilter });
-      const coords = typeof m.coords[0] === 'number'
+      const coords = m.coords && typeof m.coords[0] === 'number'
         ? [m.coords] as Array<MarkerCoords>
-        : m.coords as Array<MarkerCoords>;
+        : m.coords ? [...m.coords] as Array<MarkerCoords> : [];
+
+      const sequence = (m as ISequenceMarker).sequence;
+      if (sequence) {
+        coords.push(...sequence);
+      }
 
       const markers: Array<L.Marker> = [];
-      coords.forEach(coord => {
+      coords?.forEach(coord => {
         const marker = L.marker(coord, {
           icon: m.found ? MapHelper.getMarkerIcon(`${useIcon}-found`) : MapHelper.getMarkerIcon(useIcon),
         }).addTo(this.map);

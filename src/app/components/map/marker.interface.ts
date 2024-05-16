@@ -10,3 +10,7 @@ export interface IMarker {
 export interface IDestinationMarker extends IMarker {
   destination: MarkerCoords | Array<MarkerCoords>
 }
+
+export interface ISequenceMarker extends IMarker {
+  sequence: Array<MarkerCoords>;
+}
