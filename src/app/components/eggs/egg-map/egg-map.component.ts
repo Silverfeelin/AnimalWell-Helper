@@ -158,7 +158,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     // Create map
     const xyz = this.loadParamsFromQuery();
     const { x, y } = xyz || { x: 5.5 * MapHelper.tileWidth, y: 4.5 * MapHelper.tileHeight };
-    const zoom = xyz?.z	|| 3;
+    const zoom = xyz?.z	?? 3;
 
     this.map = L.map(this.mapElement.nativeElement, {
       attributionControl: false,
