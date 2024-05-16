@@ -78,23 +78,23 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
 
     // Draw markers
-    this.drawMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)');
-    this.drawMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)');
-    this.drawMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)');
-    this.drawMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)');
-    this.drawMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)');
-    this.drawMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)');
-    this.drawMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)');
-    this.drawMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)');
-    this.drawMarkers(this.markers.sMedals, 'medal-s', 'hue-rotate(160deg)');
-    this.drawMarkers(this.markers.kMedals, 'medal-k', 'hue-rotate(160deg)');
-    this.drawMarkers(this.markers.eMedals, 'medal-e', 'hue-rotate(160deg)');
-    this.drawMarkers(this.markers.totems, 'totem', 'grayscale(100%)');
+    this.drawMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)').addTo(this.map);
+    this.drawMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)').addTo(this.map);
+    this.drawMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)').addTo(this.map);
+    this.drawMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)').addTo(this.map);
+    this.drawMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)').addTo(this.map);
+    this.drawMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)').addTo(this.map);
+    this.drawMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)').addTo(this.map);
+    this.drawMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)').addTo(this.map);
+    this.drawMarkers(this.markers.sMedals, 'medal-s', 'hue-rotate(160deg)').addTo(this.map);
+    this.drawMarkers(this.markers.kMedals, 'medal-k', 'hue-rotate(160deg)').addTo(this.map);
+    this.drawMarkers(this.markers.eMedals, 'medal-e', 'hue-rotate(160deg)').addTo(this.map);
+    this.drawMarkers(this.markers.totems, 'totem', 'grayscale(100%)').addTo(this.map);
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
-  private drawMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): void {
+  private drawMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): L.LayerGroup {
     const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
     let lineLayer = L.layerGroup().addTo(this.map);
@@ -144,6 +144,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     });
 
     // Draw markers
+    const layers = L.layerGroup();
     markers.forEach(m => {
       // Create icon for marker.
       const useIcon = m.icon || icon;
@@ -152,16 +153,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         ? [m.coords] as Array<MarkerCoords>
         : m.coords ? [...m.coords] as Array<MarkerCoords> : [];
 
-      const sequence = (m as ISequenceMarker).sequence;
-      if (sequence) {
-        coords.push(...sequence);
-      }
-
       const markers: Array<L.Marker> = [];
       coords?.forEach(coord => {
         const marker = L.marker(coord, {
           icon: m.found ? MapHelper.getMarkerIcon(`${useIcon}-found`) : MapHelper.getMarkerIcon(useIcon),
-        }).addTo(this.map);
+        }).addTo(layers);
         markers.push(marker);
 
         const popup = L.popup({
@@ -183,6 +179,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         });
       });
     });
+
+    return layers;
   }
 
   private loadStorage(): void {
