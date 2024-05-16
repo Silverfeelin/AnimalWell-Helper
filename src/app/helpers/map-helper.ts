@@ -1,7 +1,7 @@
 import L from 'leaflet';
 
 export interface IMapMarkerIconOptions {
-  hue?: number;
+  bgFilter?: string;
 }
 
 export class MapHelper {
@@ -15,8 +15,10 @@ export class MapHelper {
   static icons: { [key: string]: L.DivIcon } = {};
 
   static createMarkerIcon(name: string, options: IMapMarkerIconOptions): void {
+    if (MapHelper.icons[name]) { return; }
+    const bgFilter = options.bgFilter ? `filter: ${options.bgFilter};` : '';
     const html = `
-<img src="/assets/icons/marker.png" class="marker" style="filter:hue-rotate(${options.hue || 0}deg);">
+<img src="/assets/icons/marker.png" class="marker" style="${bgFilter}">
 <img class="marker-icon" src="/assets/game/icons/${name}.png" class="pixelated">`;
 MapHelper.icons[name] = L.divIcon({ html, className: 'map-marker', iconSize: [38, 44], iconAnchor: [19, 44] });
 

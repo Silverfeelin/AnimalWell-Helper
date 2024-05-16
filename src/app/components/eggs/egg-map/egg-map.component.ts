@@ -40,7 +40,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     private readonly _mapService: MapService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    MapHelper.createMarkerIcon('egg', { hue: 205 });
+    MapHelper.createMarkerIcon('egg', { bgFilter: 'hue-rotate(205deg)' });
   }
 
   ngAfterViewInit(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IEgg } from '../components/eggs/egg.interface';
-import { IMarker } from '../components/map/marker.interface';
+import { IDestinationMarker, IMarker } from '../components/map/marker.interface';
 import eggJson from '@src/assets/eggs.json';
 import markerJson from '@src/assets/markers.json';
 
@@ -11,6 +11,8 @@ type MarkerConfig = {
   teleporters: Array<IMarker>,
   matches: Array<IMarker>,
   candles: Array<IMarker>,
+  flames: Array<IMarker>,
+  pipes: Array<IDestinationMarker>,
   sMedals: Array<IMarker>,
   kMedals: Array<IMarker>,
   eMedals: Array<IMarker>,
@@ -29,8 +31,15 @@ export class DataService {
 
   getMarkers(): MarkerConfig {
     const obj: MarkerConfig = {} as MarkerConfig;
+    const ids = new Set();
     for (const key in this._markers) {
-      (obj as any)[key] = (this._markers as any)[key].map((marker: IMarker) => ({...marker}));
+      (obj as any)[key] = (this._markers as any)[key].map((marker: IMarker) => {
+        if (ids.has(marker.id)) {
+          alert(`Duplicate marker id: ${marker.id}`);
+        }
+        ids.add(marker.id);
+        return {...marker};
+      });
     }
     return obj;
   }

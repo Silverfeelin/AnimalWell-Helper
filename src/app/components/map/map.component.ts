@@ -6,7 +6,7 @@ import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../eggs/egg.interface';
-import { IMarker, MarkerCoords } from './marker.interface';
+import { IDestinationMarker, IMarker, MarkerCoords } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
@@ -76,35 +76,58 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
 
     // Draw markers
-    this.drawMarkers(this.markers.eggs, 'egg', 205);
-    this.drawMarkers(this.markers.bunnies, 'bunny', 310);
-    this.drawMarkers(this.markers.telephones, 'telephone', 295);
-    this.drawMarkers(this.markers.teleporters, 'teleporter', 270);
-    this.drawMarkers(this.markers.matches, 'match', 45);
-    this.drawMarkers(this.markers.candles, 'candle', 0);
-    this.drawMarkers(this.markers.sMedals, 'medal-s', 160);
-    this.drawMarkers(this.markers.kMedals, 'medal-k', 160);
-    this.drawMarkers(this.markers.eMedals, 'medal-e', 160);
+    this.drawMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)');
+    this.drawMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)');
+    this.drawMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)');
+    this.drawMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)');
+    this.drawMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)');
+    this.drawMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)');
+    this.drawMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)');
+    this.drawMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)');
+    this.drawMarkers(this.markers.sMedals, 'medal-s', 'hue-rotate(160deg)');
+    this.drawMarkers(this.markers.kMedals, 'medal-k', 'hue-rotate(160deg)');
+    this.drawMarkers(this.markers.eMedals, 'medal-e', 'hue-rotate(160deg)');
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
+  private drawMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): void {
 
-  private drawMarkers(markers: Array<IMarker>, icon: string, hue: number): void {
-    // Create icon for marker group.
-    MapHelper.createMarkerIcon(icon, { hue });
-
-    const popupCoords = new Map<L.Popup, Array<MarkerCoords>>();
+    const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
     let lineLayer = L.layerGroup().addTo(this.map);
     this.map.on('popupopen', (evt: L.PopupEvent) => {
       lineLayer.clearLayers();
-      const coords = popupCoords.get(evt.popup);
+
+      const m = popupMarkers.get(evt.popup);
+      if (!m) { return; }
+
+      const destination = (m as IDestinationMarker).destination;
+      const hasDestination = !!destination;
+
       const pos = evt.popup.getLatLng()!;
-      coords?.forEach(coord => {
-        // Draw line from pos to coord.
-        L.polyline([pos, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
-      });
+      const coords = typeof m.coords[0] === 'number'
+        ? [m.coords] as Array<MarkerCoords>
+        : m.coords as Array<MarkerCoords>;
+
+      if (!hasDestination)  {
+        coords?.forEach((coord, i) => {
+          if (coord[0] === pos.lat && coord[1] === pos.lng) { return; }
+          // Draw line from pos to coord.
+          L.polyline([pos, coord], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
+        });
+      } else {
+        const dest = typeof destination[0] === 'number' ? [destination] as Array<MarkerCoords> : destination as Array<MarkerCoords>;
+
+        if (dest.length === 1) {
+          L.polyline([pos, dest[0]], { color: '#fff', weight: 3, dashArray: '20, 10' }).addTo(lineLayer);
+        } else if (dest.length === coords.length) {
+            dest.forEach((d, i) => {
+            const color = `hsl(${i * 35}, 70%, 65%)`;
+            L.polyline([coords[i], d], { color, weight: 4, dashArray: '20, 10' }).addTo(lineLayer);
+            });
+        }
+      }
     });
     this.map.on('popupclose', (evt: L.PopupEvent) => {
       lineLayer.clearLayers();
@@ -114,6 +137,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     markers.forEach(m => {
       if (!m.coords?.[0]) { return; }
 
+      // Create icon for marker.
+      const useIcon = m.icon || icon;
+      MapHelper.createMarkerIcon(useIcon, { bgFilter });
       const coords = typeof m.coords[0] === 'number'
         ? [m.coords] as Array<MarkerCoords>
         : m.coords as Array<MarkerCoords>;
@@ -121,7 +147,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       const markers: Array<L.Marker> = [];
       coords.forEach(coord => {
         const marker = L.marker(coord, {
-          icon: m.found ? MapHelper.getMarkerIcon(`${icon}-found`) : MapHelper.getMarkerIcon(icon),
+          icon: m.found ? MapHelper.getMarkerIcon(`${useIcon}-found`) : MapHelper.getMarkerIcon(useIcon),
         }).addTo(this.map);
         markers.push(marker);
 
@@ -130,13 +156,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           offset: [0, -37]
         });
         marker.bindPopup(popup);
-        popupCoords.set(popup, coords.filter(c => c !== coord));
+        popupMarkers.set(popup, m);
 
         marker.on('dblclick', evt => {
           DomEvent.stop(evt);
           m.found = !m.found;
 
-          const mIcon = m.found ? MapHelper.getMarkerIcon(`${icon}-found`) : MapHelper.getMarkerIcon(icon);
+          const mIcon = m.found ? MapHelper.getMarkerIcon(`${useIcon}-found`) : MapHelper.getMarkerIcon(useIcon);
           markers.forEach(n => {
             n.setIcon(mIcon);
           });

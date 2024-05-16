@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "code": "P1",
+      "code": "PE1",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P2",
+      "code": "PE2",
       "name": "Placeholder",
       "placeholder": true
     },
@@ -71,17 +71,17 @@
       "items": []
     },
     {
-      "code": "P3",
+      "code": "PE3",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P4",
+      "code": "PE4",
       "name": "Placeholder",
       "placeholder": true
     },
     {
-      "code": "P5",
+      "code": "PE5",
       "name": "Placeholder",
       "placeholder": true
     },
@@ -158,7 +158,7 @@
       "items": [ "Remote", "Yoyo", "Top" ]
     },
     {
-      "code": "P6",
+      "code": "PE6",
       "name": "Placeholder",
       "placeholder": true
     },
