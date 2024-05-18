@@ -70,8 +70,8 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     });
 
     this._mapService.onGotoTile.subscribe(({ x, y }) => {
-      const tileX = Math.floor(x / MapHelper.tileWidth);
-      const tileY = Math.floor(y / MapHelper.tileHeight);
+      const tileX = Math.floor(x / MapHelper.mapTileWidth);
+      const tileY = Math.floor(y / MapHelper.mapTileHeight);
       const tile = this.tiles[tileY][tileX];
 
       if (!tile.revealed) {
@@ -90,7 +90,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     if (!m) { return; }
 
     // Show or remove egg.
-    egg.visible ? m.marker.addTo(m.tile.layer) : m.tile.layer.removeLayer(m.marker);
+    egg.visible ? m.marker.addTo(this.map) : m.marker.removeFrom(this.map);
     const icon = MapHelper.getMarkerIcon(egg.obtained ? 'egg-found' : 'egg');
     m.marker.setIcon(icon);
   }
@@ -119,7 +119,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     this._eventService.onEggsUpdated.next(updatedEggs);
   }
   showAllEggs(): void {
-    if (!confirm(`Are you sure you want to show all eggs? Any eggs in hidden tiles will show up once you reveal those tiles.`)) { return; }
+    if (!confirm('Are you sure you want to show all eggs?')) { return; }
     for (const egg of this.eggs) {
       egg.visible = true;
     }
@@ -157,7 +157,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   private renderMap(): void {
     // Create map
     const xyz = this.loadParamsFromQuery();
-    const { x, y } = xyz || { x: 5.5 * MapHelper.tileWidth, y: 4.5 * MapHelper.tileHeight };
+    const { x, y } = xyz || { x: 5.5 * MapHelper.mapTileWidth, y: 4.5 * MapHelper.mapTileHeight };
     const zoom = xyz?.z	?? 3;
 
     this.map = L.map(this.mapElement.nativeElement, {
@@ -184,7 +184,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
       this.tiles[y] = [];
       for (let x = 0; x < MapHelper.tilesX; x++) {
         const layer = L.layerGroup().addTo(this.map);
-        const rectangle = L.rectangle([[y * MapHelper.tileHeight, x * MapHelper.tileWidth], [(y+1) * MapHelper.tileHeight, (x+1) * MapHelper.tileWidth]], {
+        const rectangle = L.rectangle([[y * MapHelper.mapTileHeight, x * MapHelper.mapTileWidth], [(y+1) * MapHelper.mapTileHeight, (x+1) * MapHelper.mapTileWidth]], {
           color: '#f00',
           fillColor: '#000', fillOpacity: 1,
           stroke: true, weight: 1
@@ -217,8 +217,8 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     const eggFoundIcon = MapHelper.getMarkerIcon('egg-found');
     this.eggs.forEach(egg => {
       if (!egg.coords?.[0]) { return; }
-      const tileX = Math.floor(egg.coords[1] / MapHelper.tileWidth);
-      const tileY = Math.floor(egg.coords[0] / MapHelper.tileHeight);
+      const tileX = Math.floor(egg.coords[1] / MapHelper.mapTileWidth);
+      const tileY = Math.floor(egg.coords[0] / MapHelper.mapTileHeight);
       const tile = this.tiles[tileY][tileX];
 
       const icon = egg.obtained ? eggFoundIcon : eggIcon;
@@ -238,7 +238,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
       };
 
       if (egg.visible) {
-        marker.addTo(this.eggMarkers[egg.code].tile.layer);
+        marker.addTo(this.map);
       }
 
       marker.addEventListener('dblclick', (event: L.LeafletMouseEvent) => {

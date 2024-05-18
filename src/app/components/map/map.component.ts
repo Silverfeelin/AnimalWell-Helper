@@ -56,7 +56,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       attributionControl: false,
       crs: L.CRS.Simple,
       minZoom: 0,
-      maxZoom: 4,
+      maxZoom: 5,
       zoom: coords.z,
       zoomControl: false,
       gestureHandling: false,
@@ -66,9 +66,22 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     L.control.zoom({ position: 'topright' }).addTo(this.map);
 
+
+    // Draw world
+    const world = L.imageOverlay('/assets/game/maps/basic/full.png', [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]]);
+    world.addTo(this.map);
+
+    // Draw world tiles
+    // for (let tx = 0; tx < 16; tx++) {
+    //   for (let ty = 0; ty < 16; ty++) {
+    //     const bounds = [[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth], [(ty + 1) * MapHelper.mapTileHeight, (tx + 1) * MapHelper.mapTileWidth]] as LatLngBoundsExpression;
+    //     L.imageOverlay(`/assets/game/maps/basic/${tx}-${ty}.png`, bounds).addTo(this.map);
+    //   }
+    // }
+
     // Add map image
-    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
+    // const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
+    // L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
 
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
