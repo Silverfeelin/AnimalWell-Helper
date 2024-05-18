@@ -28,6 +28,11 @@ h1 {
   margin: calc(4px * var(--scale)) 0;
 }
 
+h2 {
+  font-size: 20px;
+  margin: calc(4px * var(--scale)) 0;
+}
+
 .mono {
   font-family: 'Roboto Mono', monospace;
 }
@@ -49,6 +54,10 @@ h1 {
 .border-square {
   border: 3px solid #fff;
   border-radius: 0;
+}
+
+.border-active {
+  border-image-source: url('/assets/border-active.png');
 }
 
 @mixin container {
@@ -82,6 +91,10 @@ h1 {
 .margin { margin: calc(3px * var(--scale)) !important; }
 .pad { padding: calc(3px * var(--scale)) !important; }
 .p-0 { padding: 0 !important; }
+.pt-0 { padding-top: 0 !important; }
+.pr-0 { padding-right: 0 !important; }
+.pb-0 { padding-bottom: 0 !important; }
+.pl-0 { padding-left: 0 !important; }
 .mt { margin-top: calc(3px * var(--scale)) !important; }
 .mb { margin-bottom: calc(3px * var(--scale)) !important; }
 .m-0 { margin: 0 !important; }
@@ -93,7 +106,7 @@ h1 {
 
 .us-none { user-select: none; }
 
-button {
+button, .button {
   @include border;
   font-size: 14px;
   padding: calc(2px * var(--scale));
@@ -103,6 +116,10 @@ button {
 
   &:hover {
     background: #444;
+  }
+
+  span {
+    vertical-align: middle;
   }
 }
 

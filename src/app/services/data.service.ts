@@ -16,9 +16,7 @@ type MarkerConfig = {
   candles: Array<IMarker>,
   flames: Array<IMarker>,
   pipes: Array<IDestinationMarker>,
-  sMedals: Array<IMarker>,
-  kMedals: Array<IMarker>,
-  eMedals: Array<IMarker>,
+  medals: Array<IMarker>,
   totems: Array<ISequenceMarker>,
 };
 

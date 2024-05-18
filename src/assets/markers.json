@@ -409,76 +409,94 @@
   "matches": [
     {
       "id": "M1",
+      "name": "Match",
       "coords": [147.5, 205.5]
     },
     {
       "id": "M2",
+      "name": "Match",
       "coords": [186.5, 257.5]
     },
     {
       "id": "M3",
+      "name": "Match",
       "coords": [227.5, 340.5]
     },
     {
       "id": "M4",
+      "name": "Match",
       "coords": [276.5, 373.5]
     },
     {
       "id": "M5",
+      "name": "Match",
       "coords": [280.5, 342.5]
     },
     {
       "id": "M6",
+      "name": "Match",
       "coords": [291.5, 246.5]
     },
     {
       "id": "M7",
+      "name": "Match",
       "coords": [292.5, 443.5]
     },
     {
       "id": "M8",
+      "name": "Match",
       "coords": [163.5, 509.5]
     },
     {
       "id": "M9",
+      "name": "Match",
       "coords": [103.5, 432.5]
     }
   ],
   "candles": [
     {
       "id": "C1",
+      "name": "Candle",
       "coords": [149.5, 348.5]
     },
     {
       "id": "C2",
+      "name": "Candle",
       "coords": [138.5, 579.5]
     },
     {
       "id": "C3",
+      "name": "Candle",
       "coords": [233.5, 538.5]
     },
     {
       "id": "C4",
+      "name": "Candle",
       "coords": [300.5, 273.5]
     },
     {
       "id": "C5",
+      "name": "Candle",
       "coords": [290.5, 100.5]
     },
     {
       "id": "C6",
+      "name": "Candle",
       "coords": [267.5, 83.5]
     },
     {
       "id": "C7",
+      "name": "Candle",
       "coords": [276.5, 181.5]
     },
     {
       "id": "C8",
+      "name": "Candle",
       "coords": [133.5, 154.5]
     },
     {
       "id": "C9",
+      "name": "Candle",
       "coords": [235.5, 185.5]
     }
   ],
@@ -594,49 +612,53 @@
       "destination": [195.5, 337.5]
     }
   ],
-  "sMedals": [
+  "medals": [
     {
       "id": "S1",
       "name": "S. Medal",
+      "icon": "medal-s",
       "coords": [233.5, 475.5]
     },
     {
       "id": "S2",
       "name": "S. Medal Circular Recess",
+      "icon": "medal-s",
       "coords": [124.5, 262.5]
-    }
-  ],
-  "kMedals": [
+    },
     {
       "id": "K1",
       "name": "K. Medal (#1)",
+      "icon": "medal-k",
       "coords": [[185.5, 297.5], [190.5, 415.5], [142.5, 293.5], [300.5, 172.5], [75.5, 564.5]]
     },
     {
       "id": "K2",
       "name": "K. Medal (#2)",
+      "icon": "medal-k",
       "coords": [[182.5, 300.5], [187.5, 418.5], [139.5, 296.5], [297.5, 175.5], [72.5, 567.5]]
     },
     {
       "id": "K3",
       "name": "K. Medal (#3)",
+      "icon": "medal-k",
       "coords": [[185.5, 303.5], [190.5, 421.5], [142.5, 299.5], [300.5, 178.5], [75.5, 570.5]]
     },
     {
       "id": "K4",
       "name": "K. Medal Circular Recess",
+      "icon": "medal-k",
       "coords": [292.5, 45.5]
-    }
-  ],
-  "eMedals": [
+    },
     {
       "id": "E1",
       "name": "E. Medal",
+      "icon": "medal-e",
       "coords": [47.5, 166.5]
     },
     {
       "id": "E2",
       "name": "E. Medal Circular Recess",
+      "icon": "medal-e",
       "coords": [52.5, 147.5]
     }
   ],

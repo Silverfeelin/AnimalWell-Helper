@@ -1,15 +1,17 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, isDevMode } from '@angular/core';
-import L, { DomEvent, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
+import L, { DomEvent, LatLngBoundsExpression } from 'leaflet';
 import { SubscriptionLike } from 'rxjs';
 import GestureHandling from 'leaflet-gesture-handling';
 import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
-import { IEgg } from '../eggs/egg.interface';
 import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
+
+type MapLayerName = 'world' | 'map';
+type MarkerLayerName = 'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' | 'medal' | 'totem';
 
 @Component({
   selector: 'app-map',
@@ -23,6 +25,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   map!: L.Map;
   markers = this._dataService.getMarkers();
+
+  mapLayers: { [key in MapLayerName]: L.LayerGroup } = {} as any;
+  currentMapLayerName: MapLayerName = 'map';
+
+  markerLayers: { [key in MarkerLayerName]: L.LayerGroup } = {} as any;
+  markerLayersVisible: { [key in MarkerLayerName]: boolean } = {} as any;
+
+  isSidebarFolded = false;
 
   private readonly _subscriptions: Array<SubscriptionLike> = [];
 
@@ -49,6 +59,27 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this._subscriptions.length = 0;
   }
 
+  showMapLayer(name: MapLayerName): void {
+    if (!this.mapLayers[name]) { name = 'map'; }
+    const previousLayer = this.mapLayers[this.currentMapLayerName];
+    previousLayer.removeFrom(this.map);
+
+    this.currentMapLayerName = name;
+    const currentLayer = this.mapLayers[name];
+    currentLayer.addTo(this.map);
+    this.saveStorage();
+  }
+
+  toggleMarkerLayers(...names: Array<MarkerLayerName>): void {
+    const makeVisible = !names.every(name => this.markerLayersVisible[name]);
+    names.forEach(name => {
+      this.markerLayersVisible[name] = makeVisible;
+      const layer = this.markerLayers[name];
+      makeVisible ? layer.addTo(this.map) : layer.removeFrom(this.map);
+    });
+    this.saveStorage();
+  }
+
   private renderMap(): void {
     // Create map
     const coords = this.loadParamsFromQuery() || { x: MapHelper.mapWidth / 2, y: MapHelper.mapHeight / 2, z: 1 };
@@ -68,20 +99,25 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
 
     // Draw world
-    const world = L.imageOverlay('/assets/game/maps/basic/full.png', [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]]);
-    world.addTo(this.map);
-
-    // Draw world tiles
-    // for (let tx = 0; tx < 16; tx++) {
-    //   for (let ty = 0; ty < 16; ty++) {
-    //     const bounds = [[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth], [(ty + 1) * MapHelper.mapTileHeight, (tx + 1) * MapHelper.mapTileWidth]] as LatLngBoundsExpression;
-    //     L.imageOverlay(`/assets/game/maps/basic/${tx}-${ty}.png`, bounds).addTo(this.map);
-    //   }
-    // }
+    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
+    const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', bounds);
+    const worldLayerGroup = L.layerGroup([worldLayer]);
+    // Draw rectangles around tiles
+    for (let tx = 0; tx < MapHelper.tilesX; tx++) {
+      for (let ty = 0; ty < MapHelper.tilesY; ty++) {
+        L.rectangle([[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth],
+          [(ty + 1) * MapHelper.mapTileHeight, (tx + 1) * MapHelper.mapTileWidth]
+        ], { color: '#f004', weight: 1, fillOpacity: 0 }).addTo(worldLayerGroup);
+      }
+    }
+    this.mapLayers.world = worldLayerGroup;
 
     // Add map image
-    // const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    // L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
+    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
+    const mapLayerGroup = L.layerGroup([mapLayer]);
+    this.mapLayers.map = mapLayerGroup;
+
+    this.showMapLayer(this.currentMapLayerName);
 
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
@@ -91,26 +127,30 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
 
     // Draw markers
-    this.drawMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)').addTo(this.map);
-    this.drawMarkers(this.markers.keys, 'key', 'hue-rotate(310deg)').addTo(this.map);
-    this.drawMarkers(this.markers.doors, 'door', 'hue-rotate(310deg)').addTo(this.map);
-    this.drawMarkers(this.markers.items, 'item', 'hue-rotate(270deg)').addTo(this.map);
-    this.drawMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)').addTo(this.map);
-    this.drawMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)').addTo(this.map);
-    this.drawMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)').addTo(this.map);
-    this.drawMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)').addTo(this.map);
-    this.drawMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)').addTo(this.map);
-    this.drawMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)').addTo(this.map);
-    this.drawMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)').addTo(this.map);
-    this.drawMarkers(this.markers.sMedals, 'medal-s', 'hue-rotate(160deg)').addTo(this.map);
-    this.drawMarkers(this.markers.kMedals, 'medal-k', 'hue-rotate(160deg)').addTo(this.map);
-    this.drawMarkers(this.markers.eMedals, 'medal-e', 'hue-rotate(160deg)').addTo(this.map);
-    this.drawMarkers(this.markers.totems, 'totem', 'grayscale(100%)').addTo(this.map);
+    this.markerLayers['egg'] = this.createMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)');
+    this.markerLayers['key'] = this.createMarkers(this.markers.keys, 'key', 'hue-rotate(310deg)');
+    this.markerLayers['door'] = this.createMarkers(this.markers.doors, 'door', 'hue-rotate(310deg)');
+    this.markerLayers['item'] = this.createMarkers(this.markers.items, 'item', 'hue-rotate(270deg)');
+    this.markerLayers['bunny'] = this.createMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)');
+    this.markerLayers['telephone'] = this.createMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)');
+    this.markerLayers['teleporter'] = this.createMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)');
+    this.markerLayers['match'] = this.createMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)');
+    this.markerLayers['candle'] = this.createMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)');
+    this.markerLayers['flame'] = this.createMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)');
+    this.markerLayers['pipe'] = this.createMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)');
+    this.markerLayers['medal'] = this.createMarkers(this.markers.medals, 'medal-s', 'hue-rotate(160deg)');
+    this.markerLayers['totem'] = this.createMarkers(this.markers.totems, 'totem', 'grayscale(100%)');
+
+    for (const key in this.markerLayers) {
+      if (this.markerLayersVisible[key as MarkerLayerName]) {
+        this.markerLayers[key as MarkerLayerName].addTo(this.map);
+      }
+    }
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
-  private drawMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): L.LayerGroup {
+  private createMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): L.LayerGroup {
     const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
     let lineLayer = L.layerGroup().addTo(this.map);
@@ -202,18 +242,33 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   // #region Storage
 
   private loadStorage(): void {
+    const mapLayerName = localStorage.getItem('map.layer') as MapLayerName;
+    if (mapLayerName) {
+      this.currentMapLayerName = mapLayerName;
+    }
+
     const found = new Set(JSON.parse(localStorage.getItem('map.found')  || '[]'));
     for (const group of Object.values(this.markers)) {
       for (const marker of group) {
         marker.found = found.has(marker.id);
       }
     }
+
+    const layers = JSON.parse(localStorage.getItem('map.markers') || '[]');
+    layers?.forEach((layer: string) => {
+      this.markerLayersVisible[layer as MarkerLayerName] = true;
+    });
   }
 
   private saveStorage(): void {
+    localStorage.setItem('map.layer', this.currentMapLayerName);
+
     const markers = Object.values(this.markers).flat();
     const found = markers.filter(m => m.found).map(m => m.id);
     localStorage.setItem('map.found', JSON.stringify(found));
+
+    const layers = Object.keys(this.markerLayersVisible).filter(key => this.markerLayersVisible[key as MarkerLayerName]);
+    localStorage.setItem('map.markers', JSON.stringify(layers));
   }
 
   // #endregion

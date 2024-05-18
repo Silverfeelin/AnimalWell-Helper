@@ -1,8 +1,84 @@
 <div class="map" #map></div>
-<!-- <span class="material-symbols-outlined">search</span>
-<span class="material-symbols-outlined">home</span>
-<span class="material-symbols-outlined">settings</span>
-<span class="material-symbols-outlined">favorite</span> -->
-<div class="map-sidebar">
-
+<div class="map-sidebar-unfold border" (click)="isSidebarFolded=false">&gt;</div>
+<div class="map-sidebar pad pt-0" [hidden]="isSidebarFolded">
+  <div class="sidebar-fold border" (click)="isSidebarFolded=true">&lt;</div>
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">Map layer</h2>
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="currentMapLayerName==='map'" (click)="showMapLayer('map')">
+        <span class="material-symbols-outlined">map</span>&nbsp;
+        <span>Map</span>
+      </button>
+      <button type="button" [class.border-active]="currentMapLayerName==='world'" (click)="showMapLayer('world')">
+        <span class="material-symbols-outlined">public</span>&nbsp;
+        <span>World</span>
+      </button>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">
+      <span (click)="toggleMarkerLayers('item', 'telephone', 'key', 'door', 'teleporter', 'pipe', 'flame')">
+        Markers
+      </span>
+    </h2>
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="markerLayersVisible['item']" (click)="toggleMarkerLayers('item')">
+        <span class="material-symbols-outlined">star</span>&nbsp;
+        <span>Items</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['telephone']" (click)="toggleMarkerLayers('telephone')">
+        <span class="material-symbols-outlined">phone</span>&nbsp;
+        <span>Telephones</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['key']" (click)="toggleMarkerLayers('key')">
+        <span class="material-symbols-outlined">key</span>&nbsp;
+        <span>Keys</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['door']" (click)="toggleMarkerLayers('door')">
+        <span class="material-symbols-outlined">door_front</span>&nbsp;
+        <span>Doors</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['teleporter']" (click)="toggleMarkerLayers('teleporter')">
+        <span class="material-symbols-outlined">flight</span>&nbsp;
+        <span>Teleporters</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['pipe']" (click)="toggleMarkerLayers('pipe')">
+        <span class="material-symbols-outlined">valve</span>&nbsp;
+        <span>Pipes</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['flame']" (click)="toggleMarkerLayers('flame')">
+        <span class="material-symbols-outlined">local_fire_department</span>&nbsp;
+        <span>Flames</span>
+      </button>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">
+      <span (click)="toggleMarkerLayers('egg', 'match', 'candle', 'medal', 'bunny', 'totem')">
+        Late game
+      </span>
+    </h2>
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="markerLayersVisible['egg']" (click)="toggleMarkerLayers('egg')">
+        <span class="material-symbols-outlined">egg</span>&nbsp;
+        <span>Eggs</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['candle']" (click)="toggleMarkerLayers('match', 'candle')">
+        <span class="material-symbols-outlined">candle</span>&nbsp;
+        <span>Candles</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['medal']" (click)="toggleMarkerLayers('medal')">
+        <span class="material-symbols-outlined">workspace_premium</span>&nbsp;
+        <span>Medals</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['totem']" (click)="toggleMarkerLayers('totem')">
+        <span class="material-symbols-outlined">skull</span>&nbsp;
+        <span>Totems</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['bunny']" (click)="toggleMarkerLayers('bunny')">
+        <span class="material-symbols-outlined">cruelty_free</span>&nbsp;
+        <span>Bunnies</span>
+      </button>
+    </div>
+  </div>
 </div>
