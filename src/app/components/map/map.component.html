@@ -13,6 +13,10 @@
         <span class="material-symbols-outlined">public</span>&nbsp;
         <span>World</span>
       </button>
+      <button type="button" [class.border-active]="currentMapLayerName==='combined'" (click)="showMapLayer('combined')">
+        <span class="material-symbols-outlined">join</span>&nbsp;
+        <span>Combined</span>
+      </button>
     </div>
   </div>
   <div class="sidebar-section">

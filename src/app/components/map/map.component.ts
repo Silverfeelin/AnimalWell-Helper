@@ -10,7 +10,7 @@ import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
-type MapLayerName = 'world' | 'map';
+type MapLayerName = 'world' | 'map' | 'combined';
 type MarkerLayerName = 'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' | 'medal' | 'totem';
 
 @Component({
@@ -67,6 +67,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.currentMapLayerName = name;
     const currentLayer = this.mapLayers[name];
     currentLayer.addTo(this.map);
+
+    const mapOpacity = name === 'combined' ? 0.5 : 1;
+    this.mapLayers.map.getLayers().forEach(layer => layer instanceof L.ImageOverlay && layer.setOpacity(mapOpacity) && layer.bringToFront());
+
     this.saveStorage();
   }
 
@@ -97,10 +101,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     L.control.zoom({ position: 'topright' }).addTo(this.map);
 
-
-    // Draw world
-    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', bounds);
+    // Add world image
+    // Apply height offset to closer match the map layer (don't ask me why it's not aligned perfectly).
+    const worldBounds = [[-2/8, 0], [MapHelper.mapHeight - 2/8, MapHelper.mapWidth]] as LatLngBoundsExpression;
+    const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', worldBounds);
     const worldLayerGroup = L.layerGroup([worldLayer]);
     // Draw rectangles around tiles
     for (let tx = 0; tx < MapHelper.tilesX; tx++) {
@@ -113,9 +117,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.mapLayers.world = worldLayerGroup;
 
     // Add map image
+    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
     const mapLayer = L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
     const mapLayerGroup = L.layerGroup([mapLayer]);
     this.mapLayers.map = mapLayerGroup;
+
+    // Add combined layer.
+    const combinedLayerGroup = L.layerGroup([worldLayer, mapLayer]);
+    this.mapLayers.combined = combinedLayerGroup;
 
     this.showMapLayer(this.currentMapLayerName);
 
@@ -217,7 +226,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         markers.push(marker);
 
         const popup = L.popup({
-          content: _marker => { return m.name || m.id; },
+          content: _marker => MapHelper.createMarkerPopup(m),
           offset: [0, -37]
         });
         marker.bindPopup(popup);
