@@ -7,8 +7,10 @@ export interface IMapMarkerIconOptions {
 export class MapHelper {
   static mapWidth = 640;
   static mapHeight = 352;
-  static tileWidth = 40;
-  static tileHeight = 22;
+  static mapTileWidth = 40;
+  static mapTileHeight = 22;
+  static tileWidth = 320;
+  static tileHeight = 180;
   static tilesX = 16;
   static tilesY = 16;
 

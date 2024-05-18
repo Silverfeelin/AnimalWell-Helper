@@ -48,7 +48,7 @@
     {
       "id": "B10",
       "name": "Dream Bunny (#10)",
-      "coords": [197.5, 379.5]
+      "coords": [180.5, 387.5]
     },
     {
       "id": "B11",
@@ -178,6 +178,192 @@
       "coords": [25.5, 95.5]
     }
   ],
+  "items": [
+    {
+      "id": "I1",
+      "name": "B. Wand",
+      "icon": "b-wand",
+      "coords": [135.5, 59.5]
+    },
+    {
+      "id": "I2",
+      "name": "Disc",
+      "icon": "disc",
+      "coords": [226.5, 260.5]
+    },
+    {
+      "id": "I3",
+      "name": "Slink",
+      "icon": "slink",
+      "coords": [259.5, 458.5]
+    },
+    {
+      "id": "I4",
+      "name": "Yoyo",
+      "icon": "yoyo",
+      "coords": [35.5, 503.5]
+    },
+    {
+      "id": "I5",
+      "name": "Flute",
+      "icon": "flute",
+      "coords": [213.5, 211.5]
+    },
+    {
+      "id": "I6",
+      "name": "Map",
+      "icon": "map",
+      "coords": [164.5, 369.5]
+    },
+    {
+      "id": "I7",
+      "name": "Stamps",
+      "icon": "stamp",
+      "coords": [201.5, 309.5]
+    },
+    {
+      "id": "I8",
+      "name": "Pencil",
+      "icon": "pencil",
+      "coords": [206.5, 270.5]
+    },
+    {
+      "id": "I9",
+      "name": "Remote",
+      "icon": "remote",
+      "coords": [70.5, 246.5]
+    },
+    {
+      "id": "I10",
+      "name": "B. Ball",
+      "icon": "b-ball",
+      "coords": [271.5, 22.5]
+    },
+    {
+      "id": "I11",
+      "name": "Wheel",
+      "icon": "wheel",
+      "coords": [100.5, 20.5]
+    },
+    {
+      "id": "I12",
+      "name": "UV Lantern",
+      "icon": "uv-lantern",
+      "coords": [12.5, 7.5]
+    },
+    {
+      "id": "I13",
+      "name": "Lantern",
+      "icon": "lantern",
+      "coords": [114.5, 367.5]
+    },
+    {
+      "id": "I14",
+      "name": "Top",
+      "icon": "top",
+      "coords": [211.5, 274.5]
+    },
+    {
+      "id": "I15",
+      "name": "House key",
+      "icon": "key-house",
+      "coords": [4.5, 206.5]
+    },
+    {
+      "id": "I16",
+      "name": "F. Pack",
+      "icon": "f-pack",
+      "coords": [3.5, 277.5]
+    },
+    {
+      "id": "I17",
+      "name": "65th Egg",
+      "icon": "egg-65",
+      "coords": [213.5, 264.5]
+    },
+    {
+      "id": "I18",
+      "name": "Office key",
+      "icon": "key-office",
+      "coords": [221.5, 328.5]
+    },
+    {
+      "id": "I19",
+      "name": "B. B. Wand",
+      "icon": "bb-wand",
+      "coords": [37.5, 164.5]
+    }
+  ],
+  "keys": [
+    {
+      "id": "KEY1",
+      "name": "Key",
+      "coords": [166.5, 475.5],
+      "destination": [137.5, 486.5]
+    },
+    {
+      "id": "KEY2",
+      "name": "Key",
+      "coords": [100.5, 523.5],
+      "destination": [103.5, 512.5]
+    },
+    {
+      "id": "KEY3",
+      "name": "Key",
+      "coords": [101.5, 455.5],
+      "destination": [103.5, 507.5]
+    },
+    {
+      "id": "KEY4",
+      "name": "Key",
+      "coords": [266.5, 42.5],
+      "destination": [346.5, 209.5]
+    },
+    {
+      "id": "KEY5",
+      "name": "Key",
+      "coords": [209.5, 616.5],
+      "destination": [214.5, 564.5]
+    },
+    {
+      "id": "KEY6",
+      "name": "Key",
+      "coords": [259.5, 532.5],
+      "destination": [257.5, 558.5]
+    }
+  ],
+  "doors": [
+    {
+      "id": "DOO1",
+      "name": "Door",
+      "coords": [137.5, 486.5]
+    },
+    {
+      "id": "DOO2",
+      "name": "Door",
+      "coords": [103.5, 507.5]
+    },
+    {
+      "id": "DOO3",
+      "name": "Door",
+      "coords": [103.5, 512.5]
+    },
+    {
+      "id": "DOO4",
+      "name": "Door",
+      "coords": [346.5, 209.5]
+    },
+    {
+      "id": "DOO5",
+      "name": "Door",
+      "coords": [214.5, 564.5]
+    },
+    {
+      "id": "DOO6",
+      "name": "Door",
+      "coords": [257.5, 558.5]
+    }
+  ],
   "teleporters": [
     {
       "id": "T1",
@@ -223,76 +409,94 @@
   "matches": [
     {
       "id": "M1",
+      "name": "Match",
       "coords": [147.5, 205.5]
     },
     {
       "id": "M2",
+      "name": "Match",
       "coords": [186.5, 257.5]
     },
     {
       "id": "M3",
+      "name": "Match",
       "coords": [227.5, 340.5]
     },
     {
       "id": "M4",
+      "name": "Match",
       "coords": [276.5, 373.5]
     },
     {
       "id": "M5",
+      "name": "Match",
       "coords": [280.5, 342.5]
     },
     {
       "id": "M6",
+      "name": "Match",
       "coords": [291.5, 246.5]
     },
     {
       "id": "M7",
+      "name": "Match",
       "coords": [292.5, 443.5]
     },
     {
       "id": "M8",
+      "name": "Match",
       "coords": [163.5, 509.5]
     },
     {
       "id": "M9",
+      "name": "Match",
       "coords": [103.5, 432.5]
     }
   ],
   "candles": [
     {
       "id": "C1",
+      "name": "Candle",
       "coords": [149.5, 348.5]
     },
     {
       "id": "C2",
+      "name": "Candle",
       "coords": [138.5, 579.5]
     },
     {
       "id": "C3",
+      "name": "Candle",
       "coords": [233.5, 538.5]
     },
     {
       "id": "C4",
+      "name": "Candle",
       "coords": [300.5, 273.5]
     },
     {
       "id": "C5",
+      "name": "Candle",
       "coords": [290.5, 100.5]
     },
     {
       "id": "C6",
+      "name": "Candle",
       "coords": [267.5, 83.5]
     },
     {
       "id": "C7",
+      "name": "Candle",
       "coords": [276.5, 181.5]
     },
     {
       "id": "C8",
+      "name": "Candle",
       "coords": [133.5, 154.5]
     },
     {
       "id": "C9",
+      "name": "Candle",
       "coords": [235.5, 185.5]
     }
   ],
@@ -408,49 +612,53 @@
       "destination": [195.5, 337.5]
     }
   ],
-  "sMedals": [
+  "medals": [
     {
       "id": "S1",
       "name": "S. Medal",
+      "icon": "medal-s",
       "coords": [233.5, 475.5]
     },
     {
       "id": "S2",
       "name": "S. Medal Circular Recess",
+      "icon": "medal-s",
       "coords": [124.5, 262.5]
-    }
-  ],
-  "kMedals": [
+    },
     {
       "id": "K1",
       "name": "K. Medal (#1)",
+      "icon": "medal-k",
       "coords": [[185.5, 297.5], [190.5, 415.5], [142.5, 293.5], [300.5, 172.5], [75.5, 564.5]]
     },
     {
       "id": "K2",
       "name": "K. Medal (#2)",
+      "icon": "medal-k",
       "coords": [[182.5, 300.5], [187.5, 418.5], [139.5, 296.5], [297.5, 175.5], [72.5, 567.5]]
     },
     {
       "id": "K3",
       "name": "K. Medal (#3)",
+      "icon": "medal-k",
       "coords": [[185.5, 303.5], [190.5, 421.5], [142.5, 299.5], [300.5, 178.5], [75.5, 570.5]]
     },
     {
       "id": "K4",
       "name": "K. Medal Circular Recess",
+      "icon": "medal-k",
       "coords": [292.5, 45.5]
-    }
-  ],
-  "eMedals": [
+    },
     {
       "id": "E1",
       "name": "E. Medal",
+      "icon": "medal-e",
       "coords": [47.5, 166.5]
     },
     {
       "id": "E2",
       "name": "E. Medal Circular Recess",
+      "icon": "medal-e",
       "coords": [52.5, 147.5]
     }
   ],

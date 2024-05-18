@@ -6,6 +6,9 @@ import markerJson from '@src/assets/markers.json';
 
 type MarkerConfig = {
   eggs: Array<IMarker>,
+  items: Array<IMarker>,
+  keys: Array<IDestinationMarker>,
+  doors: Array<IMarker>,
   bunnies: Array<IMarker>,
   telephones: Array<IMarker>,
   teleporters: Array<IMarker>,
@@ -13,9 +16,7 @@ type MarkerConfig = {
   candles: Array<IMarker>,
   flames: Array<IMarker>,
   pipes: Array<IDestinationMarker>,
-  sMedals: Array<IMarker>,
-  kMedals: Array<IMarker>,
-  eMedals: Array<IMarker>,
+  medals: Array<IMarker>,
   totems: Array<ISequenceMarker>,
 };
 
