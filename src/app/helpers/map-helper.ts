@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import { IMarker } from '../components/map/marker.interface';
 
 export interface IMapMarkerIconOptions {
   bgFilter?: string;
@@ -33,5 +34,11 @@ const htmlFound = `
   static getMarkerIcon(name: string): L.DivIcon {
     if (!MapHelper.icons[name]) { throw new Error(`Icon ${name} not found`); }
     return MapHelper.icons[name];
+  }
+
+  static createMarkerPopup(marker: IMarker): HTMLElement {
+    const container = document.createElement('div');
+    container.innerText = marker.name;
+    return container;
   }
 }
