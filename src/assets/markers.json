@@ -974,6 +974,12 @@
     },
     {
       "id": "CS9",
+      "name": "Cheater Bunny #9",
+      "icon": "c-bunny",
+      "coords": [143.5, 454.5]
+    },
+    {
+      "id": "CS10",
       "name": "Cheaters Ring",
       "icon": "c-ring",
       "coords": [224.5, 43.5]
