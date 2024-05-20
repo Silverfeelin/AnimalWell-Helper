@@ -18,6 +18,7 @@ type MarkerConfig = {
   pipes: Array<IDestinationMarker>,
   medals: Array<IMarker>,
   totems: Array<ISequenceMarker>,
+  cheatSecrets: Array<IMarker>,
 };
 
 @Injectable({

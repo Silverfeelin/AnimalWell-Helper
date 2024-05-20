@@ -85,4 +85,17 @@
       </button>
     </div>
   </div>
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">
+      <span (click)="toggleMarkerLayers('cheatSecret')">
+        Cheat / Exploit
+      </span>
+    </h2>
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="markerLayersVisible['cheatSecret']" (click)="toggleMarkerLayers('cheatSecret')">
+        <span class="material-symbols-outlined">joystick</span>&nbsp;
+        <span>Secrets</span>
+      </button>
+    </div>
+  </div>
 </div>

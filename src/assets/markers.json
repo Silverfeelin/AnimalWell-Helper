@@ -553,7 +553,7 @@
     },
     {
       "id": "PI5",
-      "name": "Pipe ",
+      "name": "Pipe",
       "coords": [205.5, 60.5],
       "destination": [193.5, 63.5]
     },
@@ -921,6 +921,62 @@
       "icon": "totem-question",
       "coords": [163.5, 568.5],
       "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+    }
+  ],
+  "cheatSecrets": [
+    {
+      "id": "CS1",
+      "name": "Cheater Bunny #1",
+      "icon": "c-bunny",
+      "coords": [270.5, 36.5]
+    },
+    {
+      "id": "CS2",
+      "name": "Cheater Bunny #2",
+      "icon": "c-bunny",
+      "coords": [245.5, 127.5]
+    },
+    {
+      "id": "CS3",
+      "name": "Cheater Bunny #3",
+      "icon": "c-bunny",
+      "coords": [345.5, 433.5]
+    },
+    {
+      "id": "CS4",
+      "name": "Cheater Bunny #4",
+      "icon": "c-bunny",
+      "coords": [257.5, 391.5]
+    },
+    {
+      "id": "CS5",
+      "name": "Cheater Bunny #5",
+      "icon": "c-bunny",
+      "coords": [172.5, 491.5]
+    },
+    {
+      "id": "CS6",
+      "name": "Cheater Bunny #6",
+      "icon": "c-bunny",
+      "coords": [93.5, 435.5]
+    },
+    {
+      "id": "CS7",
+      "name": "Cheater Bunny #7",
+      "icon": "c-bunny",
+      "coords": [39.5, 402.5]
+    },
+    {
+      "id": "CS8",
+      "name": "Cheater Bunny #8",
+      "icon": "c-bunny",
+      "coords": [62.5, 191.5]
+    },
+    {
+      "id": "CS9",
+      "name": "Cheaters Ring",
+      "icon": "c-ring",
+      "coords": [224.5, 43.5]
     }
   ]
 }

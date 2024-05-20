@@ -11,7 +11,7 @@ import { MapHelper } from '@src/app/helpers/map-helper';
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 type MapLayerName = 'world' | 'map' | 'combined';
-type MarkerLayerName = 'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' | 'medal' | 'totem';
+type MarkerType = 'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' | 'medal' | 'totem' | 'cheatSecret';
 
 @Component({
   selector: 'app-map',
@@ -29,8 +29,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   mapLayers: { [key in MapLayerName]: L.LayerGroup } = {} as any;
   currentMapLayerName: MapLayerName = 'map';
 
-  markerLayers: { [key in MarkerLayerName]: L.LayerGroup } = {} as any;
-  markerLayersVisible: { [key in MarkerLayerName]: boolean } = {} as any;
+  markerLayers: { [key in MarkerType]: L.LayerGroup } = {} as any;
+  markerLayersVisible: { [key in MarkerType]: boolean } = {} as any;
 
   isSidebarFolded = false;
 
@@ -74,7 +74,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.saveStorage();
   }
 
-  toggleMarkerLayers(...names: Array<MarkerLayerName>): void {
+  toggleMarkerLayers(...names: Array<MarkerType>): void {
     const makeVisible = !names.every(name => this.markerLayersVisible[name]);
     names.forEach(name => {
       this.markerLayersVisible[name] = makeVisible;
@@ -88,7 +88,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     // Create map
     const coords = this.loadParamsFromQuery() || { x: MapHelper.mapWidth / 2, y: MapHelper.mapHeight / 2, z: 1 };
     this.map = L.map(this.mapElement.nativeElement, {
-      attributionControl: false,
+      attributionControl: true,
       crs: L.CRS.Simple,
       minZoom: 0,
       maxZoom: 5,
@@ -98,13 +98,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       center: [coords.y, coords.x],
       renderer: new L.SVG({ padding: 1000 })
     } as unknown as L.MapOptions);
+    this.map.attributionControl.setPrefix(''); // Remove 'Leaflet' from attribution.
 
     L.control.zoom({ position: 'topright' }).addTo(this.map);
 
     // Add world image
     // Apply height offset to closer match the map layer (don't ask me why it's not aligned perfectly).
     const worldBounds = [[-2/8, 0], [MapHelper.mapHeight - 2/8, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', worldBounds);
+    const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', worldBounds, { attribution: '' });
     const worldLayerGroup = L.layerGroup([worldLayer]);
     // Draw rectangles around tiles
     for (let tx = 0; tx < MapHelper.tilesX; tx++) {
@@ -118,7 +119,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds).addTo(this.map);
+    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: 'Map layer by verycoffeebean'}).addTo(this.map);
     const mapLayerGroup = L.layerGroup([mapLayer]);
     this.mapLayers.map = mapLayerGroup;
 
@@ -149,10 +150,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.markerLayers['pipe'] = this.createMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)');
     this.markerLayers['medal'] = this.createMarkers(this.markers.medals, 'medal-s', 'hue-rotate(160deg)');
     this.markerLayers['totem'] = this.createMarkers(this.markers.totems, 'totem', 'grayscale(100%)');
+    this.markerLayers['cheatSecret'] = this.createMarkers(this.markers.cheatSecrets, 'controller', 'hue-rotate(210deg) brightness(0.5)');
 
     for (const key in this.markerLayers) {
-      if (this.markerLayersVisible[key as MarkerLayerName]) {
-        this.markerLayers[key as MarkerLayerName].addTo(this.map);
+      if (this.markerLayersVisible[key as MarkerType]) {
+        this.markerLayers[key as MarkerType].addTo(this.map);
       }
     }
 
@@ -265,7 +267,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     const layers = JSON.parse(localStorage.getItem('map.markers') || '[]');
     layers?.forEach((layer: string) => {
-      this.markerLayersVisible[layer as MarkerLayerName] = true;
+      this.markerLayersVisible[layer as MarkerType] = true;
     });
   }
 
@@ -276,7 +278,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const found = markers.filter(m => m.found).map(m => m.id);
     localStorage.setItem('map.found', JSON.stringify(found));
 
-    const layers = Object.keys(this.markerLayersVisible).filter(key => this.markerLayersVisible[key as MarkerLayerName]);
+    const layers = Object.keys(this.markerLayersVisible).filter(key => this.markerLayersVisible[key as MarkerType]);
     localStorage.setItem('map.markers', JSON.stringify(layers));
   }
 
