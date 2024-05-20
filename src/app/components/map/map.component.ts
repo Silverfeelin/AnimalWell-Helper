@@ -119,7 +119,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: 'Map layer by verycoffeebean'}).addTo(this.map);
+    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' }).addTo(this.map);
     const mapLayerGroup = L.layerGroup([mapLayer]);
     this.mapLayers.map = mapLayerGroup;
 
