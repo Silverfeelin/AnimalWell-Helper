@@ -5,13 +5,12 @@ import GestureHandling from 'leaflet-gesture-handling';
 import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
-import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords } from './marker.interface';
+import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords, MarkerType } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 type MapLayerName = 'world' | 'map' | 'combined';
-type MarkerType = 'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' | 'medal' | 'totem' | 'cheatSecret';
 
 @Component({
   selector: 'app-map',
@@ -31,6 +30,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   markerLayers: { [key in MarkerType]: L.LayerGroup } = {} as any;
   markerLayersVisible: { [key in MarkerType]: boolean } = {} as any;
+  markerLayersCount: { [key in MarkerType]: number } = {} as any;
 
   isSidebarFolded = false;
 
@@ -119,7 +119,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' }).addTo(this.map);
+    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' });
     const mapLayerGroup = L.layerGroup([mapLayer]);
     this.mapLayers.map = mapLayerGroup;
 
@@ -132,25 +132,34 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         console.log('Clicked at:', event.latlng);
-        navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}]`);
+        navigator.clipboard.writeText(`,\n[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}]`);
       });
     }
 
     // Draw markers
-    this.markerLayers['egg'] = this.createMarkers(this.markers.eggs, 'egg', 'hue-rotate(205deg)');
-    this.markerLayers['key'] = this.createMarkers(this.markers.keys, 'key', 'hue-rotate(310deg)');
-    this.markerLayers['door'] = this.createMarkers(this.markers.doors, 'door', 'hue-rotate(310deg)');
-    this.markerLayers['item'] = this.createMarkers(this.markers.items, 'item', 'hue-rotate(270deg)');
-    this.markerLayers['bunny'] = this.createMarkers(this.markers.bunnies, 'bunny', 'hue-rotate(310deg)');
-    this.markerLayers['telephone'] = this.createMarkers(this.markers.telephones, 'telephone', 'hue-rotate(295deg)');
-    this.markerLayers['teleporter'] = this.createMarkers(this.markers.teleporters, 'teleporter', 'hue-rotate(270deg)');
-    this.markerLayers['match'] = this.createMarkers(this.markers.matches, 'match', 'hue-rotate(45deg)');
-    this.markerLayers['candle'] = this.createMarkers(this.markers.candles, 'candle', 'hue-rotate(0deg)');
-    this.markerLayers['flame'] = this.createMarkers(this.markers.flames, 'flame', 'hue-rotate(178deg) brightness(0.65)');
-    this.markerLayers['pipe'] = this.createMarkers(this.markers.pipes, 'pipe', 'hue-rotate(0deg)');
-    this.markerLayers['medal'] = this.createMarkers(this.markers.medals, 'medal-s', 'hue-rotate(160deg)');
-    this.markerLayers['totem'] = this.createMarkers(this.markers.totems, 'totem', 'grayscale(100%)');
-    this.markerLayers['cheatSecret'] = this.createMarkers(this.markers.cheatSecrets, 'controller', 'hue-rotate(210deg) brightness(0.5)');
+    this.markerLayers['egg'] = this.createMarkers(this.markers.egg, 'Egg', 'egg', 'hue-rotate(205deg)');
+    this.markerLayers['key'] = this.createMarkers(this.markers.key, 'Key', 'key', 'hue-rotate(310deg)');
+    this.markerLayers['door'] = this.createMarkers(this.markers.door, 'Door', 'door', 'hue-rotate(310deg)');
+    this.markerLayers['item'] = this.createMarkers(this.markers.item, 'Item', 'item', 'hue-rotate(270deg)');
+    this.markerLayers['bunny'] = this.createMarkers(this.markers.bunny, 'Bunny', 'bunny', 'hue-rotate(310deg)');
+    this.markerLayers['telephone'] = this.createMarkers(this.markers.telephone, 'Telephone', 'telephone', 'hue-rotate(295deg)');
+    this.markerLayers['teleporter'] = this.createMarkers(this.markers.teleporter, 'Teleporter', 'teleporter', 'hue-rotate(270deg)');
+    this.markerLayers['match'] = this.createMarkers(this.markers.match, 'Match', 'match', 'hue-rotate(45deg)');
+    this.markerLayers['candle'] = this.createMarkers(this.markers.candle, 'Candle', 'candle', 'hue-rotate(0deg)');
+    this.markerLayers['flame'] = this.createMarkers(this.markers.flame, 'Flame', 'flame', 'hue-rotate(178deg) brightness(0.65)');
+    this.markerLayers['pipe'] = this.createMarkers(this.markers.pipe, 'Pipe', 'pipe', 'hue-rotate(0deg)');
+    this.markerLayers['medal'] = this.createMarkers(this.markers.medal, 'Medal', 'medal-s', 'hue-rotate(160deg)');
+    this.markerLayers['totem'] = this.createMarkers(this.markers.totem, 'Totem', 'totem', 'grayscale(100%)');
+    this.markerLayers['cheatSecret'] = this.createMarkers(this.markers.cheatSecret, 'Secret', 'controller', 'hue-rotate(210deg) brightness(0.5)');
+    this.markerLayers['explosive'] = this.createMarkers(this.markers.explosive, 'Explosive', 'tnt', 'hue-rotate(-30deg) brightness(0.7)');
+    this.markerLayers['berry'] = this.createMarkers(this.markers.berry, 'Berry', 'berry', 'hue-rotate(310deg) brightness(1.5)');
+    this.markerLayers['blueberry'] = this.createMarkers(this.markers.blueberry, 'Blueberry', 'blueberry', 'hue-rotate(310deg) brightness(1.5)');
+    this.markerLayers['firecracker'] = this.createMarkers(this.markers.firecracker, 'Firecracker', 'firecracker', 'hue-rotate(0deg) brightness(0.7)');
+    this.markerLayers['chinchilla'] = this.createMarkers(this.markers.chinchilla, 'Chinchilla', 'chinchilla', 'grayscale(100%) brightness(0.7)');
+    this.markerLayers['bubbleBird'] = this.createMarkers(this.markers.bubbleBird, 'Bubble Bird', 'bird', 'hue-rotate(40deg) brightness(1.5)');
+    for (const key in this.markerLayers) {
+      this.markerLayersCount[key as MarkerType] = this.markerLayers[key as MarkerType].getLayers().length;
+    }
 
     for (const key in this.markerLayers) {
       if (this.markerLayersVisible[key as MarkerType]) {
@@ -161,7 +170,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
-  private createMarkers(markers: Array<IMarker>, icon: string, bgFilter: string): L.LayerGroup {
+  private createMarkers(markers: Array<IMarker>, label: string, icon: string, bgFilter: string): L.LayerGroup {
     const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
     let lineLayer = L.layerGroup().addTo(this.map);
@@ -213,6 +222,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     // Draw markers
     const layers = L.layerGroup();
     markers.forEach(m => {
+      if (Array.isArray(m)) {
+        L.marker(m as unknown as MarkerCoords).addTo(layers);
+      }
       // Create icon for marker.
       const useIcon = m.icon || icon;
       MapHelper.createMarkerIcon(useIcon, { bgFilter });
@@ -228,7 +240,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         markers.push(marker);
 
         const popup = L.popup({
-          content: _marker => MapHelper.createMarkerPopup(m),
+          content: _marker => MapHelper.createMarkerPopup(m, { defaultText: label }),
           offset: [0, -37]
         });
         marker.bindPopup(popup);

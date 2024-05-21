@@ -18,7 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 300px;
+  width: 320px;
   height: 100%;
   background-color: #000;
   border-right: 3px solid #fff;
@@ -33,21 +33,22 @@
   position: absolute;
   top: 5px;
   left: 5px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #000;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .sidebar-fold {
   position: absolute;
   top: -6px;
   right: -6px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #000;
   cursor: pointer;
   display: flex;

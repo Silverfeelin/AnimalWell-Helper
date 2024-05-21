@@ -1,32 +1,23 @@
 import { Injectable } from '@angular/core';
 import { IEgg } from '../components/eggs/egg.interface';
-import { IDestinationMarker, IMarker, ISequenceMarker } from '../components/map/marker.interface';
+import { IMarker, MarkerCoords, MarkerType } from '../components/map/marker.interface';
 import eggJson from '@src/assets/eggs.json';
 import markerJson from '@src/assets/markers.json';
 
+type ProbablyMarkerConfig = {
+  [key in keyof MarkerConfig]?: Array<IMarker> | [number, MarkerCoords];
+}
+
 type MarkerConfig = {
-  eggs: Array<IMarker>,
-  items: Array<IMarker>,
-  keys: Array<IDestinationMarker>,
-  doors: Array<IMarker>,
-  bunnies: Array<IMarker>,
-  telephones: Array<IMarker>,
-  teleporters: Array<IMarker>,
-  matches: Array<IMarker>,
-  candles: Array<IMarker>,
-  flames: Array<IMarker>,
-  pipes: Array<IDestinationMarker>,
-  medals: Array<IMarker>,
-  totems: Array<ISequenceMarker>,
-  cheatSecrets: Array<IMarker>,
-};
+  [key in MarkerType]: Array<IMarker>;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   private _eggs: Array<IEgg> = eggJson.items as Array<IEgg>;
-  private _markers: MarkerConfig = markerJson as MarkerConfig;
+  private _markers: ProbablyMarkerConfig = markerJson as unknown as ProbablyMarkerConfig;
 
   getEggs(): Array<IEgg> {
     return this._eggs.map(egg => ({...egg}));
@@ -35,9 +26,14 @@ export class DataService {
   getMarkers(): MarkerConfig {
     const obj: MarkerConfig = {} as MarkerConfig;
     const ids = new Set();
+    let i = 0;
     for (const key in this._markers) {
       (obj as any)[key] = (this._markers as any)[key].map((marker: IMarker) => {
-        if (ids.has(marker.id)) {
+        // Convert array to IMarker.
+        if (Array.isArray(marker)) {
+          marker = { id: marker[0], coords: marker[1] };
+        }
+        if (marker.id && ids.has(marker.id)) {
           alert(`Duplicate marker id: ${marker.id}`);
         }
         ids.add(marker.id);
@@ -49,7 +45,7 @@ export class DataService {
 
   constructor() {
     // Add eggs to markers. Will probably merge these files later.
-    this._markers.eggs = this._eggs.map(egg => {
+    this._markers.egg = this._eggs.map(egg => {
       return {
         id: egg.code,
         name: egg.name,

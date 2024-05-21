@@ -1,8 +1,12 @@
 import L from 'leaflet';
 import { IMarker } from '../components/map/marker.interface';
+import { isDevMode } from '@angular/core';
 
 export interface IMapMarkerIconOptions {
   bgFilter?: string;
+}
+export interface IMapMarkerPopupOptions {
+  defaultText?: string;
 }
 
 export class MapHelper {
@@ -36,9 +40,15 @@ const htmlFound = `
     return MapHelper.icons[name];
   }
 
-  static createMarkerPopup(marker: IMarker): HTMLElement {
+  static createMarkerPopup(marker: IMarker, options: IMapMarkerPopupOptions): HTMLElement {
     const container = document.createElement('div');
-    container.innerText = marker.name;
+    container.innerText = marker.name ?? options.defaultText ?? 'Unknown';
+    if (isDevMode()) {
+      const id = document.createElement('div');
+      id.innerText = `[${marker.id}]`;
+      id.addEventListener('click', () => { navigator.clipboard.writeText(marker.id); });
+      container.appendChild(id);
+    }
     return container;
   }
 }
