@@ -18,7 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 320px;
+  width: min(320px, 80vw);
   height: 100%;
   background-color: #000;
   border-right: 3px solid #fff;
