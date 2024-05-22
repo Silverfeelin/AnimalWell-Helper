@@ -116,6 +116,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     } as unknown as L.MapOptions);
     this.map.attributionControl.setPrefix(''); // Remove 'Leaflet' from attribution.
 
+    // Expose map as global.
+    (window as any).map = this.map;
+
     L.control.zoom({ position: 'topright' }).addTo(this.map);
 
     // Add map image
