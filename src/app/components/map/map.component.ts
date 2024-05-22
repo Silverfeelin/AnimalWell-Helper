@@ -203,14 +203,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
   }
 
-  private initializeMapLayer(name: MapLayerName): void {
-
-  }
-
-  private initializeMarkerLayer(name: MarkerType): void {
-
-  }
-
   private createMarkers(markers: Array<IMarker>, label: string, icon: string, bgFilter: string): L.LayerGroup {
     const popupMarkers = new Map<L.Popup, IMarker>();
     // Draw lines to other coordinates of marker.
@@ -306,7 +298,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   // #region Storage
 
   private loadStorage(): void {
-    const mapLayerName = (localStorage.getItem('map.layers') || '').split(',').filter(l=>l) as Array<MapLayerName>;
+    const mapLayerName = (localStorage.getItem('map.layers') || 'map').split(',').filter(l=>l) as Array<MapLayerName>;
     mapLayerName.forEach(name => this.mapLayers[name].visible = true);
 
     const found = new Set(JSON.parse(localStorage.getItem('map.found')  || '[]'));
