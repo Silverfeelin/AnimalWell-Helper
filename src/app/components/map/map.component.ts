@@ -10,7 +10,7 @@ import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
-type MapLayerName = 'world' | 'map' | 'combined';
+type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border';
 
 @Component({
   selector: 'app-map',
@@ -25,8 +25,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   map!: L.Map;
   markers = this._dataService.getMarkers();
 
-  mapLayers: { [key in MapLayerName]: L.LayerGroup } = {} as any;
-  currentMapLayerName: MapLayerName = 'map';
+  mapLayers: { [key in MapLayerName]: { layer: L.LayerGroup, type: 'map' | 'world' | 'border', visible: boolean } } = {
+    map: { layer: null as any, type: 'map', visible: false },
+    world: { layer: null as any, type: 'world', visible: false },
+    explored: { layer: null as any, type: 'world', visible: false },
+    bright: { layer: null as any, type: 'world', visible: false },
+    border: { layer: null as any, type: 'border', visible: false }
+  };
 
   markerLayers: { [key in MarkerType]: L.LayerGroup } = {} as any;
   markerLayersVisible: { [key in MarkerType]: boolean } = {} as any;
@@ -46,8 +51,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.renderMap();
-    this.subscribeEvents();
+    setTimeout(() => {
+      this.renderMap();
+      this.subscribeEvents();
+    });
   }
 
   subscribeEvents(): void {
@@ -59,17 +66,25 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this._subscriptions.length = 0;
   }
 
-  showMapLayer(name: MapLayerName): void {
-    if (!this.mapLayers[name]) { name = 'map'; }
-    const previousLayer = this.mapLayers[this.currentMapLayerName];
-    previousLayer.removeFrom(this.map);
-
-    this.currentMapLayerName = name;
+  showMapLayer(name: MapLayerName, show?: boolean): void {
     const currentLayer = this.mapLayers[name];
-    currentLayer.addTo(this.map);
+    if (!currentLayer) { return; }
 
-    const mapOpacity = name === 'combined' ? 0.5 : 1;
-    this.mapLayers.map.getLayers().forEach(layer => layer instanceof L.ImageOverlay && layer.setOpacity(mapOpacity) && layer.bringToFront());
+    currentLayer.visible = show ?? !currentLayer.visible;
+    currentLayer.visible ? currentLayer.layer.addTo(this.map) : currentLayer.layer.removeFrom(this.map);
+    if (currentLayer.type === 'world' && currentLayer.visible) {
+      Object.values(this.mapLayers).filter(l => l.type === 'world' && l !== currentLayer).forEach(l => {
+        l.visible = false;
+        l.layer.removeFrom(this.map);
+      });
+    }
+
+    // Overlay map on world.
+    if (currentLayer.visible && currentLayer.type === 'world') {
+      this.mapLayers.map.layer.getLayers().forEach(layer => layer instanceof L.ImageOverlay && layer.setOpacity(0.5) && layer.bringToFront());
+    } else if (!currentLayer.visible && !Object.values(this.mapLayers).find(l => l.type === 'world' && l.visible)) {
+      this.mapLayers.map.layer.getLayers().forEach(layer => layer instanceof L.ImageOverlay && layer.setOpacity(1));
+    }
 
     this.saveStorage();
   }
@@ -102,32 +117,44 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     L.control.zoom({ position: 'topright' }).addTo(this.map);
 
-    // Add world image
+    // Add map image
+    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
+    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' });
+    const mapLayerGroup = L.layerGroup([mapLayer]);
+    this.mapLayers.map.layer = mapLayerGroup;
+
+    // Add world images
     // Apply height offset to closer match the map layer (don't ask me why it's not aligned perfectly).
     const worldBounds = [[-2/8, 0], [MapHelper.mapHeight - 2/8, MapHelper.mapWidth]] as LatLngBoundsExpression;
     const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', worldBounds, { attribution: '' });
     const worldLayerGroup = L.layerGroup([worldLayer]);
+    this.mapLayers.world.layer = worldLayerGroup;
+
+    const exploredLayer = L.imageOverlay('/assets/game/maps/explored/full.png', worldBounds, { attribution: 'World layer by <a href="https://github.com/duncathan/" target="_blank">duncathan_salt</a>' });
+    const exploredLayerGroup = L.layerGroup([exploredLayer]);
+    this.mapLayers.explored.layer = exploredLayerGroup;
+
+    const brightLayer = L.imageOverlay('/assets/game/maps/bright/full.png', worldBounds, { attribution: 'World layer by <a href="https://miomoto.de/" target="_blank">Mio Moto</a>' });
+    const brightLayerGroup = L.layerGroup([brightLayer]);
+    this.mapLayers.bright.layer = brightLayerGroup;
+
+    // Add borders
+    const borderLayerGroup = L.layerGroup();
     // Draw rectangles around tiles
     for (let tx = 0; tx < MapHelper.tilesX; tx++) {
       for (let ty = 0; ty < MapHelper.tilesY; ty++) {
         L.rectangle([[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth],
           [(ty + 1) * MapHelper.mapTileHeight, (tx + 1) * MapHelper.mapTileWidth]
-        ], { color: '#f004', weight: 1, fillOpacity: 0 }).addTo(worldLayerGroup);
+        ], { color: '#f008', weight: 1, fillOpacity: 0 }).addTo(borderLayerGroup);
       }
     }
-    this.mapLayers.world = worldLayerGroup;
+    this.mapLayers.border.layer = borderLayerGroup;
 
-    // Add map image
-    const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
-    const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' });
-    const mapLayerGroup = L.layerGroup([mapLayer]);
-    this.mapLayers.map = mapLayerGroup;
-
-    // Add combined layer.
-    const combinedLayerGroup = L.layerGroup([worldLayer, mapLayer]);
-    this.mapLayers.combined = combinedLayerGroup;
-
-    this.showMapLayer(this.currentMapLayerName);
+    this.mapLayers.map.visible && this.showMapLayer('map', true);
+    this.mapLayers.world.visible && this.showMapLayer('world', true);
+    this.mapLayers.explored.visible && this.showMapLayer('explored', true);
+    this.mapLayers.bright.visible && this.showMapLayer('bright', true);
+    this.mapLayers.border.visible && this.showMapLayer('border', true);
 
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
@@ -161,13 +188,27 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       this.markerLayersCount[key as MarkerType] = this.markerLayers[key as MarkerType].getLayers().length;
     }
 
-    for (const key in this.markerLayers) {
-      if (this.markerLayersVisible[key as MarkerType]) {
-        this.markerLayers[key as MarkerType].addTo(this.map);
+    // Render markers with delay to prevent browser from freezing.
+    const markersToShow = Object.keys(this.markerLayersVisible).filter(key => this.markerLayersVisible[key as MarkerType]).reverse() as Array<MarkerType>;
+    const popRenderMarkers = () => setTimeout(() => {
+      const markerLayer = markersToShow.pop();
+      if (!markerLayer) { return; }
+      if (this.markerLayersVisible[markerLayer]) {
+        this.markerLayers[markerLayer as MarkerType].addTo(this.map);
       }
-    }
+      if (markersToShow.length) { popRenderMarkers(); }
+    }, 50);
+    popRenderMarkers();
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
+  }
+
+  private initializeMapLayer(name: MapLayerName): void {
+
+  }
+
+  private initializeMarkerLayer(name: MarkerType): void {
+
   }
 
   private createMarkers(markers: Array<IMarker>, label: string, icon: string, bgFilter: string): L.LayerGroup {
@@ -265,10 +306,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   // #region Storage
 
   private loadStorage(): void {
-    const mapLayerName = localStorage.getItem('map.layer') as MapLayerName;
-    if (mapLayerName) {
-      this.currentMapLayerName = mapLayerName;
-    }
+    const mapLayerName = (localStorage.getItem('map.layers') || '').split(',').filter(l=>l) as Array<MapLayerName>;
+    mapLayerName.forEach(name => this.mapLayers[name].visible = true);
 
     const found = new Set(JSON.parse(localStorage.getItem('map.found')  || '[]'));
     for (const group of Object.values(this.markers)) {
@@ -284,7 +323,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   private saveStorage(): void {
-    localStorage.setItem('map.layer', this.currentMapLayerName);
+    localStorage.setItem('map.layers', Object.keys(this.mapLayers).filter(key => this.mapLayers[key as MapLayerName].visible).join(','));
 
     const markers = Object.values(this.markers).flat();
     const found = markers.filter(m => m.found).map(m => m.id);

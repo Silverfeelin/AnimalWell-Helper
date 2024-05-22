@@ -5,17 +5,30 @@
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">Map layer</h2>
     <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="currentMapLayerName==='map'" (click)="showMapLayer('map')">
+      <button type="button" [class.border-active]="mapLayers['map'].visible" (click)="showMapLayer('map')">
         <span class="material-symbols-outlined">map</span>&nbsp;
         <span>Map</span>
       </button>
-      <button type="button" [class.border-active]="currentMapLayerName==='world'" (click)="showMapLayer('world')">
-        <span class="material-symbols-outlined">public</span>&nbsp;
-        <span>World</span>
+      <button type="button" [class.border-active]="mapLayers['border'].visible" (click)="showMapLayer('border')">
+        <span class="material-symbols-outlined">border_style</span>&nbsp;
+        <span>Border</span>
       </button>
-      <button type="button" [class.border-active]="currentMapLayerName==='combined'" (click)="showMapLayer('combined')">
-        <span class="material-symbols-outlined">join</span>&nbsp;
-        <span>Combined</span>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">World layer</h2>
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="mapLayers['world'].visible" (click)="showMapLayer('world')">
+        <span class="material-symbols-outlined">ev_shadow</span>&nbsp;
+        <span>Minimal</span>
+      </button>
+      <button type="button" [class.border-active]="mapLayers['explored'].visible" (click)="showMapLayer('explored')">
+        <span class="material-symbols-outlined">public</span>&nbsp;
+        <span>Full</span>
+      </button>
+      <button type="button" [class.border-active]="mapLayers['bright'].visible" (click)="showMapLayer('bright')">
+        <span class="material-symbols-outlined">brightness_high</span>&nbsp;
+        <span>Bright</span>
       </button>
     </div>
   </div>

@@ -622,6 +622,12 @@
       "name": "Pipe",
       "coords": [24.5, 567.5],
       "destination": [60.5, 586.5]
+    },
+    {
+      "id": "PI17",
+      "name": "Pipe",
+      "coords": [93.5, 163.5],
+      "destination": [59.5, 176.5]
     }
   ],
   "medal": [

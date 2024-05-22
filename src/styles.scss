@@ -155,3 +155,32 @@ button, .button {
     transform: translate(-50%, -50%) scale(2);
   }
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #444;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+/* Handle on active */
+::-webkit-scrollbar-thumb:active {
+  background: #aaa;
+}
+
+/* Handle on focus */
+::-webkit-scrollbar-thumb:focus {
+  background: #aaa;
+}
