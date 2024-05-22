@@ -1,4 +1,4 @@
-<div class="map" #map></div>
+<div class="map" #mapDiv></div>
 <div class="map-sidebar-unfold border" (click)="isSidebarFolded=false">&gt;</div>
 <div class="map-sidebar pad pt-0" [hidden]="isSidebarFolded">
   <div class="sidebar-fold border" (click)="isSidebarFolded=true">&lt;</div>
@@ -141,3 +141,7 @@
       Missing markers?<br/>Contact Silverfeelin on Discord!<br/><a href="https://github.com/Silverfeelin/AnimalWell-Helper">GitHub repo</a>
     </i>
 </div>
+
+@if (map) {
+  <app-map-node-editor [map]="map"></app-map-node-editor>
+}

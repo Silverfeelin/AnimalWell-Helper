@@ -7,6 +7,7 @@ import { EventService } from '@src/app/services/event.service';
 import { MapService } from '@src/app/services/map.service';
 import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords, MarkerType } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
+import { MapNodeEditorComponent } from './map-node-editor/map-node-editor.component';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -15,12 +16,12 @@ type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [],
+  imports: [MapNodeEditorComponent],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
 export class MapComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('map', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
+  @ViewChild('mapDiv', { static: true }) mapElement!: ElementRef<HTMLDivElement>;
 
   map!: L.Map;
   markers = this._dataService.getMarkers();
@@ -59,7 +60,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   subscribeEvents(): void {
-
   }
 
   ngOnDestroy(): void {
