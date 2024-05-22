@@ -11,7 +11,11 @@
       </button>
       <button type="button" [class.border-active]="mapLayers['border'].visible" (click)="showMapLayer('border')">
         <span class="material-symbols-outlined">border_style</span>&nbsp;
-        <span>Border</span>
+        <span>Borders</span>
+      </button>
+      <button type="button" [class.border-active]="mapLayers['coords'].visible" (click)="showMapLayer('coords')">
+        <span class="material-symbols-outlined">numbers</span>&nbsp;
+        <span>Coordinates</span>
       </button>
     </div>
   </div>

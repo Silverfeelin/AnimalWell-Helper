@@ -156,6 +156,15 @@ button, .button {
   }
 }
 
+.leaflet-tooltip-border {
+  @include border;
+  color: #fff;
+  background-color: #000;
+
+  font-size: 14px;
+  line-height: 14px;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }

@@ -10,7 +10,7 @@ import { MapHelper } from '@src/app/helpers/map-helper';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
-type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border';
+type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords';
 
 @Component({
   selector: 'app-map',
@@ -30,7 +30,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     world: { layer: null as any, type: 'world', visible: false },
     explored: { layer: null as any, type: 'world', visible: false },
     bright: { layer: null as any, type: 'world', visible: false },
-    border: { layer: null as any, type: 'border', visible: false }
+    border: { layer: null as any, type: 'border', visible: false },
+    coords: { layer: null as any, type: 'border', visible: false }
   };
 
   markerLayers: { [key in MarkerType]: L.LayerGroup } = {} as any;
@@ -138,9 +139,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const brightLayerGroup = L.layerGroup([brightLayer]);
     this.mapLayers.bright.layer = brightLayerGroup;
 
-    // Add borders
+    // Add tile borders
     const borderLayerGroup = L.layerGroup();
-    // Draw rectangles around tiles
     for (let tx = 0; tx < MapHelper.tilesX; tx++) {
       for (let ty = 0; ty < MapHelper.tilesY; ty++) {
         L.rectangle([[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth],
@@ -150,12 +150,53 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
     this.mapLayers.border.layer = borderLayerGroup;
 
+    // Add grid coordinates
+    const gridCoordLayer = L.layerGroup();
+    for (let x = 0; x < MapHelper.tilesX; x++) {
+      L.tooltip({
+        content: String.fromCharCode(65 + x),
+        className: 'leaflet-tooltip-border',
+        direction: 'top',
+        permanent: true
+      }).setLatLng([MapHelper.mapHeight, (x + 0.5) * MapHelper.mapTileWidth]).addTo(gridCoordLayer);
+    }
+    for (let y = 0; y < MapHelper.tilesY; y++) {
+      L.tooltip({
+        content: String(y + 1),
+        className: 'leaflet-tooltip-border',
+        direction: 'left',
+        permanent: true
+      }).setLatLng([(15.5 - y) * MapHelper.mapTileHeight, 0]).addTo(gridCoordLayer);
+    }
+    const coordTooltip = L.tooltip({
+      content: 'A1',
+      className: 'leaflet-tooltip-border',
+      direction: 'top',
+      permanent: true,
+      sticky: true
+    }).setLatLng([-10000,0]).addTo(gridCoordLayer);
+    this.mapLayers.coords.layer = gridCoordLayer;
+
+    // Show coordinates on mouse move.
+    this.map.on('mousemove', (event: L.LeafletMouseEvent) => {
+      if (!this.mapLayers.coords.visible) { return; }
+      const x = Math.floor(event.latlng.lng / MapHelper.mapTileWidth);
+      const y = Math.floor(event.latlng.lat / MapHelper.mapTileHeight);
+      coordTooltip.setOpacity(x < 0 || x > 15 || y < 0 || y > 15 ? 0 : 1);
+      const xChar = String.fromCharCode(65 + x);
+      coordTooltip.setContent(`${xChar}${16 - y}`);
+      coordTooltip.setLatLng([(y+1) * MapHelper.mapTileHeight, (x + 0.5) * MapHelper.mapTileWidth]);
+    });
+
+    // Show visible layers.
     this.mapLayers.map.visible && this.showMapLayer('map', true);
     this.mapLayers.world.visible && this.showMapLayer('world', true);
     this.mapLayers.explored.visible && this.showMapLayer('explored', true);
     this.mapLayers.bright.visible && this.showMapLayer('bright', true);
-    this.mapLayers.border.visible && this.showMapLayer('border', true);
+    this.mapLayers.border.visible && this.mapLayers.border.layer.addTo(this.map);
+    this.mapLayers.coords.visible && this.mapLayers.coords.layer.addTo(this.map);
 
+    // Copy coordinates on click in dev mode.
     if (isDevMode()) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         console.log('Clicked at:', event.latlng);
