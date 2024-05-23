@@ -200,10 +200,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.mapLayers.coords.visible && this.mapLayers.coords.layer.addTo(this.map);
 
     // Copy coordinates on click in dev mode.
-    if (isDevMode()) {
+    if (isDevMode() || document.cookie.indexOf('mapCoords') !== -1) {
       this.map.on('click', (event: L.LeafletMouseEvent) => {
-        console.log('Clicked at:', event.latlng);
-        navigator.clipboard.writeText(`,\n[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}]`);
+        navigator.clipboard.writeText(`[${(Math.floor(event.latlng.lat) + 0.5).toFixed(1)}, ${(Math.floor(event.latlng.lng) + 0.5).toFixed(1)}],\n`);
       });
     }
 
