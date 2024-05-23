@@ -3,6 +3,7 @@ import { MapHelper } from '@src/app/helpers/map-helper';
 import { DataService } from '@src/app/services/data.service';
 import L, { DomEvent } from 'leaflet';
 import { INode } from '../node.interface';
+import { MarkerCoords } from '../marker.interface';
 
 @Component({
   selector: 'app-map-node-editor',
@@ -103,6 +104,7 @@ export class MapNodeEditorComponent implements OnInit {
       DomEvent.stop(evt);
       this.map.removeLayer(node.marker!);
       nodes.splice(nodes.indexOf(node), 1);
+      nodesByCoords.delete(coordsToString(node.coords));
       node.connected.forEach(n => n.connected.delete(node));
       if (currentNode === node) { currentNode = null; }
       drawLines();
@@ -110,10 +112,23 @@ export class MapNodeEditorComponent implements OnInit {
 
     let newId = 1;
     const nodes: Array<INode> = this._dataService.getNodes();
+    const nodesByCoords = new Map<string, INode>();
+    const coordsToString = (coords: MarkerCoords) => `${coords[0]}-${coords[1]}`;
+    const coordsToNearestSegment = (c: MarkerCoords): MarkerCoords => {
+      const tx = Math.floor(c[1] / MapHelper.mapTileWidth);
+      const ty = Math.floor(c[0] / MapHelper.mapTileHeight);
+      const dx = c[1] - tx * MapHelper.mapTileWidth;
+      const dy = c[0] - ty * MapHelper.mapTileHeight;
+      const segX = Math.floor(dx / (MapHelper.mapTileWidth / 5));
+      const segY = Math.floor(dy / (MapHelper.mapTileHeight / 5));
+      return [ty * MapHelper.mapTileHeight + (segY + 0.5) * MapHelper.mapTileHeight / 5, tx * MapHelper.mapTileWidth + (segX + 0.5) * MapHelper.mapTileWidth / 5];
+    }
+
     nodes.forEach(node => {
       node.marker = L.marker(node.coords, { icon }).addTo(this.map);
       node.marker.on('click', evt => onMarkerClick(evt, node));
       node.marker.on('keydown', evt => onMarkerKeydown(evt, node));
+      nodesByCoords.set(coordsToString(node.coords), node);
       newId = Math.max(newId, node.id + 1);
     });
 
@@ -196,16 +211,27 @@ export class MapNodeEditorComponent implements OnInit {
     this.map.on('click', e => {
       if (!this._editMode) { return; }
 
-      const marker = L.marker(e.latlng, { icon }).addTo(this.map);
+      const coords = coordsToNearestSegment([e.latlng.lat, e.latlng.lng]);
+      const tx = Math.floor(e.latlng.lng / MapHelper.mapTileWidth);
+      const ty = Math.floor(e.latlng.lat / MapHelper.mapTileHeight);
+
+      const existingNode = nodesByCoords.get(coordsToString(coords));
+      if (existingNode) {
+        existingNode.marker?.fire('click', e);
+        return;
+      }
+
+      const marker = L.marker(coords, { icon }).addTo(this.map);
+
       const node: INode = {
         id: newId++,
-        tx: Math.floor(e.latlng.lng / MapHelper.mapTileWidth),
-        ty: Math.floor(e.latlng.lat / MapHelper.mapTileHeight),
-        coords: [e.latlng.lat, e.latlng.lng],
+        tx, ty,
+        coords,
         connected: new Set(),
         marker
       };
       nodes.push(node);
+      nodesByCoords.set(coordsToString(coords), node);
 
       if (e.originalEvent.ctrlKey && currentNode) {
         currentNode.connected.add(node);
