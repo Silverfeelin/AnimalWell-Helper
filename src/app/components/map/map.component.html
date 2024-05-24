@@ -2,6 +2,7 @@
 <div class="map-sidebar-unfold border" (click)="isSidebarFolded=false">&gt;</div>
 <div class="map-sidebar pad pt-0" [hidden]="isSidebarFolded">
   <div class="sidebar-fold border" (click)="isSidebarFolded=true">&lt;</div>
+  <!-- Map layer -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">Map layer</h2>
     <div class="flex flex-wrap">
@@ -19,6 +20,7 @@
       </button>
     </div>
   </div>
+  <!-- World layer -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">World layer</h2>
     <div class="flex flex-wrap">
@@ -36,6 +38,7 @@
       </button>
     </div>
   </div>
+  <!-- Exploration -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">
       <span (click)="toggleMarkerLayers('item', 'telephone', 'key', 'door', 'teleporter', 'pipe', 'flame', 'explosive')">
@@ -77,6 +80,7 @@
       </button>
     </div>
   </div>
+  <!-- Late game-->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">
       <span (click)="toggleMarkerLayers('egg', 'match', 'candle', 'medal', 'bunny', 'totem')">
@@ -106,6 +110,7 @@
       </button>
     </div>
   </div>
+  <!-- Other -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">
       <span (click)="toggleMarkerLayers('berry', 'blueberry', 'firecracker', 'chinchilla', 'bubbleBird', 'cheatSecret')">
@@ -132,6 +137,19 @@
       <button type="button" [class.border-active]="markerLayersVisible['cheatSecret']" (click)="toggleMarkerLayers('cheatSecret')">
         <span class="material-symbols-outlined">joystick</span>&nbsp;
         <span>Cheat/Exploit ({{ markerLayersCount['cheatSecret']}})</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mysteries -->
+  <div class="sidebar-section">
+    <h2 class="sidebar-marker-group">
+      Mysteries
+    </h2>
+
+    <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="markerLayersVisible['yellowFlower']" (click)="toggleMarkerLayers('yellowFlower')">
+        <span class="material-symbols-outlined">deceased</span>&nbsp;
+        <span>Yellow flowers ({{ markerLayersCount['yellowFlower']}})</span>
       </button>
     </div>
   </div>
