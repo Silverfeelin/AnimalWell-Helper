@@ -86,6 +86,7 @@ export class DataService {
       };
     });
 
+    (window as any).markers = this._markers;
     (window as any).nodes = this.getNodes();
   }
 }

@@ -226,22 +226,27 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
     const mapLayer = L.imageOverlay('/assets/game/map.png', bounds, { attribution: '' });
-    const mapLayerGroup = L.layerGroup([mapLayer]);
+    const mapLayerOuter = L.imageOverlay('/assets/game/map_outer.png', [[-MapHelper.mapTileHeight, -MapHelper.mapTileWidth], [MapHelper.mapHeight + MapHelper.mapTileHeight, MapHelper.mapWidth + MapHelper.mapTileWidth]], { opacity: 0.5, attribution: '' });
+    const mapLayerGroup = L.layerGroup([mapLayer, mapLayerOuter]);
     this.mapLayers.map.layer = mapLayerGroup;
 
     // Add world images
     // Apply height offset to closer match the map layer (don't ask me why it's not aligned perfectly).
     const worldBounds = [[-2/8, 0], [MapHelper.mapHeight - 2/8, MapHelper.mapWidth]] as LatLngBoundsExpression;
+    const worldOuterBounds = [[-2/8 - MapHelper.mapTileHeight, -MapHelper.mapTileWidth], [MapHelper.mapHeight - 2/8 + MapHelper.mapTileHeight, MapHelper.mapWidth + MapHelper.mapTileWidth]] as LatLngBoundsExpression;
     const worldLayer = L.imageOverlay('/assets/game/maps/basic/full.png', worldBounds, { attribution: '' });
-    const worldLayerGroup = L.layerGroup([worldLayer]);
+    const worldLayerOuter = L.imageOverlay('/assets/game/maps/basic/outer.png', worldOuterBounds, { opacity: 0.5, attribution: '' });
+    const worldLayerGroup = L.layerGroup([worldLayer, worldLayerOuter]);
     this.mapLayers.world.layer = worldLayerGroup;
 
     const exploredLayer = L.imageOverlay('/assets/game/maps/explored/full.png', worldBounds, { attribution: 'World layer by <a href="https://github.com/duncathan/" target="_blank">duncathan_salt</a>' });
-    const exploredLayerGroup = L.layerGroup([exploredLayer]);
+    const exploredLayerOuter = L.imageOverlay('/assets/game/maps/explored/outer.png', worldOuterBounds, { opacity: 0.5, attribution: '' });
+    const exploredLayerGroup = L.layerGroup([exploredLayer, exploredLayerOuter]);
     this.mapLayers.explored.layer = exploredLayerGroup;
 
     const brightLayer = L.imageOverlay('/assets/game/maps/bright/full.png', worldBounds, { attribution: 'World layer by <a href="https://miomoto.de/" target="_blank">Mio Moto</a>' });
-    const brightLayerGroup = L.layerGroup([brightLayer]);
+    const brightLayerOuter = L.imageOverlay('/assets/game/maps/bright/outer.png', worldOuterBounds, { opacity: 0.5, attribution: '' });
+    const brightLayerGroup = L.layerGroup([brightLayer, brightLayerOuter]);
     this.mapLayers.bright.layer = brightLayerGroup;
 
     // Add tile borders
