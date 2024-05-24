@@ -4,10 +4,12 @@ import { SubscriptionLike } from 'rxjs';
 import GestureHandling from 'leaflet-gesture-handling';
 import { DataService } from '@src/app/services/data.service';
 import { EventService } from '@src/app/services/event.service';
-import { MapService } from '@src/app/services/map.service';
 import { IDestinationMarker, IMarker, ISequenceMarker, MarkerCoords, MarkerType } from './marker.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 import { MapNodeEditorComponent } from './map-node-editor/map-node-editor.component';
+import { MapMarkerEditorComponent } from './map-marker-editor/map-marker-editor.component';
+import { MapEventService } from '@src/app/services/map-event.service';
+import { db } from '@src/app/services/db';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -16,7 +18,9 @@ type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [MapNodeEditorComponent],
+  imports: [
+    MapMarkerEditorComponent, MapNodeEditorComponent
+  ],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
@@ -25,6 +29,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   map!: L.Map;
   markers = this._dataService.getMarkers();
+  customMarkers: Array<{ id: number, name: string, layer: L.LayerGroup, count: number, visible: boolean }> = [];
+
+  editing = false;
+  editingGroup?: string;
 
   mapLayers: { [key in MapLayerName]: { layer: L.LayerGroup, type: 'map' | 'world' | 'border', visible: boolean } } = {
     map: { layer: null as any, type: 'map', visible: false },
@@ -46,16 +54,27 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly _dataService: DataService,
     private readonly _eventService: EventService,
-    private readonly _mapService: MapService,
+    private readonly _mapEventService: MapEventService,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
+    this.fixMarkerIcons();
     this.loadStorage();
+  }
+
+  private fixMarkerIcons(): void {
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl:  '/assets/icons/marker-icon-2x.png',
+      iconUrl: '/assets/icons/marker-icon.png',
+      shadowUrl:  '/assets/icons/marker-shadow.png'
+    });
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.renderMap();
       this.subscribeEvents();
+      this.loadCustomMarkers();
     });
   }
 
@@ -65,6 +84,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this._subscriptions.forEach(sub => sub.unsubscribe());
     this._subscriptions.length = 0;
+  }
+
+  toggleEdit(group?: string): void {
+    this.editing = !this.editing;
+    this.editingGroup = this.editing ? group : undefined;
   }
 
   showMapLayer(name: MapLayerName, show?: boolean): void {
@@ -100,6 +124,78 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.saveStorage();
   }
 
+  toggleCustomMarkerGroup(name: string): void {
+    const group = this.customMarkers.find(m => m.name === name);
+    if (!group) { return; }
+    group.visible = !group.visible;
+    group.visible ? group.layer.addTo(this.map) : group.layer.removeFrom(this.map);
+  }
+
+  deleteCustomMarkerGroup(name: string): void {
+    if (!confirm(`Are you sure you want to delete the group "${name}"? This can not be undone.`)) { return; }
+    const group = this.customMarkers.find(m => m.name === name);
+    if (!group) { return; }
+    group.layer.removeFrom(this.map);
+    this.customMarkers = this.customMarkers.filter(m => m !== group);
+    db.markerGroups.get(group.id).then(g => g && db.markerGroups.delete(g.id!));
+  }
+
+  onCustomMarkerGroupCreated(name: string): void {
+    this.editing = false;
+    this.editingGroup = undefined;
+    this.loadCustomMarkers();
+  }
+
+  onCustomMarkerGroupUpdated(name: string): void {
+    this.editing = false;
+    this.editingGroup = undefined;
+    this.loadCustomMarkers();
+  }
+
+  async importCustomMarkerGroup(): Promise<void> {
+    const name = prompt('Enter a name for the marker group');
+    if (!name) { return; }
+
+    if (this.customMarkers.find(m => m.name === name)) {
+      alert('A group with this name already exists.');
+      return;
+    }
+
+    const json = prompt('Paste JSON here:');
+    if (!json) { return; }
+
+    let markers: Array<MarkerCoords> = [];
+    try {
+      markers = JSON.parse(json);
+    } catch (e) {
+      alert('Invalid JSON. Expected an array of coordinates.');
+      return;
+    }
+
+    const groupId = await db.markerGroups.add({ name });
+    for (const coords of markers) {
+      await db.markers.add({ groupId, coords });
+    }
+
+    this.loadCustomMarkers();
+  }
+
+  exportCustomMarkerGroup(name: string): void {
+    const group = this.customMarkers.find(m => m.name === name);
+    if (!group) { return; }
+    const markers = group.layer.getLayers().filter(l => l instanceof L.Marker).map(l => {
+      const coords = (l as L.Marker).getLatLng();
+      return [coords.lat, coords.lng];
+    });
+    const json = JSON.stringify(markers);
+    prompt('Copy this JSON:', json);
+  }
+
+  preventDefault(event: Event): void {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+
   private renderMap(): void {
     // Create map
     const coords = this.loadParamsFromQuery() || { x: MapHelper.mapWidth / 2, y: MapHelper.mapHeight / 2, z: 1 };
@@ -114,12 +210,18 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       center: [coords.y, coords.x],
       renderer: new L.SVG({ padding: 1000 })
     } as unknown as L.MapOptions);
-    this.map.attributionControl.setPrefix(''); // Remove 'Leaflet' from attribution.
+
+    // Remove 'Leaflet' from attribution.
+    this.map.attributionControl.setPrefix('');
 
     // Expose map as global.
     (window as any).map = this.map;
 
+    // Add zoom controls
     L.control.zoom({ position: 'topright' }).addTo(this.map);
+
+    // Create pane for custom markers.
+    this.map.createPane('customMarkerPane').style.zIndex = '650';
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
@@ -244,6 +346,44 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     popRenderMarkers();
 
     this.map.on('moveend', () => { this.saveParamsToQuery(); });
+  }
+
+  private async loadCustomMarkers(): Promise<void> {
+    const oldVisible = new Set<string>();
+    this.customMarkers?.forEach(m => {
+      if (m.visible) { oldVisible.add(m.name); }
+      m.layer.removeFrom(this.map);
+    });
+    this.customMarkers = [];
+
+    MapHelper.createMarkerIcon('question', { bgFilter: 'hue-rotate(220deg)' });
+    const icon = MapHelper.getMarkerIcon('question');
+    const groups = await db.markerGroups.toArray();
+    for (const group of groups) {
+      const layer = L.layerGroup();
+
+      const markers = await db.markers.where('groupId').equals(group.id!).toArray();
+      for (const marker of markers) {
+        const m = L.marker(marker.coords as MarkerCoords, { icon }).addTo(layer);
+        const popup = L.popup({
+          content: group.name,
+          offset: [0, 0]
+        });
+        m.bindPopup(popup);
+
+      }
+
+      const visible = oldVisible.has(group.name);
+      if (visible) { layer.addTo(this.map); }
+
+      this.customMarkers.push({
+        id: group.id!,
+        name: group.name,
+        layer,
+        count: markers.length,
+        visible
+      });
+    }
   }
 
   private createMarkers(markers: Array<IMarker>, label: string, icon: string, bgFilter: string): L.LayerGroup {

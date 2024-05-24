@@ -137,6 +137,14 @@ button, .button {
   }
 }
 
+.icon-hover:hover {
+  color: #999;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
 .map-marker {
   .marker {
     position: absolute;

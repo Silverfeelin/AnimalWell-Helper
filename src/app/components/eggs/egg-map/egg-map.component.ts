@@ -3,10 +3,10 @@ import L, { DomEvent, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import { SubscriptionLike } from 'rxjs';
 import GestureHandling from 'leaflet-gesture-handling';
 import { EventService } from '@src/app/services/event.service';
-import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../egg.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 import { Router } from '@angular/router';
+import { MapEventService } from '@src/app/services/map-event.service';
 
 interface ITile {
   x: number;
@@ -38,7 +38,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private readonly _eventService: EventService,
-    private readonly _mapService: MapService,
+    private readonly _mapEventService: MapEventService,
     private readonly _router: Router,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
@@ -58,7 +58,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
       }
     }));
 
-    this._mapService.onGotoQuadrant.subscribe(({ x, y }) => {
+    this._mapEventService.onGotoQuadrant.subscribe(({ x, y }) => {
       if (!this.map) { return; }
       const center = [ MapHelper.mapHeight / 2, MapHelper.mapWidth / 2];
       const mx = x < center[1] ? 0 : 1;
@@ -69,7 +69,7 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
       this.mapElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
     });
 
-    this._mapService.onGotoTile.subscribe(({ x, y }) => {
+    this._mapEventService.onGotoTile.subscribe(({ x, y }) => {
       const tileX = Math.floor(x / MapHelper.mapTileWidth);
       const tileY = Math.floor(y / MapHelper.mapTileHeight);
       const tile = this.tiles[tileY][tileX];

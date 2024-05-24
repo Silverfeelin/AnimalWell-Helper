@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class MapService {
+export class MapEventService {
   onGotoQuadrant = new Subject<{ x: number, y: number }>();
   onGotoTile = new Subject<{ x: number, y: number }>();
 

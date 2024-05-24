@@ -1,0 +1,12 @@
+.toggle-markers {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}

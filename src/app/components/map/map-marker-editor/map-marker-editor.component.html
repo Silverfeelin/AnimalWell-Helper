@@ -1,0 +1,9 @@
+<div class="">
+  <div class="toggle-markers container border">
+    You're editing markers{{ groupName ? ' for ' + groupName : ''}}. You can disable this in the menu.
+    <button (click)="toggleRegularMarkers()">
+      {{ showingRegularMarkers ? 'Hide' : 'Show' }} regular markers
+    </button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>

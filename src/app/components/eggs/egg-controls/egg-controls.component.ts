@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventService } from '@src/app/services/event.service';
-import { MapService } from '@src/app/services/map.service';
 import { IEgg } from '../egg.interface';
+import { MapEventService } from '@src/app/services/map-event.service';
 
 @Component({
   selector: 'app-egg-controls',
@@ -18,7 +18,7 @@ export class EggControlsComponent implements OnChanges {
 
   constructor(
     private readonly _eventService: EventService,
-    private readonly _mapService: MapService,
+    private readonly _mapEventService: MapEventService,
     private readonly _elementRef: ElementRef<HTMLElement>
   ) { }
 
@@ -40,11 +40,11 @@ export class EggControlsComponent implements OnChanges {
 
   gotoQuadrant(): void {
     if (!this.egg?.coords?.[0]) { return; }
-    this._mapService.gotoQuadrant(this.egg.coords[1], this.egg.coords[0]);
+    this._mapEventService.gotoQuadrant(this.egg.coords[1], this.egg.coords[0]);
   }
 
   gotoTile(): void {
     if (!this.egg?.coords?.[0]) { return; }
-    this._mapService.gotoTile(this.egg.coords[1], this.egg.coords[0]);
+    this._mapEventService.gotoTile(this.egg.coords[1], this.egg.coords[0]);
   }
 }

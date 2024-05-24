@@ -135,13 +135,42 @@
       </button>
     </div>
   </div>
+  @if (map) {
+    <div class="sidebar-section">
+      <h2>Custom</h2>
+      <div class="flex flex-wrap">
+      <button type="button" [class.border-active]="editing" (click)="toggleEdit()">
+        <span class="material-symbols-outlined">add</span>
+        Add group
+      </button>
+      <button type="button" (click)="importCustomMarkerGroup()">
+        <span class="material-symbols-outlined">note_Add</span>
+        Import
+      </button>
+        @for (group of customMarkers; track group.name) {
+          <button type="button" [class.border-active]="group.visible" (click)="toggleCustomMarkerGroup(group.name)">
+            <span>{{ group.name }} ({{ group.count }})</span>&nbsp;
+            <span class="material-symbols-outlined icon-hover" (click)="exportCustomMarkerGroup(group.name); preventDefault($event)">download</span>
+            <span class="material-symbols-outlined icon-hover" (click)="toggleEdit(group.name); preventDefault($event)">edit</span>
+            <span class="material-symbols-outlined icon-hover" (click)="deleteCustomMarkerGroup(group.name); preventDefault($event)">delete</span>
+          </button>
+        }
+      </div>
+    </div>
+  }
 
+  <!-- Info -->
   <div class="sidebar-section mt">
     <i>
       Missing markers?<br/>Contact Silverfeelin on Discord!<br/><a href="https://github.com/Silverfeelin/AnimalWell-Helper">GitHub repo</a>
     </i>
+  </div>
 </div>
 
 @if (map) {
   <app-map-node-editor [map]="map"></app-map-node-editor>
+}
+
+@if (editing) {
+  <app-map-marker-editor [map]="map" [groupName]="editingGroup" (markerGroupCreated)="onCustomMarkerGroupCreated($event)" (markerGroupUpdated)="onCustomMarkerGroupUpdated($event)"></app-map-marker-editor>
 }
