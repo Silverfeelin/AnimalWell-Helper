@@ -1,7 +1,7 @@
 export type MarkerType =
   'egg' | 'key' | 'door' | 'item' | 'bunny' | 'telephone' | 'teleporter' | 'match' | 'candle' | 'flame' | 'pipe' |
   'medal' | 'totem' | 'cheatSecret' | 'explosive' | 'berry' | 'blueberry' | 'firecracker' | 'chinchilla' |
-  'bubbleBird' | 'yellowFlower';
+  'bubbleBird' | 'yellowFlower' | 'brownMushroom';
 export type MarkerCoords = [number, number];
 
 export interface IMarker {

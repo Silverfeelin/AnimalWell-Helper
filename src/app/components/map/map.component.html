@@ -151,6 +151,10 @@
         <span class="material-symbols-outlined">deceased</span>&nbsp;
         <span>Yellow flowers ({{ markerLayersCount['yellowFlower']}})</span>
       </button>
+      <button type="button" [class.border-active]="markerLayersVisible['brownMushroom']" (click)="toggleMarkerLayers('brownMushroom')">
+        <span class="material-symbols-outlined">grain</span>&nbsp;
+        <span>Brown mushrooms ({{ markerLayersCount['brownMushroom']}})</span>
+      </button>
     </div>
   </div>
   @if (map) {
