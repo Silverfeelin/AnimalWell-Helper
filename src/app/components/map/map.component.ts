@@ -335,7 +335,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.markerLayers['chinchilla'] = this.createMarkers(this.markers.chinchilla, 'Chinchilla', 'chinchilla', 'grayscale(100%) brightness(0.7)');
     this.markerLayers['bubbleBird'] = this.createMarkers(this.markers.bubbleBird, 'Bubble Bird', 'bird', 'hue-rotate(40deg) brightness(1.5)');
     this.markerLayers['yellowFlower'] = this.createMarkers(this.markers.yellowFlower, 'Yellow Flower', 'flower-yellow', 'hue-rotate(40deg) brightness(1.2)');
+    this.markerLayers['tulip'] = this.createMarkers(this.markers.tulip, 'Tulip', 'tulip', 'hue-rotate(280deg) brightness(1.7)');
     this.markerLayers['brownMushroom'] = this.createMarkers(this.markers.brownMushroom, 'Brown Mushroom', 'mushroom-brown', 'hue-rotate(40deg) brightness(0.8)');
+    this.markerLayers['swirlyPlant'] = this.createMarkers(this.markers.swirlyPlant, 'Swirly Plant', 'plant-swirly', 'hue-rotate(100deg) brightness(1.7)');
 
     for (const key in this.markerLayers) {
       this.markerLayersCount[key as MarkerType] = this.markerLayers[key as MarkerType].getLayers().length;
