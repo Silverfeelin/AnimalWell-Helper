@@ -375,13 +375,16 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
       const markers = await db.markers.where('groupId').equals(group.id!).toArray();
       for (const marker of markers) {
-        const m = L.marker(marker.coords as MarkerCoords, { icon }).addTo(layer);
-        const popup = L.popup({
-          content: group.name,
-          offset: [0, 0]
-        });
-        m.bindPopup(popup);
-
+        try {
+          const m = L.marker(marker.coords as MarkerCoords, { icon }).addTo(layer);
+          const popup = L.popup({
+            content: group.name,
+            offset: [0, 0]
+          });
+          m.bindPopup(popup);
+        } catch (e) {
+          console.error(e);
+        }
       }
 
       const visible = oldVisible.has(group.name);
