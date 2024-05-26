@@ -151,6 +151,10 @@
         <span class="material-symbols-outlined">deceased</span>&nbsp;
         <span>Yellow flowers ({{ markerLayersCount['yellowFlower']}})</span>
       </button>
+      <button type="button" [class.border-active]="markerLayersVisible['pinkFlower']" (click)="toggleMarkerLayers('pinkFlower')">
+        <span class="material-symbols-outlined">deceased</span>&nbsp;
+        <span>Pink flowers ({{ markerLayersCount['pinkFlower']}})</span>
+      </button>
       <button type="button" [class.border-active]="markerLayersVisible['tulip']" (click)="toggleMarkerLayers('tulip')">
         <span class="material-symbols-outlined">deceased</span>&nbsp;
         <span>Tulips ({{ markerLayersCount['tulip']}})</span>
