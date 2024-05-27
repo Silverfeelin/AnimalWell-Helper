@@ -292,6 +292,12 @@
       "name": "B. B. Wand",
       "icon": "bb-wand",
       "coords": [37.5, 164.5]
+    },
+    {
+      "id": "I20",
+      "name": "Mock Disc",
+      "icon": "mock-disc",
+      "coords": [255.5, 261.5]
     }
   ],
   "key": [
