@@ -13,7 +13,7 @@ import { db } from '@src/app/services/db';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
-type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords';
+type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords' | 'space';
 
 @Component({
   selector: 'app-map',
@@ -34,13 +34,14 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   editing = false;
   editingGroup?: string;
 
-  mapLayers: { [key in MapLayerName]: { layer: L.LayerGroup, type: 'map' | 'world' | 'border', visible: boolean } } = {
+  mapLayers: { [key in MapLayerName]: { layer: L.LayerGroup, type: 'map' | 'world' | 'border' | 'space', visible: boolean } } = {
     map: { layer: null as any, type: 'map', visible: false },
     world: { layer: null as any, type: 'world', visible: false },
     explored: { layer: null as any, type: 'world', visible: false },
     bright: { layer: null as any, type: 'world', visible: false },
     border: { layer: null as any, type: 'border', visible: false },
-    coords: { layer: null as any, type: 'border', visible: false }
+    coords: { layer: null as any, type: 'border', visible: false },
+    space: { layer: null as any, type: 'space', visible: false }
   };
 
   markerLayers: { [key in MarkerType]: L.LayerGroup } = {} as any;
@@ -112,6 +113,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
 
     this.saveStorage();
+  }
+
+  setMapLayerOpacity(evt: Event, layer: MapLayerName): void {
+    const input = evt.target as HTMLInputElement;
+    const opacity = Math.min(1, Math.max(0, parseFloat(input.value) / 100));
+    this.mapLayers[layer].layer.getLayers().forEach(l => l instanceof L.ImageOverlay && l.setOpacity(opacity));
   }
 
   toggleMarkerLayers(...names: Array<MarkerType>): void {
@@ -222,6 +229,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Create pane for custom markers.
     this.map.createPane('customMarkerPane').style.zIndex = '650';
+    this.map.createPane('spaceOverlayPane').style.zIndex = '401';
+    this.map.createPane('borderOverlayPane').style.zIndex = '402';
 
     // Add map image
     const bounds = [[0, 0], [MapHelper.mapHeight, MapHelper.mapWidth]] as LatLngBoundsExpression;
@@ -249,13 +258,18 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const brightLayerGroup = L.layerGroup([brightLayer, brightLayerOuter]);
     this.mapLayers.bright.layer = brightLayerGroup;
 
+    const spaceBounds = [[-2/8, 5 * MapHelper.mapTileWidth], [MapHelper.mapHeight - 2/8, MapHelper.mapWidth - 4 * MapHelper.mapTileWidth]] as LatLngBoundsExpression;
+    const spaceLayer = L.imageOverlay('/assets/game/maps/space/full.png', spaceBounds, { pane: 'spaceOverlayPane', attribution: 'Space layer by Zip Zip' });
+    const spaceLayerGroup = L.layerGroup([spaceLayer]);
+    this.mapLayers.space.layer = spaceLayerGroup;
+
     // Add tile borders
     const borderLayerGroup = L.layerGroup();
     for (let tx = 0; tx < MapHelper.tilesX; tx++) {
       for (let ty = 0; ty < MapHelper.tilesY; ty++) {
         L.rectangle([[ty * MapHelper.mapTileHeight, tx * MapHelper.mapTileWidth],
           [(ty + 1) * MapHelper.mapTileHeight, (tx + 1) * MapHelper.mapTileWidth]
-        ], { color: '#f008', weight: 1, fillOpacity: 0 }).addTo(borderLayerGroup);
+        ], { pane: 'borderOverlayPane', color: '#f008', weight: 1, fillOpacity: 0 }).addTo(borderLayerGroup);
       }
     }
     this.mapLayers.border.layer = borderLayerGroup;
@@ -305,6 +319,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.mapLayers.bright.visible && this.showMapLayer('bright', true);
     this.mapLayers.border.visible && this.mapLayers.border.layer.addTo(this.map);
     this.mapLayers.coords.visible && this.mapLayers.coords.layer.addTo(this.map);
+    this.mapLayers.space.visible && this.mapLayers.space.layer.addTo(this.map);
 
     // Copy coordinates on click in dev mode.
     if (isDevMode() || document.cookie.indexOf('mapCoords') !== -1) {

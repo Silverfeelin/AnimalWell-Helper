@@ -24,17 +24,22 @@
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">World layer</h2>
     <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="mapLayers['world'].visible" (click)="showMapLayer('world')">
+      <button type="button" class="button-layer" [class.border-active]="mapLayers['world'].visible" (click)="showMapLayer('world')">
         <span class="material-symbols-outlined">ev_shadow</span>&nbsp;
         <span>Minimal</span>
       </button>
-      <button type="button" [class.border-active]="mapLayers['explored'].visible" (click)="showMapLayer('explored')">
+      <button type="button" class="button-layer" [class.border-active]="mapLayers['explored'].visible" (click)="showMapLayer('explored')">
         <span class="material-symbols-outlined">public</span>&nbsp;
         <span>Full</span>
       </button>
-      <button type="button" [class.border-active]="mapLayers['bright'].visible" (click)="showMapLayer('bright')">
+      <button type="button" class="button-layer" [class.border-active]="mapLayers['bright'].visible" (click)="showMapLayer('bright')">
         <span class="material-symbols-outlined">brightness_high</span>&nbsp;
         <span>Full (bright)</span>
+      </button>
+      <button type="button" class="button-layer" [class.border-active]="mapLayers['space'].visible" (click)="showMapLayer('space')">
+        <span class="material-symbols-outlined">rocket_launch</span>&nbsp;
+        <span>Space (spoilers!)</span>
+        <input class="input-layer-opacity" type="range" min="0" max="100" step="1" value="100" (input)="setMapLayerOpacity($event, 'space')" (click)="preventDefault($event)">
       </button>
     </div>
   </div>
