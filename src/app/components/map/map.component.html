@@ -113,7 +113,7 @@
   <!-- Other -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">
-      <span (click)="toggleMarkerLayers('berry', 'blueberry', 'firecracker', 'chinchilla', 'bubbleBird', 'cheatSecret')">
+      <span (click)="toggleMarkerLayers('berry', 'blueberry', 'firecracker', 'chinchilla', 'bubbleBird', 'squirrel', 'cheatSecret')">
         Other
       </span>
     </h2>
@@ -133,6 +133,10 @@
       <button type="button" [class.border-active]="markerLayersVisible['bubbleBird']" (click)="toggleMarkerLayers('bubbleBird')">
         <span class="material-symbols-outlined">raven</span>&nbsp;
         <span>Bubble Birds ({{ markerLayersCount['bubbleBird']}})</span>
+      </button>
+      <button type="button" [class.border-active]="markerLayersVisible['squirrel']" (click)="toggleMarkerLayers('squirrel')">
+        <span class="material-symbols-outlined">pets</span>&nbsp;
+        <span>Squirrels ({{ markerLayersCount['squirrel']}})</span>
       </button>
       <button type="button" [class.border-active]="markerLayersVisible['cheatSecret']" (click)="toggleMarkerLayers('cheatSecret')">
         <span class="material-symbols-outlined">joystick</span>&nbsp;
