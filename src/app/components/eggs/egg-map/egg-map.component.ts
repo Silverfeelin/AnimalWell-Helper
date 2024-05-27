@@ -118,6 +118,18 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
     }
     this._eventService.onEggsUpdated.next(updatedEggs);
   }
+
+  showEggTiles(): void {
+    if (!confirm(`Are you sure you want to show all tiles containing eggs you've found?`)) { return; }
+    for (const egg of this.eggs) {
+      if (!egg.obtained || !egg.coords?.[0]) { continue; }
+      const tileX = Math.floor(egg.coords[1] / MapHelper.mapTileWidth);
+      const tileY = Math.floor(egg.coords[0] / MapHelper.mapTileHeight);
+      this.toggleTileByCoords(tileX, tileY, true);
+    }
+    this.saveStorage();
+  }
+
   showAllEggs(): void {
     if (!confirm('Are you sure you want to show all eggs?')) { return; }
     for (const egg of this.eggs) {
