@@ -1096,11 +1096,11 @@
     {
       "name": "berry",
       "section": "Other",
-      "label": "Red berries",
+      "label": "Pink berries",
       "labelIcon": "nutrition",
       "markerIcon": "berry",
       "markerFilter": "hue-rotate(310deg) brightness(1.5)",
-      "markerLabel": "Red berryh",
+      "markerLabel": "Pink berry",
       "markers": [
         ["BER3", [338.5, 101.5]],
         ["BER6", [334.5, 219.5]],
