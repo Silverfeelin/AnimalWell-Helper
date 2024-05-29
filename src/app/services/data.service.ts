@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IEgg } from '../components/eggs/egg.interface';
-import { IMarker, MarkerCoords, MarkerType } from '../components/map/marker.interface';
+import { IMarker, IMarkerGroup, MarkerCoords } from '../components/map/marker.interface';
 import eggJson from '@src/assets/eggs.json';
 import markerJson from '@src/assets/markers.json';
 import nodeJson from '@src/assets/nodes.json';
 import { MapHelper } from '../helpers/map-helper';
 import { INode } from '../components/map/node.interface';
 
-type ProbablyMarkerConfig = {
-  [key in keyof MarkerConfig]?: Array<IMarker> | [number, MarkerCoords];
-}
-
-type MarkerConfig = {
-  [key in MarkerType]: Array<IMarker>;
-}
+type MarkerConfig = { groups: Array<IMarkerGroup> };
 
 export interface INodeJson {
   id: number;
@@ -26,31 +20,40 @@ export interface INodeJson {
 })
 export class DataService {
   private _eggs: Array<IEgg> = eggJson.items as Array<IEgg>;
-  private _markers: ProbablyMarkerConfig = markerJson as unknown as ProbablyMarkerConfig;
+  private _markers: MarkerConfig = markerJson as unknown as MarkerConfig;
   private _nodes: Array<INodeJson> = nodeJson.items as Array<INodeJson>;
 
   getEggs(): Array<IEgg> {
     return this._eggs.map(egg => ({...egg}));
   }
 
-  getMarkers(): MarkerConfig {
-    const obj: MarkerConfig = {} as MarkerConfig;
+  getMarkerGroups(): Array<IMarkerGroup> {
+    const groups: Array<IMarkerGroup> = [];
     const ids = new Set();
     let i = 0;
-    for (const key in this._markers) {
-      (obj as any)[key] = (this._markers as any)[key].map((marker: IMarker) => {
-        // Convert array to IMarker.
-        if (Array.isArray(marker)) {
-          marker = { id: marker[0], coords: marker[1] };
-        }
-        if (marker.id && ids.has(marker.id)) {
-          alert(`Duplicate marker id: ${marker.id}`);
-        }
-        ids.add(marker.id);
-        return {...marker};
+    this._markers.groups.forEach(group => {
+      groups.push({
+        ...group,
+        markers: group.markers.map((m: any) => {
+          let marker: IMarker;
+          // Convert array to IMarker.
+          if (Array.isArray(m)) {
+            marker = { id: m[0] as string, coords: m[1] as MarkerCoords };
+          } else {
+            marker = {...m};
+          }
+
+          // Check for duplicate IDs.
+          if (marker.id && ids.has(marker.id)) {
+            alert(`Duplicate marker id: ${marker.id}`);
+          } else { ids.add(marker.id); }
+
+          return marker;
+        })
       });
-    }
-    return obj;
+    });
+
+    return groups;
   }
 
   getNodes(): Array<INode> {
@@ -76,17 +79,25 @@ export class DataService {
   }
 
   constructor() {
-    // Add eggs to markers. Will probably merge these files later.
-    this._markers.egg = this._eggs.map(egg => {
-      return {
+    // Add eggs to markers. Might merge these files at some point...
+    const eggGroup: IMarkerGroup = {
+      name: 'egg',
+      section: 'Late game',
+      label: 'Eggs',
+      labelIcon: 'egg',
+      markerIcon: 'egg',
+      markerFilter: 'hue-rotate(205deg)',
+      markers: this._eggs.map(egg => ({
         id: egg.code,
         name: egg.name,
         coords: egg.coords!,
         found: egg.obtained
-      };
-    });
+      } as IMarker))
+    };
 
-    (window as any).markers = this._markers;
+    this._markers.groups = [eggGroup, ...this._markers.groups];
+
+    (window as any).markerConfig = this._markers;
     (window as any).nodes = this.getNodes();
   }
 }

@@ -1,1675 +1,1848 @@
 {
-  "bunny": [
+  "groups": [
     {
-      "id": "B1",
-      "name": "Mural Bunny (#1)",
-      "coords": [189.5, 454.5]
+      "name": "item",
+      "section": "Exploration",
+      "label": "Items",
+      "labelIcon": "star",
+      "markerFilter": "hue-rotate(270deg)",
+      "markers": [
+        {
+          "id": "I1",
+          "name": "B. Wand",
+          "icon": "b-wand",
+          "coords": [135.5, 59.5]
+        },
+        {
+          "id": "I2",
+          "name": "Disc",
+          "icon": "disc",
+          "coords": [226.5, 260.5]
+        },
+        {
+          "id": "I3",
+          "name": "Slink",
+          "icon": "slink",
+          "coords": [259.5, 458.5]
+        },
+        {
+          "id": "I4",
+          "name": "Yoyo",
+          "icon": "yoyo",
+          "coords": [35.5, 503.5]
+        },
+        {
+          "id": "I5",
+          "name": "Flute",
+          "icon": "flute",
+          "coords": [213.5, 211.5]
+        },
+        {
+          "id": "I6",
+          "name": "Map",
+          "icon": "map",
+          "coords": [164.5, 369.5]
+        },
+        {
+          "id": "I7",
+          "name": "Stamps",
+          "icon": "stamp",
+          "coords": [201.5, 309.5]
+        },
+        {
+          "id": "I8",
+          "name": "Pencil",
+          "icon": "pencil",
+          "coords": [206.5, 270.5]
+        },
+        {
+          "id": "I9",
+          "name": "Remote",
+          "icon": "remote",
+          "coords": [70.5, 246.5]
+        },
+        {
+          "id": "I10",
+          "name": "B. Ball",
+          "icon": "b-ball",
+          "coords": [271.5, 22.5]
+        },
+        {
+          "id": "I11",
+          "name": "Wheel",
+          "icon": "wheel",
+          "coords": [100.5, 20.5]
+        },
+        {
+          "id": "I12",
+          "name": "UV Lantern",
+          "icon": "uv-lantern",
+          "coords": [12.5, 7.5]
+        },
+        {
+          "id": "I13",
+          "name": "Lantern",
+          "icon": "lantern",
+          "coords": [114.5, 367.5]
+        },
+        {
+          "id": "I14",
+          "name": "Top",
+          "icon": "top",
+          "coords": [211.5, 274.5]
+        },
+        {
+          "id": "I15",
+          "name": "House key",
+          "icon": "key-house",
+          "coords": [4.5, 206.5]
+        },
+        {
+          "id": "I16",
+          "name": "F. Pack",
+          "icon": "f-pack",
+          "coords": [3.5, 277.5]
+        },
+        {
+          "id": "I17",
+          "name": "65th Egg",
+          "icon": "egg-65",
+          "coords": [213.5, 264.5]
+        },
+        {
+          "id": "I18",
+          "name": "Office key",
+          "icon": "key-office",
+          "coords": [221.5, 328.5]
+        },
+        {
+          "id": "I19",
+          "name": "B. B. Wand",
+          "icon": "bb-wand",
+          "coords": [37.5, 164.5]
+        },
+        {
+          "id": "I20",
+          "name": "Mock Disc",
+          "icon": "mock-disc",
+          "coords": [255.5, 261.5]
+        }
+      ]
     },
     {
-      "id": "B2",
-      "name": "Vine Bunny (#2)",
-      "coords": [239.5, 620.5]
+      "name": "telephone",
+      "section": "Exploration",
+      "label": "Telephones",
+      "labelIcon": "phone",
+      "markerIcon": "telephone",
+      "markerFilter": "hue-rotate(295deg)",
+      "markers": [
+        {
+          "id": "P1",
+          "name": "Telephone",
+          "coords": [138.5, 262.5]
+        },
+        {
+          "id": "P2",
+          "name": "Telephone",
+          "coords": [180.5, 362.5]
+        },
+        {
+          "id": "P3",
+          "name": "Telephone",
+          "coords": [138.5, 512.5]
+        },
+        {
+          "id": "P4",
+          "name": "Telephone",
+          "coords": [31.5, 420.5]
+        },
+        {
+          "id": "P5",
+          "name": "Telephone",
+          "coords": [75.5, 625.5]
+        },
+        {
+          "id": "P6",
+          "name": "Telephone",
+          "coords": [16.5, 596.5]
+        },
+        {
+          "id": "P7",
+          "name": "Telephone",
+          "coords": [271.5, 579.5]
+        },
+        {
+          "id": "P8",
+          "name": "Telephone",
+          "coords": [294.5, 463.5]
+        },
+        {
+          "id": "P9",
+          "name": "Telephone",
+          "coords": [345.5, 419.5]
+        },
+        {
+          "id": "P10",
+          "name": "Telephone",
+          "coords": [250.5, 222.5]
+        },
+        {
+          "id": "P11",
+          "name": "Telephone",
+          "coords": [292.5, 306.5]
+        },
+        {
+          "id": "P12",
+          "name": "Telephone",
+          "coords": [315.5, 113.5]
+        },
+        {
+          "id": "P13",
+          "name": "Telephone",
+          "coords": [333.5, 36.5]
+        },
+        {
+          "id": "P14",
+          "name": "Telephone",
+          "coords": [179.5, 65.5]
+        },
+        {
+          "id": "P15",
+          "name": "Telephone",
+          "coords": [115.5, 99.5]
+        },
+        {
+          "id": "P16",
+          "name": "Telephone",
+          "coords": [82.5, 234.5]
+        },
+        {
+          "id": "P17",
+          "name": "Telephone",
+          "coords": [114.5, 393.5]
+        },
+        {
+          "id": "P18",
+          "name": "Telephone",
+          "coords": [3.5, 265.5]
+        },
+        {
+          "id": "P19",
+          "name": "Telephone",
+          "coords": [25.5, 95.5]
+        }
+      ]
     },
     {
-      "id": "B3",
-      "name": "Tutorial Bunny (#3)",
-      "coords": [167.5, 326.5]
+      "name": "key",
+      "section": "Exploration",
+      "label": "Keys",
+      "labelIcon": "key",
+      "markerIcon": "key",
+      "markerFilter": "hue-rotate(310deg)",
+      "markers": [
+        {
+          "id": "KEY1",
+          "name": "Key",
+          "coords": [166.5, 475.5],
+          "destination": [137.5, 486.5]
+        },
+        {
+          "id": "KEY2",
+          "name": "Key",
+          "coords": [100.5, 523.5],
+          "destination": [103.5, 512.5]
+        },
+        {
+          "id": "KEY3",
+          "name": "Key",
+          "coords": [101.5, 455.5],
+          "destination": [103.5, 507.5]
+        },
+        {
+          "id": "KEY4",
+          "name": "Key",
+          "coords": [266.5, 42.5],
+          "destination": [346.5, 209.5]
+        },
+        {
+          "id": "KEY5",
+          "name": "Key",
+          "coords": [209.5, 616.5],
+          "destination": [214.5, 564.5]
+        },
+        {
+          "id": "KEY6",
+          "name": "Key",
+          "coords": [259.5, 532.5],
+          "destination": [257.5, 558.5]
+        }
+      ]
     },
     {
-      "id": "B4",
-      "name": "Map Bunny (#4)",
-      "coords": [291.5, 425.5]
+      "name": "door",
+      "section": "Exploration",
+      "label": "Doors",
+      "labelIcon": "door_front",
+      "markerIcon": "door",
+      "markerFilter": "hue-rotate(310deg)",
+      "markers": [
+        {
+          "id": "DOO1",
+          "name": "Door",
+          "coords": [137.5, 486.5]
+        },
+        {
+          "id": "DOO2",
+          "name": "Door",
+          "coords": [103.5, 507.5]
+        },
+        {
+          "id": "DOO3",
+          "name": "Door",
+          "coords": [103.5, 512.5]
+        },
+        {
+          "id": "DOO4",
+          "name": "Door",
+          "coords": [346.5, 209.5]
+        },
+        {
+          "id": "DOO5",
+          "name": "Door",
+          "coords": [214.5, 564.5]
+        },
+        {
+          "id": "DOO6",
+          "name": "Door",
+          "coords": [257.5, 558.5]
+        }
+      ]
     },
     {
-      "id": "B5",
-      "name": "UV Bunny (#5)",
-      "coords": [180.5, 373.5]
+      "name": "teleporter",
+      "section": "Exploration",
+      "label": "Teleporters",
+      "labelIcon": "flight",
+      "markerIcon": "teleporter",
+      "markerFilter": "hue-rotate(270deg)",
+      "markerLabel": "Teleporter",
+      "markers": [
+        {
+          "id": "T1",
+          "coords": [[216.5, 240.5], [40.5, 39.5]]
+        },
+        {
+          "id": "T2",
+          "coords": [[92.5, 199.5], [26.5, 0.5]]
+        },
+        {
+          "id": "T3",
+          "coords": [[297.5, 520.5], [33.5, 39.5]]
+        },
+        {
+          "id": "T4",
+          "coords": [[71.5, 520.5], [27.5, 39.5]]
+        },
+        {
+          "id": "T5",
+          "coords": [[326.5, 159.5], [40.5, 0.5]]
+        },
+        {
+          "id": "T6",
+          "coords": [[165.5, 39.5], [33.5, 0.5]]
+        },
+        {
+          "id": "T7",
+          "coords": [[70.5, 399.5], [4.5, 0.5]]
+        },
+        {
+          "id": "T8",
+          "coords": [[14.5, 64.5], [15.5, 2.5]]
+        }
+      ]
     },
     {
-      "id": "B6",
-      "name": "Fish Bunny (#6)",
-      "coords": [171.5, 250.5]
+      "name": "pipe",
+      "section": "Exploration",
+      "label": "Pipes",
+      "labelIcon": "valve",
+      "markerIcon": "pipe",
+      "markerFilter": "hue-rotate(0deg)",
+      "markerLabel": "Pipe",
+      "markers": [
+        {
+          "id": "PI1",
+          "coords": [277.5, 358.5],
+          "destination": [58.5, 526.5]
+        },
+        {
+          "id": "PI2",
+          "coords": [55.5, 555.5],
+          "destination": [268.5, 354.5]
+        },
+        {
+          "id": "PI3",
+          "coords": [237.5, 57.5],
+          "destination": [190.5, 55.5]
+        },
+        {
+          "id": "PI4",
+          "coords": [187.5, 75.5],
+          "destination": [211.5, 54.5]
+        },
+        {
+          "id": "PI5",
+          "coords": [205.5, 60.5],
+          "destination": [193.5, 63.5]
+        },
+        {
+          "id": "PI6",
+          "name": "Pipe Maze",
+          "coords": [[211.5, 49.5], [213.5, 58.5], [203.5, 68.5], [207.5, 76.5], [212.5, 101.5], [205.5, 97.5], [203.5, 107.5]],
+          "destination": [[207.5, 70.5], [212.5, 87.5], [207.5, 83.5], [212.5, 95.5], [216.5, 113.5], [208.5, 109.5], [208.5, 57.5]]
+        },
+        {
+          "id": "PI7",
+          "coords": [210.5, 114.5],
+          "destination": [235.5, 75.5]
+        },
+        {
+          "id": "PI8",
+          "coords": [101.5, 566.5],
+          "destination": [61.5, 620.5]
+        },
+        {
+          "id": "PI9",
+          "coords": [57.5, 635.5],
+          "destination": [100.5, 590.5]
+        },
+        {
+          "id": "PI10",
+          "coords": [55.5, 573.5],
+          "destination": [38.5, 579.5]
+        },
+        {
+          "id": "PI11",
+          "coords": [59.5, 566.5],
+          "destination": [60.5, 578.5]
+        },
+        {
+          "id": "PI12",
+          "coords": [9.5, 636.5],
+          "destination": [190.5, 633.5]
+        },
+        {
+          "id": "PI13",
+          "coords": [53.5, 196.5],
+          "destination": [124.5, 210.5]
+        },
+        {
+          "id": "PI14",
+          "coords": [59.5, 115.5],
+          "destination": [195.5, 337.5]
+        },
+        {
+          "id": "PI15",
+          "coords": [112.5, 85.5],
+          "destination": [168.5, 20.5]
+        },
+        {
+          "id": "PI16",
+          "coords": [24.5, 567.5],
+          "destination": [60.5, 586.5]
+        },
+        {
+          "id": "PI17",
+          "coords": [93.5, 163.5],
+          "destination": [59.5, 176.5]
+        }
+      ]
     },
     {
-      "id": "B7",
-      "name": "Ghost Bunny (#7)",
-      "coords": [120.5, 231.5]
+      "name": "flame",
+      "section": "Exploration",
+      "label": "Flames",
+      "labelIcon": "local_fire_department",
+      "markerFilter": "hue-rotate(178deg) brightness(0.65)",
+      "markers": [
+        {
+          "id": "F1",
+          "name": "B. Flame",
+          "icon": "flame1",
+          "coords": [52, 60]
+        },
+        {
+          "id": "F2",
+          "name": "P. Flame",
+          "icon": "flame2",
+          "coords": [315, 340]
+        },
+        {
+          "id": "F3",
+          "name": "V. Flame",
+          "icon": "flame3",
+          "coords": [317, 419]
+        },
+        {
+          "id": "F4",
+          "name": "G. Flame",
+          "icon": "flame4",
+          "coords": [7, 621]
+        }
+      ]
     },
     {
-      "id": "B8",
-      "name": "Crow Bunny (#8)",
-      "coords": [326.5, 525.5]
+      "name": "explosive",
+      "section": "Exploration",
+      "label": "Explosives",
+      "labelIcon": "destruction",
+      "markerIcon": "tnt",
+      "markerFilter": "hue-rotate(-30deg) brightness(0.7)",
+      "markerLabel": "Explosive",
+      "markers": [
+        ["EXP1", [303.5, 634.5]],
+        ["EXP2", [325.5, 372.5]],
+        ["EXP3", [273.5, 353.5]],
+        ["EXP4", [179.5, 598.5]],
+        ["EXP5", [179.5, 602.5]],
+        ["EXP6", [179.5, 625.5]],
+        ["EXP7", [111.5, 516.5]],
+        ["EXP8", [90.5, 587.5]],
+        ["EXP9", [2.5, 219.5]]
+      ]
     },
     {
-      "id": "B9",
-      "name": "Duck Bunny (#9)",
-      "coords": [180.5, 429.5]
+      "name": "bunny",
+      "section": "Late game",
+      "label": "Bunnies",
+      "labelIcon": "cruelty_free",
+      "markerIcon": "bunny",
+      "markerFilter": "hue-rotate(310deg)",
+      "markerCount": 16,
+      "markers": [
+        {
+          "id": "B1",
+          "name": "Mural Bunny (#1)",
+          "coords": [189.5, 454.5]
+        },
+        {
+          "id": "B2",
+          "name": "Vine Bunny (#2)",
+          "coords": [239.5, 620.5]
+        },
+        {
+          "id": "B3",
+          "name": "Tutorial Bunny (#3)",
+          "coords": [167.5, 326.5]
+        },
+        {
+          "id": "B4",
+          "name": "Map Bunny (#4)",
+          "coords": [291.5, 425.5]
+        },
+        {
+          "id": "B5",
+          "name": "UV Bunny (#5)",
+          "coords": [180.5, 373.5]
+        },
+        {
+          "id": "B6",
+          "name": "Fish Bunny (#6)",
+          "coords": [171.5, 250.5]
+        },
+        {
+          "id": "B7",
+          "name": "Ghost Bunny (#7)",
+          "coords": [120.5, 231.5]
+        },
+        {
+          "id": "B8",
+          "name": "Crow Bunny (#8)",
+          "coords": [326.5, 525.5]
+        },
+        {
+          "id": "B9",
+          "name": "Duck Bunny (#9)",
+          "coords": [180.5, 429.5]
+        },
+        {
+          "id": "B10",
+          "name": "Dream Bunny (#10)",
+          "coords": [180.5, 387.5]
+        },
+        {
+          "id": "B11",
+          "name": "Bulb Bunny (#11)",
+          "coords": [149.5, 163.5]
+        },
+        {
+          "id": "B12",
+          "name": "Floor Is Lava Bunny (#12)",
+          "coords": [291.5, 202.5]
+        },
+        {
+          "id": "B13",
+          "name": "TV Bunny (#13)",
+          "coords": [3.5, 250.5]
+        },
+        {
+          "id": "B14",
+          "name": "Origami Bunny (#14)",
+          "coords": [[289.5, 178.5], [16.5, 257.5]]
+        },
+        {
+          "id": "B15",
+          "name": "Dog Bunny (#15)",
+          "coords": [279.5, 517.5]
+        },
+        {
+          "id": "B16",
+          "name": "Spike Bunny (#16)",
+          "coords": [347.5, 3.5]
+        }
+      ]
     },
     {
-      "id": "B10",
-      "name": "Dream Bunny (#10)",
-      "coords": [180.5, 387.5]
+      "name": "match",
+      "section": "Late game",
+      "label": "Matches",
+      "labelIcon": "candle",
+      "markerIcon": "match",
+      "markerFilter": "hue-rotate(45deg)",
+      "markerLabel": "Match",
+      "markers": [
+        {
+          "id": "M1",
+          "coords": [147.5, 205.5]
+        },
+        {
+          "id": "M2",
+          "coords": [186.5, 257.5]
+        },
+        {
+          "id": "M3",
+          "coords": [227.5, 340.5]
+        },
+        {
+          "id": "M4",
+          "coords": [276.5, 373.5]
+        },
+        {
+          "id": "M5",
+          "coords": [280.5, 342.5]
+        },
+        {
+          "id": "M6",
+          "coords": [291.5, 246.5]
+        },
+        {
+          "id": "M7",
+          "coords": [292.5, 443.5]
+        },
+        {
+          "id": "M8",
+          "coords": [163.5, 509.5]
+        },
+        {
+          "id": "M9",
+          "coords": [103.5, 432.5]
+        }
+      ]
     },
     {
-      "id": "B11",
-      "name": "Bulb Bunny (#11)",
-      "coords": [149.5, 163.5]
+      "name": "candle",
+      "section": "Late game",
+      "label": "Candles",
+      "labelIcon": "candle",
+      "markerIcon": "candle",
+      "markerFilter": "hue-rotate(45deg)",
+      "markerLabel": "Candle",
+      "markers": [
+        {
+          "id": "C1",
+          "coords": [149.5, 348.5]
+        },
+        {
+          "id": "C2",
+          "coords": [138.5, 579.5]
+        },
+        {
+          "id": "C3",
+          "coords": [233.5, 538.5]
+        },
+        {
+          "id": "C4",
+          "coords": [300.5, 273.5]
+        },
+        {
+          "id": "C5",
+          "coords": [290.5, 100.5]
+        },
+        {
+          "id": "C6",
+          "coords": [267.5, 83.5]
+        },
+        {
+          "id": "C7",
+          "coords": [276.5, 181.5]
+        },
+        {
+          "id": "C8",
+          "coords": [133.5, 154.5]
+        },
+        {
+          "id": "C9",
+          "coords": [235.5, 185.5]
+        }
+      ]
     },
     {
-      "id": "B12",
-      "name": "Floor Is Lava Bunny (#12)",
-      "coords": [291.5, 202.5]
+      "name": "medal",
+      "section": "Late game",
+      "label": "Medals",
+      "labelIcon": "workspace_premium",
+      "markerFilter": "hue-rotate(160deg)",
+      "markers": [
+        {
+          "id": "S1",
+          "name": "S. Medal",
+          "icon": "medal-s",
+          "coords": [233.5, 475.5]
+        },
+        {
+          "id": "S2",
+          "name": "S. Medal Circular Recess",
+          "icon": "medal-s",
+          "coords": [124.5, 262.5]
+        },
+        {
+          "id": "K1",
+          "name": "K. Medal (#1)",
+          "icon": "medal-k",
+          "coords": [[185.5, 297.5], [190.5, 415.5], [142.5, 293.5], [300.5, 172.5], [75.5, 564.5]]
+        },
+        {
+          "id": "K2",
+          "name": "K. Medal (#2)",
+          "icon": "medal-k",
+          "coords": [[182.5, 300.5], [187.5, 418.5], [139.5, 296.5], [297.5, 175.5], [72.5, 567.5]]
+        },
+        {
+          "id": "K3",
+          "name": "K. Medal (#3)",
+          "icon": "medal-k",
+          "coords": [[185.5, 303.5], [190.5, 421.5], [142.5, 299.5], [300.5, 178.5], [75.5, 570.5]]
+        },
+        {
+          "id": "K4",
+          "name": "K. Medal Circular Recess",
+          "icon": "medal-k",
+          "coords": [292.5, 45.5]
+        },
+        {
+          "id": "E1",
+          "name": "E. Medal",
+          "icon": "medal-e",
+          "coords": [47.5, 166.5]
+        },
+        {
+          "id": "E2",
+          "name": "E. Medal Circular Recess",
+          "icon": "medal-e",
+          "coords": [52.5, 147.5]
+        }
+      ]
     },
     {
-      "id": "B13",
-      "name": "TV Bunny (#13)",
-      "coords": [3.5, 250.5]
+      "name": "totem",
+      "section": "Late game",
+      "label": "Totems",
+      "labelIcon": "skull",
+      "markerFilter": "grayscale(100%)",
+      "markers": [
+        {
+          "id": "TCH1",
+          "name": "Totem (Chest #1)",
+          "icon": "totem-chest",
+          "coords": [231.5, 105.5],
+          "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
+        },
+        {
+          "id": "TCH2",
+          "name": "Totem (Chest #2)",
+          "icon": "totem-chest",
+          "coords": [203.5, 89.5],
+          "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
+        },
+        {
+          "id": "TCH3",
+          "name": "Totem (Chest #3)",
+          "icon": "totem-chest",
+          "coords": [194.5, 118.5],
+          "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
+        },
+        {
+          "id": "TCH4",
+          "name": "Totem (Chest #4)",
+          "icon": "totem-chest",
+          "coords": [168.5, 96.5],
+          "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
+        },
+        {
+          "id": "TCH5",
+          "name": "Totem (Chest #5)",
+          "icon": "totem-chest",
+          "coords": [203.5, 91.5],
+          "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
+        },
+        {
+          "id": "THE1",
+          "name": "Totem (Heart #1)",
+          "icon": "totem-heart",
+          "coords": [232.5, 133.5],
+          "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
+        },
+        {
+          "id": "THE2",
+          "name": "Totem (Heart #2)",
+          "icon": "totem-heart",
+          "coords": [232.5, 178.5],
+          "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
+        },
+        {
+          "id": "THE3",
+          "name": "Totem (Heart #3)",
+          "icon": "totem-heart",
+          "coords": [163.5, 144.5],
+          "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
+        },
+        {
+          "id": "TSK1",
+          "name": "Totem (Skull #1)",
+          "icon": "totem-skull",
+          "coords": [234.5, 209.5],
+          "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
+        },
+        {
+          "id": "TSK2",
+          "name": "Totem (Skull #2)",
+          "icon": "totem-skull",
+          "coords": [231.5, 237.5],
+          "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
+        },
+        {
+          "id": "TSK3",
+          "name": "Totem (Skull #3)",
+          "icon": "totem-skull",
+          "coords": [204.5, 254.5],
+          "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
+        },
+        {
+          "id": "TSK4",
+          "name": "Totem (Skull #4)",
+          "icon": "totem-skull",
+          "coords": [165.5, 189.5],
+          "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
+        },
+        {
+          "id": "TSK5",
+          "name": "Totem (Skull #5)",
+          "icon": "totem-skull",
+          "coords": [160.5, 244.5],
+          "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
+        },
+        {
+          "id": "TDI1",
+          "name": "Totem (Diamond #1)",
+          "icon": "totem-diamond",
+          "coords": [256.5, 270.5],
+          "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
+        },
+        {
+          "id": "TDI2",
+          "name": "Totem (Diamond #2)",
+          "icon": "totem-diamond",
+          "coords": [235.5, 328.5],
+          "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
+        },
+        {
+          "id": "TDI3",
+          "name": "Totem (Diamond #3)",
+          "icon": "totem-diamond",
+          "coords": [207.5, 278.5],
+          "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
+        },
+        {
+          "id": "TDI4",
+          "name": "Totem (Diamond #4)",
+          "icon": "totem-diamond",
+          "coords": [183.5, 312.5],
+          "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
+        },
+        {
+          "id": "TDI5",
+          "name": "Totem (Diamond #5)",
+          "icon": "totem-diamond",
+          "coords": [159.5, 276.5],
+          "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
+        },
+        {
+          "id": "TSW1",
+          "name": "Totem (Swirl #1)",
+          "icon": "totem-swirl",
+          "coords": [199.5, 410.5],
+          "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
+        },
+        {
+          "id": "TSW2",
+          "name": "Totem (Swirl #2)",
+          "icon": "totem-swirl",
+          "coords": [201.5, 354.5],
+          "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
+        },
+        {
+          "id": "TSW3",
+          "name": "Totem (Swirl #3)",
+          "icon": "totem-swirl",
+          "coords": [228.5, 406.5],
+          "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
+        },
+        {
+          "id": "TSW4",
+          "name": "Totem (Swirl #4)",
+          "icon": "totem-swirl",
+          "coords": [167.5, 395.5],
+          "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
+        },
+        {
+          "id": "TFI1",
+          "name": "Totem (Fire #1)",
+          "icon": "totem-fire",
+          "coords": [245.5, 429.5],
+          "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
+        },
+        {
+          "id": "TFI2",
+          "name": "Totem (Fire #2)",
+          "icon": "totem-fire",
+          "coords": [227.5, 455.5],
+          "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
+        },
+        {
+          "id": "TFI3",
+          "name": "Totem (Fire #3)",
+          "icon": "totem-fire",
+          "coords": [206.5, 442.5],
+          "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
+        },
+        {
+          "id": "TFI4",
+          "name": "Totem (Fire #4)",
+          "icon": "totem-fire",
+          "coords": [192.5, 468.5],
+          "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
+        },
+        {
+          "id": "TFI5",
+          "name": "Totem (Fire #5)",
+          "icon": "totem-fire",
+          "coords": [159.5, 437.5],
+          "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
+        },
+        {
+          "id": "TCK1",
+          "name": "Totem (Checkerboard #1)",
+          "icon": "totem-checkerboard",
+          "coords": [260.5, 549.5],
+          "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
+        },
+        {
+          "id": "TCK2",
+          "name": "Totem (Checkerboard #2)",
+          "icon": "totem-checkerboard",
+          "coords": [259.5, 496.5],
+          "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
+        },
+        {
+          "id": "TCK3",
+          "name": "Totem (Checkerboard #3)",
+          "icon": "totem-checkerboard",
+          "coords": [228.5, 498.5],
+          "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
+        },
+        {
+          "id": "TCK4",
+          "name": "Totem (Checkerboard #4)",
+          "icon": "totem-checkerboard",
+          "coords": [204.5, 549.5],
+          "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
+        },
+        {
+          "id": "TCK5",
+          "name": "Totem (Checkerboard #5)",
+          "icon": "totem-checkerboard",
+          "coords": [166.5, 502.5],
+          "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
+        },
+        {
+          "id": "TQU1",
+          "name": "Totem (Question #1)",
+          "icon": "totem-question",
+          "coords": [246.5, 572.5],
+          "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+        },
+        {
+          "id": "TQU2",
+          "name": "Totem (Question #2)",
+          "icon": "totem-question",
+          "coords": [215.5, 607.5],
+          "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+        },
+        {
+          "id": "TQU3",
+          "name": "Totem (Question #3)",
+          "icon": "totem-question",
+          "coords": [206.5, 586.5],
+          "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+        },
+        {
+          "id": "TQU4",
+          "name": "Totem (Question #4)",
+          "icon": "totem-question",
+          "coords": [182.5, 610.5],
+          "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+        },
+        {
+          "id": "TQU5",
+          "name": "Totem (Question #5)",
+          "icon": "totem-question",
+          "coords": [163.5, 568.5],
+          "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
+        }
+      ]
     },
     {
-      "id": "B14",
-      "name": "Origami Bunny (#14)",
-      "coords": [[289.5, 178.5], [16.5, 257.5]]
+      "name": "cheatSecret",
+      "section": "Other",
+      "label": "Cheat/Exploit",
+      "labelIcon": "joystick",
+      "markerIcon": "controller",
+      "markerFilter": "hue-rotate(210deg) brightness(0.5)",
+      "markers": [
+        {
+          "id": "CS1",
+          "name": "Cheater Bunny #1",
+          "icon": "c-bunny",
+          "coords": [270.5, 36.5]
+        },
+        {
+          "id": "CS2",
+          "name": "Cheater Bunny #2",
+          "icon": "c-bunny",
+          "coords": [245.5, 127.5]
+        },
+        {
+          "id": "CS3",
+          "name": "Cheater Bunny #3",
+          "icon": "c-bunny",
+          "coords": [345.5, 433.5]
+        },
+        {
+          "id": "CS4",
+          "name": "Cheater Bunny #4",
+          "icon": "c-bunny",
+          "coords": [257.5, 391.5]
+        },
+        {
+          "id": "CS5",
+          "name": "Cheater Bunny #5",
+          "icon": "c-bunny",
+          "coords": [172.5, 491.5]
+        },
+        {
+          "id": "CS6",
+          "name": "Cheater Bunny #6",
+          "icon": "c-bunny",
+          "coords": [93.5, 435.5]
+        },
+        {
+          "id": "CS7",
+          "name": "Cheater Bunny #7",
+          "icon": "c-bunny",
+          "coords": [39.5, 402.5]
+        },
+        {
+          "id": "CS8",
+          "name": "Cheater Bunny #8",
+          "icon": "c-bunny",
+          "coords": [62.5, 191.5]
+        },
+        {
+          "id": "CS9",
+          "name": "Cheater Bunny #9",
+          "icon": "c-bunny",
+          "coords": [143.5, 454.5]
+        },
+        {
+          "id": "CS10",
+          "name": "Cheaters Ring",
+          "icon": "c-ring",
+          "coords": [224.5, 43.5]
+        }
+      ]
     },
     {
-      "id": "B15",
-      "name": "Dog Bunny (#15)",
-      "coords": [279.5, 517.5]
+      "name": "berry",
+      "section": "Other",
+      "label": "Red berries",
+      "labelIcon": "nutrition",
+      "markerIcon": "berry",
+      "markerFilter": "hue-rotate(310deg) brightness(1.5)",
+      "markerLabel": "Red berryh",
+      "markers": [
+        ["BER3", [338.5, 101.5]],
+        ["BER6", [334.5, 219.5]],
+        ["BER7", [338.5, 257.5]],
+        ["BER9", [333.5, 409.5]],
+        ["BER10", [333.5, 431.5]],
+        ["BER11", [347.5, 592.5]],
+        ["BER12", [314.5, 115.5]],
+        ["BER13", [315.5, 129.5]],
+        ["BER15", [312.5, 371.5]],
+        ["BER17", [316.5, 445.5]],
+        ["BER20", [265.5, 31.5]],
+        ["BER21", [294.5, 81.5]],
+        ["BER22", [294.5, 185.5]],
+        ["BER24", [293.5, 282.5]],
+        ["BER25", [289.5, 295.5]],
+        ["BER26", [302.5, 362.5]],
+        ["BER27", [298.5, 463.5]],
+        ["BER28", [289.5, 623.5]],
+        ["BER29", [271.5, 236.5]],
+        ["BER30", [271.5, 401.5]],
+        ["BER31", [279.5, 517.5]],
+        ["BER34", [266.5, 576.5]],
+        ["BER35", [267.5, 586.5]],
+        ["BER37", [258.5, 117.5]],
+        ["BER38", [258.5, 157.5]],
+        ["BER39", [249.5, 234.5]],
+        ["BER43", [229.5, 179.5]],
+        ["BER45", [234.5, 340.5]],
+        ["BER46", [234.5, 372.5]],
+        ["BER47", [235.5, 391.5]],
+        ["BER48", [223.5, 432.5]],
+        ["BER50", [234.5, 522.5]],
+        ["BER52", [236.5, 567.5]],
+        ["BER53", [223.5, 634.5]],
+        ["BER54", [206.5, 11.5]],
+        ["BER56", [201.5, 46.5]],
+        ["BER57", [201.5, 98.5]],
+        ["BER59", [200.5, 142.5]],
+        ["BER60", [201.5, 228.5]],
+        ["BER62", [207.5, 577.5]],
+        ["BER63", [211.5, 603.5]],
+        ["BER64", [189.5, 37.5]],
+        ["BER65", [191.5, 51.5]],
+        ["BER66", [178.5, 62.5]],
+        ["BER67", [181.5, 347.5]],
+        ["BER68", [181.5, 350.5]],
+        ["BER69", [178.5, 508.5]],
+        ["BER70", [165.5, 17.5]],
+        ["BER71", [171.5, 69.5]],
+        ["BER72", [166.5, 117.5]],
+        ["BER74", [171.5, 155.5]],
+        ["BER75", [169.5, 192.5]],
+        ["BER77", [167.5, 323.5]],
+        ["BER78", [157.5, 499.5]],
+        ["BER79", [157.5, 509.5]],
+        ["BER80", [173.5, 531.5]],
+        ["BER81", [157.5, 598.5]],
+        ["BER82", [141.5, 130.5]],
+        ["BER83", [135.5, 470.5]],
+        ["BER84", [134.5, 500.5]],
+        ["BER85", [114.5, 95.5]],
+        ["BER87", [113.5, 395.5]],
+        ["BER89", [111.5, 468.5]],
+        ["BER90", [125.5, 579.5]],
+        ["BER91", [92.5, 487.5]],
+        ["BER92", [102.5, 509.5]],
+        ["BER93", [105.5, 547.5]],
+        ["BER94", [93.5, 563.5]],
+        ["BER95", [104.5, 602.5]],
+        ["BER97", [76.5, 237.5]],
+        ["BER99", [61.5, 287.5]],
+        ["BER100", [46.5, 322.5]],
+        ["BER102", [58.5, 603.5]],
+        ["BER103", [24.5, 93.5]],
+        ["BER104", [35.5, 414.5]],
+        ["BER105", [23.5, 577.5]],
+        ["BER107", [8.5, 596.5]],
+        ["BER108", [19.5, 620.5]]
+      ]
     },
     {
-      "id": "B16",
-      "name": "Spike Bunny (#16)",
-      "coords": [347.5, 3.5]
+      "name": "blueberry",
+      "section": "Other",
+      "label": "Blue berries",
+      "labelIcon": "nutrition",
+      "markerIcon": "blueberry",
+      "markerFilter": "hue-rotate(310deg) brightness(1.5)",
+      "markerLabel": "Blue berry",
+      "markers": [
+        ["BER1", [331.5, 3.5]],
+        ["BER2", [335.5, 32.5]],
+        ["BER4", [331.5, 124.5]],
+        ["BER5", [345.5, 225.5]],
+        ["BER8", [345.5, 357.5]],
+        ["BER14", [311.5, 351.5]],
+        ["BER16", [315.5, 411.5]],
+        ["BER18", [280.5, 37.5]],
+        ["BER19", [265.5, 3.5]],
+        ["BER23", [303.5, 246.5]],
+        ["BER32", [281.5, 565.5]],
+        ["BER33", [281.5, 595.5]],
+        ["BER36", [261.5, 4.5]],
+        ["BER40", [244.5, 340.5]],
+        ["BER41", [255.5, 435.5]],
+        ["BER42", [251.5, 517.5]],
+        ["BER44", [237.5, 322.5]],
+        ["BER49", [223.5, 474.5]],
+        ["BER51", [235.5, 557.5]],
+        ["BER55", [215.5, 37.5]],
+        ["BER58", [202.5, 116.5]],
+        ["BER61", [212.5, 533.5]],
+        ["BER73", [156.5, 81.5]],
+        ["BER76", [157.5, 273.5]],
+        ["BER86", [127.5, 389.5]],
+        ["BER88", [116.5, 431.5]],
+        ["BER96", [72.5, 56.5]],
+        ["BER98", [86.5, 216.5]],
+        ["BER101", [53.5, 361.5]],
+        ["BER106", [2.5, 223.5]],
+        ["BER109", [6.5, 607.5]],
+        ["BER110", [137.5, 74.5]]
+      ]
+    },
+    {
+      "name": "firecracker",
+      "section": "Other",
+      "label": "Firecrackers",
+      "labelIcon": "light_mode",
+      "markerIcon": "firecracker",
+      "markerFilter": "hue-rotate(0deg) brightness(0.7)",
+      "markerLabel": "Firecracker",
+      "markers": [
+        ["FIR1", [345.5, 157.5]],
+        ["FIR2", [346.5, 234.5]],
+        ["FIR3", [332.5, 243.5]],
+        ["FIR4", [337.5, 601.5]],
+        ["FIR5", [323.5, 288.5]],
+        ["FIR6", [317.5, 388.5]],
+        ["FIR7", [265.5, 23.5]],
+        ["FIR8", [291.5, 47.5]],
+        ["FIR9", [291.5, 48.5]],
+        ["FIR10", [291.5, 49.5]],
+        ["FIR11", [293.5, 279.5]],
+        ["FIR12", [296.5, 370.5]],
+        ["FIR13", [302.5, 387.5]],
+        ["FIR14", [281.5, 201.5]],
+        ["FIR15", [272.5, 331.5]],
+        ["FIR16", [257.5, 135.5]],
+        ["FIR17", [249.5, 155.5]],
+        ["FIR18", [245.5, 150.5]],
+        ["FIR19", [221.5, 86.5]],
+        ["FIR20", [224.5, 133.5]],
+        ["FIR21", [224.5, 152.5]],
+        ["FIR22", [234.5, 151.5]],
+        ["FIR23", [230.5, 133.5]],
+        ["FIR24", [224.5, 183.5]],
+        ["FIR25", [239.5, 197.5]],
+        ["FIR26", [224.5, 398.5]],
+        ["FIR27", [222.5, 542.5]],
+        ["FIR28", [202.5, 495.5]],
+        ["FIR29", [213.5, 549.5]],
+        ["FIR30", [180.5, 412.5]],
+        ["FIR31", [180.5, 419.5]],
+        ["FIR32", [155.5, 335.5]],
+        ["FIR33", [155.5, 338.5]],
+        ["FIR34", [136.5, 177.5]],
+        ["FIR35", [136.5, 179.5]],
+        ["FIR36", [136.5, 181.5]],
+        ["FIR37", [136.5, 183.5]],
+        ["FIR38", [141.5, 486.5]],
+        ["FIR39", [115.5, 167.5]],
+        ["FIR40", [115.5, 169.5]],
+        ["FIR41", [115.5, 182.5]],
+        ["FIR42", [116.5, 190.5]],
+        ["FIR43", [115.5, 205.5]],
+        ["FIR44", [115.5, 219.5]],
+        ["FIR45", [116.5, 238.5]],
+        ["FIR46", [127.5, 387.5]],
+        ["FIR47", [107.5, 361.5]],
+        ["FIR48", [93.5, 404.5]],
+        ["FIR49", [90.5, 454.5]],
+        ["FIR50", [77.5, 406.5]],
+        ["FIR51", [48.5, 237.5]],
+        ["FIR52", [50.5, 287.5]],
+        ["FIR53", [59.5, 348.5]],
+        ["FIR54", [53.5, 358.5]],
+        ["FIR55", [26.5, 277.5]],
+        ["FIR56", [32.5, 285.5]],
+        ["FIR57", [39.5, 324.5]],
+        ["FIR58", [41.5, 340.5]],
+        ["FIR59", [113.5, 558.5]]
+      ]
+    },
+    {
+      "name": "chinchilla",
+      "section": "Other",
+      "label": "Chinchillas",
+      "labelIcon": "pets",
+      "markerIcon": "chinchilla",
+      "markerFilter": "grayscale(100%) brightness(0.7)",
+      "markerLabel": "Chinchilla",
+      "markers": [
+        ["CHI1", [335.5, 495.5]],
+        ["CHI2", [339.5, 490.5]],
+        ["CHI3", [344.5, 489.5]],
+        ["CHI4", [336.5, 609.5]],
+        ["CHI5", [271.5, 61.5]],
+        ["CHI6", [253.5, 52.5]],
+        ["CHI7", [253.5, 62.5]],
+        ["CHI8", [249.5, 496.5]],
+        ["CHI9", [243.5, 485.5]],
+        ["CHI10", [254.5, 539.5]],
+        ["CHI11", [221.5, 498.5]],
+        ["CHI12", [231.5, 584.5]],
+        ["CHI13", [223.5, 584.5]],
+        ["CHI14", [236.5, 615.5]],
+        ["CHI15", [202.5, 210.5]],
+        ["CHI16", [205.5, 230.5]],
+        ["CHI17", [209.5, 232.5]],
+        ["CHI18", [208.5, 638.5]]
+      ]
+    },
+    {
+      "name": "bubbleBird",
+      "section": "Other",
+      "label": "Bubble Birds",
+      "labelIcon": "raven",
+      "markerIcon": "bird",
+      "markerFilter": "hue-rotate(40deg) brightness(1.5)",
+      "markerLabel": "Bubble bird",
+      "markers": [
+        ["BIR1", [342.5, 504.5]],
+        ["BIR2", [295.5, 509.5]],
+        ["BIR3", [271.5, 605.5]],
+        ["BIR4", [209.5, 389.5]],
+        ["BIR5", [213.5, 422.5]],
+        ["BIR6", [127.5, 55.5]],
+        ["BIR7", [73.5, 272.5]]
+      ]
+    },
+    {
+      "name": "squirrel",
+      "section": "Other",
+      "label": "Squirrels",
+      "labelIcon": "pets",
+      "markerIcon": "squirrel",
+      "markerFilter": "grayscale(100%) brightness(0.5)",
+      "markerLabel": "Squirrel",
+      "markers": [
+        ["SQR1", [95.5,235.5]],
+        ["SQR2", [140.5,242.5]],
+        ["SQR3", [180.5,291.5]],
+        ["SQR4", [225.5,293.5]],
+        ["SQR5", [213.5,552.5]],
+        ["SQR6", [116.5,486.5]],
+        ["SQR7", [68.5,557.5]],
+        ["SQR8", [120.5,77.5]],
+        ["SQR9", [311.5,296.5]],
+        ["SQR10", [3.5,283.5]],
+        ["SQR11", [28.5,246.5]],
+        ["SQR12", [38.5,226.5]],
+        ["SQR13", [162.5,359.5]]
+      ]
+    },
+    {
+      "name": "yellowFlower",
+      "section": "Mysteries",
+      "label": "Yellow flowers",
+      "labelIcon": "deceased",
+      "markerIcon": "flower-yellow",
+      "markerFilter": "hue-rotate(40deg) brightness(1.2)",
+      "markerLabel": "Yellow flower",
+      "markers": [
+        ["YFL1", [315.5,119.5]],
+        ["YFL2", [315.5,121.5]],
+        ["YFL3", [249.5,220.5]],
+        ["YFL4", [249.5,224.5]],
+        ["YFL5", [248.5,210.5]],
+        ["YFL6", [254.5,198.5]],
+        ["YFL7", [246.5,240.5]],
+        ["YFL8", [224.5,202.5]],
+        ["YFL9", [180.5,78.5]],
+        ["YFL10", [180.5,82.5]],
+        ["YFL11", [180.5,84.5]],
+        ["YFL12", [108.5,112.5]],
+        ["YFL13", [28.5,96.5]],
+        ["YFL14", [2.5,267.5]],
+        ["YFL15", [3.5,321.5]],
+        ["YFL16", [4.5,236.5]],
+        ["YFL17", [82.5,245.5]],
+        ["YFL18", [120.5,245.5]],
+        ["YFL19", [127.5,245.5]],
+        ["YFL20", [134.5,252.5]],
+        ["YFL21", [135.5,257.5]],
+        ["YFL22", [135.5,266.5]],
+        ["YFL23", [140.5,239.5]],
+        ["YFL24", [135.5,280.5]],
+        ["YFL25", [182.5,160.5]],
+        ["YFL26", [113.5,391.5]],
+        ["YFL27", [113.5,396.5]],
+        ["YFL28", [112.5,402.5]],
+        ["YFL29", [180.5,356.5]],
+        ["YFL30", [179.5,367.5]],
+        ["YFL31", [179.5,394.5]],
+        ["YFL32", [179.5,400.5]],
+        ["YFL33", [335.5,438.5]],
+        ["YFL34", [332.5,481.5]],
+        ["YFL35", [292.5,457.5]],
+        ["YFL36", [292.5,459.5]],
+        ["YFL37", [293.5,461.5]],
+        ["YFL38", [293.5,465.5]],
+        ["YFL39", [287.5,470.5]],
+        ["YFL40", [287.5,466.5]],
+        ["YFL41", [287.5,461.5]],
+        ["YFL42", [287.5,458.5]],
+        ["YFL43", [287.5,455.5]],
+        ["YFL44", [293.5,438.5]],
+        ["YFL45", [294.5,480.5]],
+        ["YFL46", [272.5,475.5]],
+        ["YFL47", [274.5,565.5]],
+        ["YFL48", [267.5,559.5]],
+        ["YFL49", [268.5,570.5]],
+        ["YFL50", [267.5,573.5]],
+        ["YFL51", [266.5,582.5]],
+        ["YFL52", [273.5,593.5]],
+        ["YFL53", [256.5,577.5]],
+        ["YFL54", [256.5,579.5]],
+        ["YFL55", [256.5,581.5]],
+        ["YFL56", [136.5,507.5]],
+        ["YFL57", [135.5,505.5]],
+        ["YFL58", [138.5,516.5]],
+        ["YFL59", [139.5,520.5]],
+        ["YFL60", [140.5,522.5]],
+        ["YFL61", [138.5,525.5]],
+        ["YFL62", [143.5,478.5]],
+        ["YFL63", [44.5,408.5]],
+        ["YFL64", [35.5,440.5]],
+        ["YFL65", [15.5,598.5]],
+        ["YFL66", [24.5,595.5]],
+        ["YFL67", [8.5,594.5]],
+        ["YFL68", [64.5,621.5]],
+        ["YFL69", [88.5,618.5]],
+        ["YFL70", [74.5,632.5]]
+      ]
+    },
+    {
+      "name": "pinkFlower",
+      "section": "Mysteries",
+      "label": "Pink flowers",
+      "labelIcon": "deceased",
+      "markerIcon": "flower-pink",
+      "markerFilter": "hue-rotate(350deg) brightness(1.7)",
+      "markerLabel": "Pink flower",
+      "markers": [
+        ["PFL1", [251.5,73.5]],
+        ["PFL2", [251.5,75.5]],
+        ["PFL3", [251.5,76.5]],
+        ["PFL4", [253.5,77.5]],
+        ["PFL5", [256.5,78.5]],
+        ["PFL6", [223.5,476.5]],
+        ["PFL7", [223.5,478.5]],
+        ["PFL8", [223.5,472.5]],
+        ["PFL9", [202.5,480.5]],
+        ["PFL10", [202.5,573.5]],
+        ["PFL11", [203.5,579.5]],
+        ["PFL12", [208.5,574.5]],
+        ["PFL13", [211.5,581.5]],
+        ["PFL14", [204.5,582.5]],
+        ["PFL15", [205.5,590.5]],
+        ["PFL16", [213.5,601.5]],
+        ["PFL17", [204.5,621.5]],
+        ["PFL18", [214.5,628.5]],
+        ["PFL19", [223.5,627.5]],
+        ["PFL20", [223.5,625.5]],
+        ["PFL21", [222.5,623.5]],
+        ["PFL22", [222.5,620.5]],
+        ["PFL23", [224.5,606.5]],
+        ["PFL24", [224.5,604.5]],
+        ["PFL25", [245.5,627.5]],
+        ["PFL26", [245.5,611.5]],
+        ["PFL27", [245.5,604.5]],
+        ["PFL28", [267.5,611.5]],
+        ["PFL29", [267.5,629.5]],
+        ["PFL30", [262.5,634.5]],
+        ["PFL31", [289.5,625.5]],
+        ["PFL32", [289.5,609.5]],
+        ["PFL33", [289.5,603.5]],
+        ["PFL34", [293.5,557.5]],
+        ["PFL35", [288.5,490.5]],
+        ["PFL36", [347.5,585.5]],
+        ["PFL37", [347.5,582.5]],
+        ["PFL38", [334.5,512.5]],
+        ["PFL39", [347.5,497.5]],
+        ["PFL40", [338.5,265.5]],
+        ["PFL41", [338.5,255.5]],
+        ["PFL42", [338.5,246.5]],
+        ["PFL43", [338.5,104.5]],
+        ["PFL44", [338.5,108.5]],
+        ["PFL46", [289.5,615.5]],
+        ["PFL47", [289.5,618.5]],
+        ["PFL48", [289.5,619.5]],
+        ["PFL49", [291.5,473.5]],
+        ["PFL50", [296.5,471.5]],
+        ["PFL51", [292.5,468.5]],
+        ["PFL52", [293.5,453.5]],
+        ["PFL53", [292.5,456.5]],
+        ["PFL54", [293.5,450.5]],
+        ["PFL55", [292.5,448.5]],
+        ["PFL56", [298.5,428.5]],
+        ["PFL57", [295.5,430.5]],
+        ["PFL58", [298.5,424.5]],
+        ["PFL59", [298.5,421.5]],
+        ["PFL60", [294.5,405.5]],
+        ["PFL61", [269.5,517.5]],
+        ["PFL62", [282.5,530.5]],
+        ["PFL63", [283.5,533.5]],
+        ["PFL64", [283.5,535.5]],
+        ["PFL65", [282.5,540.5]],
+        ["PFL66", [282.5,544.5]],
+        ["PFL67", [282.5,546.5]],
+        ["PFL68", [268.5,588.5]],
+        ["PFL69", [275.5,594.5]],
+        ["PFL70", [271.5,592.5]],
+        ["PFL71", [245.5,543.5]],
+        ["PFL72", [228.5,45.5]],
+        ["PFL73", [223.5,419.5]],
+        ["PFL74", [223.5,428.5]],
+        ["PFL75", [223.5,434.5]],
+        ["PFL76", [223.5,564.5]],
+        ["PFL77", [210.5,459.5]],
+        ["PFL78", [208.5,465.5]],
+        ["PFL79", [203.5,421.5]],
+        ["PFL80", [203.5,407.5]],
+        ["PFL81", [203.5,433.5]],
+        ["PFL82", [206.5,445.5]],
+        ["PFL83", [210.5,463.5]],
+        ["PFL84", [165.5,381.5]],
+        ["PFL85", [171.5,379.5]],
+        ["PFL86", [174.5,377.5]],
+        ["PFL87", [167.5,376.5]],
+        ["PFL88", [161.5,373.5]],
+        ["PFL89", [160.5,391.5]],
+        ["PFL90", [160.5,365.5]],
+        ["PFL91", [159.5,348.5]],
+        ["PFL92", [158.5,341.5]],
+        ["PFL93", [161.5,336.5]],
+        ["PFL94", [160.5,330.5]],
+        ["PFL95", [168.5,329.5]],
+        ["PFL96", [168.5,320.5]],
+        ["PFL97", [135.5,206.5]],
+        ["PFL98", [134.5,254.5]],
+        ["PFL99", [149.5,278.5]],
+        ["PFL100", [149.5,284.5]],
+        ["PFL101", [148.5,238.5]],
+        ["PFL102", [149.5,244.5]],
+        ["PFL103", [124.5,274.5]],
+        ["PFL104", [114.5,274.5]],
+        ["PFL105", [112.5,271.5]],
+        ["PFL106", [113.5,264.5]],
+        ["PFL107", [92.5,194.5]],
+        ["PFL108", [94.5,209.5]],
+        ["PFL109", [93.5,223.5]],
+        ["PFL110", [94.5,230.5]],
+        ["PFL111", [95.5,234.5]],
+        ["PFL112", [95.5,235.5]],
+        ["PFL113", [95.5,239.5]],
+        ["PFL114", [94.5,245.5]],
+        ["PFL115", [101.5,259.5]],
+        ["PFL116", [100.5,402.5]],
+        ["PFL117", [90.5,402.5]],
+        ["PFL118", [87.5,403.5]],
+        ["PFL119", [70.5,272.5]],
+        ["PFL120", [72.5,260.5]],
+        ["PFL121", [74.5,259.5]],
+        ["PFL122", [77.5,258.5]],
+        ["PFL123", [71.5,251.5]],
+        ["PFL124", [71.5,250.5]],
+        ["PFL125", [81.5,246.5]],
+        ["PFL126", [31.5,27.5]],
+        ["PFL127", [30.5,25.5]],
+        ["PFL128", [24.5,16.5]],
+        ["PFL129", [8.5,11.5]],
+        ["PFL130", [6.5,13.5]],
+        ["PFL131", [10.5,17.5]],
+        ["PFL132", [10.5,18.5]],
+        ["PFL133", [10.5,20.5]],
+        ["PFL134", [10.5,21.5]]
+      ]
+    },
+    {
+      "name": "brownMushroom",
+      "section": "Mysteries",
+      "label": "Brown mushrooms",
+      "labelIcon": "grain",
+      "markerIcon": "mushroom-brown",
+      "markerFilter": "hue-rotate(40deg) brightness(0.8)",
+      "markerLabel": "Mushroom",
+      "markers": [
+        ["BRM1", [12.5,5.5]],
+        ["BRM2", [12.5,29.5]],
+        ["BRM3", [2.5,366.5]],
+        ["BRM4", [3.5,391.5]],
+        ["BRM5", [28.5,413.5]],
+        ["BRM6", [49.5,483.5]],
+        ["BRM7", [47.5,491.5]],
+        ["BRM8", [48.5,513.5]],
+        ["BRM9", [49.5,516.5]],
+        ["BRM10", [50.5,518.5]],
+        ["BRM11", [80.5,278.5]],
+        ["BRM12", [93.5,207.5]],
+        ["BRM13", [92.5,527.5]],
+        ["BRM14", [92.5,544.5]],
+        ["BRM15", [98.5,558.5]],
+        ["BRM16", [116.5,409.5]],
+        ["BRM17", [136.5,212.5]],
+        ["BRM18", [150.5,473.5]],
+        ["BRM19", [142.5,469.5]],
+        ["BRM20", [134.5,503.5]],
+        ["BRM21", [137.5,530.5]],
+        ["BRM22", [136.5,554.5]],
+        ["BRM23", [135.5,549.5]],
+        ["BRM24", [178.5,534.5]],
+        ["BRM25", [178.5,555.5]],
+        ["BRM26", [178.5,557.5]],
+        ["BRM27", [179.5,595.5]],
+        ["BRM28", [191.5,595.5]],
+        ["BRM29", [188.5,609.5]],
+        ["BRM30", [190.5,619.5]],
+        ["BRM31", [179.5,621.5]],
+        ["BRM32", [179.5,635.5]],
+        ["BRM33", [184.5,638.5]],
+        ["BRM34", [208.5,634.5]],
+        ["BRM35", [208.5,629.5]],
+        ["BRM36", [204.5,617.5]],
+        ["BRM37", [201.5,227.5]],
+        ["BRM38", [201.5,222.5]],
+        ["BRM39", [201.5,221.5]],
+        ["BRM40", [222.5,617.5]],
+        ["BRM41", [246.5,436.5]],
+        ["BRM42", [244.5,421.5]],
+        ["BRM43", [249.5,417.5]],
+        ["BRM44", [276.5,387.5]],
+        ["BRM45", [276.5,391.5]],
+        ["BRM46", [276.5,392.5]],
+        ["BRM47", [276.5,393.5]],
+        ["BRM48", [270.5,483.5]],
+        ["BRM49", [269.5,520.5]],
+        ["BRM50", [291.5,597.5]],
+        ["BRM51", [289.5,591.5]],
+        ["BRM52", [292.5,568.5]],
+        ["BRM53", [288.5,551.5]],
+        ["BRM54", [288.5,539.5]],
+        ["BRM55", [287.5,525.5]],
+        ["BRM56", [309.5,525.5]],
+        ["BRM57", [310.5,565.5]],
+        ["BRM58", [310.5,591.5]],
+        ["BRM59", [323.5,610.5]],
+        ["BRM60", [323.5,626.5]],
+        ["BRM61", [336.5,564.5]],
+        ["BRM62", [334.5,509.5]],
+        ["BRM63", [332.5,472.5]],
+        ["BRM64", [331.5,467.5]],
+        ["BRM65", [333.5,433.5]],
+        ["BRM66", [333.5,428.5]],
+        ["BRM67", [333.5,411.5]],
+        ["BRM68", [333.5,407.5]],
+        ["BRM69", [334.5,409.5]],
+        ["BRM70", [348.5,415.5]],
+        ["BRM71", [348.5,419.5]],
+        ["BRM72", [348.5,422.5]],
+        ["BRM73", [348.5,423.5]],
+        ["BRM74", [348.5,416.5]],
+        ["BRM75", [223.5,502.5]],
+        ["BRM76", [223.5,500.5]],
+        ["BRM77", [231.5,500.5]],
+        ["BRM78", [230.5,494.5]],
+        ["BRM79", [229.5,511.5]],
+        ["BRM80", [223.5,629.5]],
+        ["BRM81", [139.5,557.5]],
+        ["BRM82", [139.5,524.5]],
+        ["BRM83", [8.5,10.5]],
+        ["BRM84", [32.5,30.5]],
+        ["BRM85", [223.5,496.5]]
+      ]
+    },
+    {
+      "name": "tulip",
+      "section": "Mysteries",
+      "label": "Tulips",
+      "labelIcon": "deceased",
+      "markerIcon": "tulip",
+      "markerFilter": "hue-rotate(280deg) brightness(1.7)",
+      "markerLabel": "Tulip",
+      "markers": [
+        ["TUL1", [332.5,9.5]],
+        ["TUL2", [332.5,13.5]],
+        ["TUL3", [332.5,21.5]],
+        ["TUL4", [332.5,26.5]],
+        ["TUL5", [331.5,58.5]],
+        ["TUL6", [338.5,100.5]],
+        ["TUL7", [338.5,105.5]],
+        ["TUL8", [221.5,498.5]],
+        ["TUL9", [223.5,405.5]],
+        ["TUL10", [229.5,180.5]],
+        ["TUL11", [223.5,156.5]],
+        ["TUL12", [227.5,31.5]],
+        ["TUL13", [138.5,326.5]],
+        ["TUL14", [134.5,285.5]],
+        ["TUL15", [116.5,470.5]],
+        ["TUL16", [112.5,470.5]],
+        ["TUL17", [116.5,443.5]],
+        ["TUL18", [146.5,320.5]],
+        ["TUL19", [95.5,406.5]],
+        ["TUL20", [103.5,405.5]],
+        ["TUL21", [93.5,231.5]],
+        ["TUL22", [93.5,222.5]],
+        ["TUL23", [93.5,216.5]],
+        ["TUL24", [94.5,205.5]],
+        ["TUL25", [3.5,395.5]],
+        ["TUL26", [3.5,386.5]],
+        ["TUL27", [3.5,367.5]],
+        ["TUL28", [2.5,364.5]],
+        ["TUL29", [338.5,109.5]],
+        ["TUL30", [289.5,605.5]],
+        ["TUL31", [102.5,256.5]],
+        ["TUL32", [78.5,401.5]],
+        ["TUL33", [142.5,468.5]],
+        ["TUL34", [201.5,224.5]]
+      ]
+    },
+    {
+      "name": "swirlyPlant",
+      "section": "Mysteries",
+      "label": "Swirly plants",
+      "labelIcon": "park",
+      "markerIcon": "plant-swirly",
+      "markerFilter": "hue-rotate(100deg) brightness(1.7)",
+      "markerLabel": "Swirly Plant",
+      "markers": [
+        ["SWI1", [333.5,335.5]],
+        ["SWI2", [333.5,345.5]],
+        ["SWI3", [328.5,453.5]],
+        ["SWI4", [328.5,447.5]],
+        ["SWI5", [339.5,456.5]],
+        ["SWI6", [339.5,462.5]],
+        ["SWI7", [343.5,461.5]],
+        ["SWI8", [343.5,457.5]],
+        ["SWI9", [328.5,473.5]],
+        ["SWI10", [310.5,558.5]],
+        ["SWI11", [310.5,556.5]],
+        ["SWI12", [310.5,527.5]],
+        ["SWI13", [313.5,440.5]],
+        ["SWI14", [300.5,398.5]],
+        ["SWI15", [300.5,401.5]],
+        ["SWI16", [302.5,487.5]],
+        ["SWI17", [302.5,497.5]],
+        ["SWI18", [290.5,502.5]],
+        ["SWI19", [302.5,539.5]],
+        ["SWI20", [301.5,541.5]],
+        ["SWI21", [281.5,459.5]],
+        ["SWI22", [282.5,455.5]],
+        ["SWI23", [282.5,448.5]],
+        ["SWI24", [281.5,435.5]],
+        ["SWI25", [282.5,431.5]],
+        ["SWI26", [281.5,423.5]],
+        ["SWI27", [282.5,416.5]],
+        ["SWI28", [283.5,414.5]],
+        ["SWI29", [249.5,257.5]],
+        ["SWI30", [249.5,265.5]],
+        ["SWI31", [244.5,409.5]],
+        ["SWI32", [244.5,411.5]],
+        ["SWI33", [243.5,412.5]],
+        ["SWI34", [244.5,417.5]],
+        ["SWI35", [244.5,420.5]],
+        ["SWI36", [243.5,426.5]],
+        ["SWI37", [243.5,431.5]],
+        ["SWI38", [260.5,423.5]],
+        ["SWI39", [262.5,418.5]],
+        ["SWI40", [261.5,432.5]],
+        ["SWI41", [223.5,557.5]],
+        ["SWI42", [223.5,555.5]],
+        ["SWI43", [223.5,547.5]],
+        ["SWI44", [230.5,548.5]],
+        ["SWI45", [231.5,553.5]],
+        ["SWI46", [235.5,555.5]],
+        ["SWI47", [238.5,549.5]],
+        ["SWI48", [230.5,537.5]],
+        ["SWI49", [225.5,534.5]],
+        ["SWI50", [225.5,536.5]],
+        ["SWI51", [223.5,554.5]],
+        ["SWI52", [226.5,526.5]],
+        ["SWI53", [225.5,528.5]],
+        ["SWI54", [235.5,529.5]],
+        ["SWI55", [238.5,525.5]],
+        ["SWI56", [239.5,532.5]],
+        ["SWI57", [225.5,280.5]],
+        ["SWI58", [224.5,256.5]],
+        ["SWI59", [224.5,264.5]],
+        ["SWI60", [135.5,591.5]],
+        ["SWI61", [135.5,570.5]],
+        ["SWI62", [140.5,575.5]],
+        ["SWI63", [140.5,584.5]],
+        ["SWI64", [147.5,577.5]],
+        ["SWI65", [139.5,340.5]],
+        ["SWI66", [139.5,336.5]],
+        ["SWI67", [137.5,323.5]],
+        ["SWI68", [143.5,324.5]],
+        ["SWI69", [135.5,302.5]],
+        ["SWI70", [135.5,288.5]],
+        ["SWI71", [137.5,316.5]],
+        ["SWI72", [137.5,312.5]],
+        ["SWI73", [137.5,308.5]],
+        ["SWI74", [138.5,305.5]],
+        ["SWI75", [137.5,302.5]],
+        ["SWI76", [140.5,297.5]],
+        ["SWI77", [137.5,293.5]],
+        ["SWI78", [137.5,289.5]],
+        ["SWI79", [137.5,286.5]],
+        ["SWI80", [115.5,231.5]],
+        ["SWI81", [116.5,225.5]],
+        ["SWI82", [116.5,449.5]],
+        ["SWI83", [116.5,459.5]],
+        ["SWI84", [116.5,475.5]],
+        ["SWI85", [116.5,481.5]],
+        ["SWI86", [127.5,480.5]],
+        ["SWI87", [121.5,520.5]],
+        ["SWI88", [113.5,527.5]],
+        ["SWI89", [89.5,307.5]],
+        ["SWI90", [89.5,299.5]],
+        ["SWI91", [89.5,293.5]],
+        ["SWI92", [89.5,284.5]],
+        ["SWI93", [28.5,239.5]],
+        ["SWI94", [28.5,243.5]],
+        ["SWI95", [27.5,247.5]],
+        ["SWI96", [26.5,278.5]],
+        ["SWI97", [26.5,283.5]],
+        ["SWI98", [156.5,108.5]],
+        ["SWI99", [156.5,105.5]],
+        ["SWI100", [155.5,117.5]],
+        ["SWI101", [261.5,409.5]]
+      ]
     }
-  ],
-  "telephone": [
-    {
-      "id": "P1",
-      "name": "Telephone",
-      "coords": [138.5, 262.5]
-    },
-    {
-      "id": "P2",
-      "name": "Telephone",
-      "coords": [180.5, 362.5]
-    },
-    {
-      "id": "P3",
-      "name": "Telephone",
-      "coords": [138.5, 512.5]
-    },
-    {
-      "id": "P4",
-      "name": "Telephone",
-      "coords": [31.5, 420.5]
-    },
-    {
-      "id": "P5",
-      "name": "Telephone",
-      "coords": [75.5, 625.5]
-    },
-    {
-      "id": "P6",
-      "name": "Telephone",
-      "coords": [16.5, 596.5]
-    },
-    {
-      "id": "P7",
-      "name": "Telephone",
-      "coords": [271.5, 579.5]
-    },
-    {
-      "id": "P8",
-      "name": "Telephone",
-      "coords": [294.5, 463.5]
-    },
-    {
-      "id": "P9",
-      "name": "Telephone",
-      "coords": [345.5, 419.5]
-    },
-    {
-      "id": "P10",
-      "name": "Telephone",
-      "coords": [250.5, 222.5]
-    },
-    {
-      "id": "P11",
-      "name": "Telephone",
-      "coords": [292.5, 306.5]
-    },
-    {
-      "id": "P12",
-      "name": "Telephone",
-      "coords": [315.5, 113.5]
-    },
-    {
-      "id": "P13",
-      "name": "Telephone",
-      "coords": [333.5, 36.5]
-    },
-    {
-      "id": "P14",
-      "name": "Telephone",
-      "coords": [179.5, 65.5]
-    },
-    {
-      "id": "P15",
-      "name": "Telephone",
-      "coords": [115.5, 99.5]
-    },
-    {
-      "id": "P16",
-      "name": "Telephone",
-      "coords": [82.5, 234.5]
-    },
-    {
-      "id": "P17",
-      "name": "Telephone",
-      "coords": [114.5, 393.5]
-    },
-    {
-      "id": "P18",
-      "name": "Telephone",
-      "coords": [3.5, 265.5]
-    },
-    {
-      "id": "P19",
-      "name": "Telephone",
-      "coords": [25.5, 95.5]
-    }
-  ],
-  "item": [
-    {
-      "id": "I1",
-      "name": "B. Wand",
-      "icon": "b-wand",
-      "coords": [135.5, 59.5]
-    },
-    {
-      "id": "I2",
-      "name": "Disc",
-      "icon": "disc",
-      "coords": [226.5, 260.5]
-    },
-    {
-      "id": "I3",
-      "name": "Slink",
-      "icon": "slink",
-      "coords": [259.5, 458.5]
-    },
-    {
-      "id": "I4",
-      "name": "Yoyo",
-      "icon": "yoyo",
-      "coords": [35.5, 503.5]
-    },
-    {
-      "id": "I5",
-      "name": "Flute",
-      "icon": "flute",
-      "coords": [213.5, 211.5]
-    },
-    {
-      "id": "I6",
-      "name": "Map",
-      "icon": "map",
-      "coords": [164.5, 369.5]
-    },
-    {
-      "id": "I7",
-      "name": "Stamps",
-      "icon": "stamp",
-      "coords": [201.5, 309.5]
-    },
-    {
-      "id": "I8",
-      "name": "Pencil",
-      "icon": "pencil",
-      "coords": [206.5, 270.5]
-    },
-    {
-      "id": "I9",
-      "name": "Remote",
-      "icon": "remote",
-      "coords": [70.5, 246.5]
-    },
-    {
-      "id": "I10",
-      "name": "B. Ball",
-      "icon": "b-ball",
-      "coords": [271.5, 22.5]
-    },
-    {
-      "id": "I11",
-      "name": "Wheel",
-      "icon": "wheel",
-      "coords": [100.5, 20.5]
-    },
-    {
-      "id": "I12",
-      "name": "UV Lantern",
-      "icon": "uv-lantern",
-      "coords": [12.5, 7.5]
-    },
-    {
-      "id": "I13",
-      "name": "Lantern",
-      "icon": "lantern",
-      "coords": [114.5, 367.5]
-    },
-    {
-      "id": "I14",
-      "name": "Top",
-      "icon": "top",
-      "coords": [211.5, 274.5]
-    },
-    {
-      "id": "I15",
-      "name": "House key",
-      "icon": "key-house",
-      "coords": [4.5, 206.5]
-    },
-    {
-      "id": "I16",
-      "name": "F. Pack",
-      "icon": "f-pack",
-      "coords": [3.5, 277.5]
-    },
-    {
-      "id": "I17",
-      "name": "65th Egg",
-      "icon": "egg-65",
-      "coords": [213.5, 264.5]
-    },
-    {
-      "id": "I18",
-      "name": "Office key",
-      "icon": "key-office",
-      "coords": [221.5, 328.5]
-    },
-    {
-      "id": "I19",
-      "name": "B. B. Wand",
-      "icon": "bb-wand",
-      "coords": [37.5, 164.5]
-    },
-    {
-      "id": "I20",
-      "name": "Mock Disc",
-      "icon": "mock-disc",
-      "coords": [255.5, 261.5]
-    }
-  ],
-  "key": [
-    {
-      "id": "KEY1",
-      "name": "Key",
-      "coords": [166.5, 475.5],
-      "destination": [137.5, 486.5]
-    },
-    {
-      "id": "KEY2",
-      "name": "Key",
-      "coords": [100.5, 523.5],
-      "destination": [103.5, 512.5]
-    },
-    {
-      "id": "KEY3",
-      "name": "Key",
-      "coords": [101.5, 455.5],
-      "destination": [103.5, 507.5]
-    },
-    {
-      "id": "KEY4",
-      "name": "Key",
-      "coords": [266.5, 42.5],
-      "destination": [346.5, 209.5]
-    },
-    {
-      "id": "KEY5",
-      "name": "Key",
-      "coords": [209.5, 616.5],
-      "destination": [214.5, 564.5]
-    },
-    {
-      "id": "KEY6",
-      "name": "Key",
-      "coords": [259.5, 532.5],
-      "destination": [257.5, 558.5]
-    }
-  ],
-  "door": [
-    {
-      "id": "DOO1",
-      "name": "Door",
-      "coords": [137.5, 486.5]
-    },
-    {
-      "id": "DOO2",
-      "name": "Door",
-      "coords": [103.5, 507.5]
-    },
-    {
-      "id": "DOO3",
-      "name": "Door",
-      "coords": [103.5, 512.5]
-    },
-    {
-      "id": "DOO4",
-      "name": "Door",
-      "coords": [346.5, 209.5]
-    },
-    {
-      "id": "DOO5",
-      "name": "Door",
-      "coords": [214.5, 564.5]
-    },
-    {
-      "id": "DOO6",
-      "name": "Door",
-      "coords": [257.5, 558.5]
-    }
-  ],
-  "teleporter": [
-    {
-      "id": "T1",
-      "name": "Teleporter",
-      "coords": [[216.5, 240.5], [40.5, 39.5]]
-    },
-    {
-      "id": "T2",
-      "name": "Teleporter",
-      "coords": [[92.5, 199.5], [26.5, 0.5]]
-    },
-    {
-      "id": "T3",
-      "name": "Teleporter",
-      "coords": [[297.5, 520.5], [33.5, 39.5]]
-    },
-    {
-      "id": "T4",
-      "name": "Teleporter",
-      "coords": [[71.5, 520.5], [27.5, 39.5]]
-    },
-    {
-      "id": "T5",
-      "name": "Teleporter",
-      "coords": [[326.5, 159.5], [40.5, 0.5]]
-    },
-    {
-      "id": "T6",
-      "name": "Teleporter",
-      "coords": [[165.5, 39.5], [33.5, 0.5]]
-    },
-    {
-      "id": "T7",
-      "name": "Teleporter",
-      "coords": [[70.5, 399.5], [4.5, 0.5]]
-    },
-    {
-      "id": "T8",
-      "name": "Teleporter",
-      "coords": [[14.5, 64.5], [15.5, 2.5]]
-    }
-  ],
-  "match": [
-    {
-      "id": "M1",
-      "name": "Match",
-      "coords": [147.5, 205.5]
-    },
-    {
-      "id": "M2",
-      "name": "Match",
-      "coords": [186.5, 257.5]
-    },
-    {
-      "id": "M3",
-      "name": "Match",
-      "coords": [227.5, 340.5]
-    },
-    {
-      "id": "M4",
-      "name": "Match",
-      "coords": [276.5, 373.5]
-    },
-    {
-      "id": "M5",
-      "name": "Match",
-      "coords": [280.5, 342.5]
-    },
-    {
-      "id": "M6",
-      "name": "Match",
-      "coords": [291.5, 246.5]
-    },
-    {
-      "id": "M7",
-      "name": "Match",
-      "coords": [292.5, 443.5]
-    },
-    {
-      "id": "M8",
-      "name": "Match",
-      "coords": [163.5, 509.5]
-    },
-    {
-      "id": "M9",
-      "name": "Match",
-      "coords": [103.5, 432.5]
-    }
-  ],
-  "candle": [
-    {
-      "id": "C1",
-      "name": "Candle",
-      "coords": [149.5, 348.5]
-    },
-    {
-      "id": "C2",
-      "name": "Candle",
-      "coords": [138.5, 579.5]
-    },
-    {
-      "id": "C3",
-      "name": "Candle",
-      "coords": [233.5, 538.5]
-    },
-    {
-      "id": "C4",
-      "name": "Candle",
-      "coords": [300.5, 273.5]
-    },
-    {
-      "id": "C5",
-      "name": "Candle",
-      "coords": [290.5, 100.5]
-    },
-    {
-      "id": "C6",
-      "name": "Candle",
-      "coords": [267.5, 83.5]
-    },
-    {
-      "id": "C7",
-      "name": "Candle",
-      "coords": [276.5, 181.5]
-    },
-    {
-      "id": "C8",
-      "name": "Candle",
-      "coords": [133.5, 154.5]
-    },
-    {
-      "id": "C9",
-      "name": "Candle",
-      "coords": [235.5, 185.5]
-    }
-  ],
-  "flame": [
-    {
-      "id": "F1",
-      "name": "B. Flame",
-      "icon": "flame1",
-      "coords": [52, 60]
-    },
-    {
-      "id": "F2",
-      "name": "P. Flame",
-      "icon": "flame2",
-      "coords": [315, 340]
-    },
-    {
-      "id": "F3",
-      "name": "V. Flame",
-      "icon": "flame3",
-      "coords": [317, 419]
-    },
-    {
-      "id": "F4",
-      "name": "G. Flame",
-      "icon": "flame4",
-      "coords": [7, 621]
-    }
-  ],
-  "pipe": [
-    {
-      "id": "PI1",
-      "name": "Pipe",
-      "coords": [277.5, 358.5],
-      "destination": [58.5, 526.5]
-    },
-    {
-      "id": "PI2",
-      "name": "Pipe",
-      "coords": [55.5, 555.5],
-      "destination": [268.5, 354.5]
-    },
-    {
-      "id": "PI3",
-      "name": "Pipe",
-      "coords": [237.5, 57.5],
-      "destination": [190.5, 55.5]
-    },
-    {
-      "id": "PI4",
-      "name": "Pipe",
-      "coords": [187.5, 75.5],
-      "destination": [211.5, 54.5]
-    },
-    {
-      "id": "PI5",
-      "name": "Pipe",
-      "coords": [205.5, 60.5],
-      "destination": [193.5, 63.5]
-    },
-    {
-      "id": "PI6",
-      "name": "Pipe Maze",
-      "coords": [[211.5, 49.5], [213.5, 58.5], [203.5, 68.5], [207.5, 76.5], [212.5, 101.5], [205.5, 97.5], [203.5, 107.5]],
-      "destination": [[207.5, 70.5], [212.5, 87.5], [207.5, 83.5], [212.5, 95.5], [216.5, 113.5], [208.5, 109.5], [208.5, 57.5]]
-    },
-    {
-      "id": "PI7",
-      "name": "Pipe",
-      "coords": [210.5, 114.5],
-      "destination": [235.5, 75.5]
-    },
-    {
-      "id": "PI8",
-      "name": "Pipe",
-      "coords": [101.5, 566.5],
-      "destination": [61.5, 620.5]
-    },
-    {
-      "id": "PI9",
-      "name": "Pipe",
-      "coords": [57.5, 635.5],
-      "destination": [100.5, 590.5]
-    },
-    {
-      "id": "PI10",
-      "name": "Pipe",
-      "coords": [55.5, 573.5],
-      "destination": [38.5, 579.5]
-    },
-    {
-      "id": "PI11",
-      "name": "Pipe",
-      "coords": [59.5, 566.5],
-      "destination": [60.5, 578.5]
-    },
-    {
-      "id": "PI12",
-      "name": "Pipe",
-      "coords": [9.5, 636.5],
-      "destination": [190.5, 633.5]
-    },
-    {
-      "id": "PI13",
-      "name": "Pipe",
-      "coords": [53.5, 196.5],
-      "destination": [124.5, 210.5]
-    },
-    {
-      "id": "PI14",
-      "name": "Pipe",
-      "coords": [59.5, 115.5],
-      "destination": [195.5, 337.5]
-    },
-    {
-      "id": "PI15",
-      "name": "Pipe",
-      "coords": [112.5, 85.5],
-      "destination": [168.5, 20.5]
-    },
-    {
-      "id": "PI16",
-      "name": "Pipe",
-      "coords": [24.5, 567.5],
-      "destination": [60.5, 586.5]
-    },
-    {
-      "id": "PI17",
-      "name": "Pipe",
-      "coords": [93.5, 163.5],
-      "destination": [59.5, 176.5]
-    }
-  ],
-  "medal": [
-    {
-      "id": "S1",
-      "name": "S. Medal",
-      "icon": "medal-s",
-      "coords": [233.5, 475.5]
-    },
-    {
-      "id": "S2",
-      "name": "S. Medal Circular Recess",
-      "icon": "medal-s",
-      "coords": [124.5, 262.5]
-    },
-    {
-      "id": "K1",
-      "name": "K. Medal (#1)",
-      "icon": "medal-k",
-      "coords": [[185.5, 297.5], [190.5, 415.5], [142.5, 293.5], [300.5, 172.5], [75.5, 564.5]]
-    },
-    {
-      "id": "K2",
-      "name": "K. Medal (#2)",
-      "icon": "medal-k",
-      "coords": [[182.5, 300.5], [187.5, 418.5], [139.5, 296.5], [297.5, 175.5], [72.5, 567.5]]
-    },
-    {
-      "id": "K3",
-      "name": "K. Medal (#3)",
-      "icon": "medal-k",
-      "coords": [[185.5, 303.5], [190.5, 421.5], [142.5, 299.5], [300.5, 178.5], [75.5, 570.5]]
-    },
-    {
-      "id": "K4",
-      "name": "K. Medal Circular Recess",
-      "icon": "medal-k",
-      "coords": [292.5, 45.5]
-    },
-    {
-      "id": "E1",
-      "name": "E. Medal",
-      "icon": "medal-e",
-      "coords": [47.5, 166.5]
-    },
-    {
-      "id": "E2",
-      "name": "E. Medal Circular Recess",
-      "icon": "medal-e",
-      "coords": [52.5, 147.5]
-    }
-  ],
-  "totem": [
-    {
-      "id": "TCH1",
-      "name": "Totem (Chest #1)",
-      "icon": "totem-chest",
-      "coords": [231.5, 105.5],
-      "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
-    },
-    {
-      "id": "TCH2",
-      "name": "Totem (Chest #2)",
-      "icon": "totem-chest",
-      "coords": [203.5, 89.5],
-      "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
-    },
-    {
-      "id": "TCH3",
-      "name": "Totem (Chest #3)",
-      "icon": "totem-chest",
-      "coords": [194.5, 118.5],
-      "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
-    },
-    {
-      "id": "TCH4",
-      "name": "Totem (Chest #4)",
-      "icon": "totem-chest",
-      "coords": [168.5, 96.5],
-      "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
-    },
-    {
-      "id": "TCH5",
-      "name": "Totem (Chest #5)",
-      "icon": "totem-chest",
-      "coords": [203.5, 91.5],
-      "sequence": [[231.5, 105.5], [203.5, 89.5], [194.5, 118.5], [168.5, 96.5], [203.5, 91.5]]
-    },
-    {
-      "id": "THE1",
-      "name": "Totem (Heart #1)",
-      "icon": "totem-heart",
-      "coords": [232.5, 133.5],
-      "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
-    },
-    {
-      "id": "THE2",
-      "name": "Totem (Heart #2)",
-      "icon": "totem-heart",
-      "coords": [232.5, 178.5],
-      "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
-    },
-    {
-      "id": "THE3",
-      "name": "Totem (Heart #3)",
-      "icon": "totem-heart",
-      "coords": [163.5, 144.5],
-      "sequence": [[232.5, 133.5], [232.5, 178.5], [163.5, 144.5]]
-    },
-    {
-      "id": "TSK1",
-      "name": "Totem (Skull #1)",
-      "icon": "totem-skull",
-      "coords": [234.5, 209.5],
-      "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
-    },
-    {
-      "id": "TSK2",
-      "name": "Totem (Skull #2)",
-      "icon": "totem-skull",
-      "coords": [231.5, 237.5],
-      "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
-    },
-    {
-      "id": "TSK3",
-      "name": "Totem (Skull #3)",
-      "icon": "totem-skull",
-      "coords": [204.5, 254.5],
-      "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
-    },
-    {
-      "id": "TSK4",
-      "name": "Totem (Skull #4)",
-      "icon": "totem-skull",
-      "coords": [165.5, 189.5],
-      "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
-    },
-    {
-      "id": "TSK5",
-      "name": "Totem (Skull #5)",
-      "icon": "totem-skull",
-      "coords": [160.5, 244.5],
-      "sequence": [[234.5, 209.5], [231.5, 237.5], [204.5, 254.5], [165.5, 189.5], [160.5, 244.5]]
-    },
-    {
-      "id": "TDI1",
-      "name": "Totem (Diamond #1)",
-      "icon": "totem-diamond",
-      "coords": [256.5, 270.5],
-      "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
-    },
-    {
-      "id": "TDI2",
-      "name": "Totem (Diamond #2)",
-      "icon": "totem-diamond",
-      "coords": [235.5, 328.5],
-      "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
-    },
-    {
-      "id": "TDI3",
-      "name": "Totem (Diamond #3)",
-      "icon": "totem-diamond",
-      "coords": [207.5, 278.5],
-      "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
-    },
-    {
-      "id": "TDI4",
-      "name": "Totem (Diamond #4)",
-      "icon": "totem-diamond",
-      "coords": [183.5, 312.5],
-      "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
-    },
-    {
-      "id": "TDI5",
-      "name": "Totem (Diamond #5)",
-      "icon": "totem-diamond",
-      "coords": [159.5, 276.5],
-      "sequence": [[256.5, 270.5], [235.5, 328.5], [207.5, 278.5], [183.5, 312.5], [159.5, 276.5]]
-    },
-    {
-      "id": "TSW1",
-      "name": "Totem (Swirl #1)",
-      "icon": "totem-swirl",
-      "coords": [199.5, 410.5],
-      "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
-    },
-    {
-      "id": "TSW2",
-      "name": "Totem (Swirl #2)",
-      "icon": "totem-swirl",
-      "coords": [201.5, 354.5],
-      "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
-    },
-    {
-      "id": "TSW3",
-      "name": "Totem (Swirl #3)",
-      "icon": "totem-swirl",
-      "coords": [228.5, 406.5],
-      "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
-    },
-    {
-      "id": "TSW4",
-      "name": "Totem (Swirl #4)",
-      "icon": "totem-swirl",
-      "coords": [167.5, 395.5],
-      "sequence": [[199.5, 410.5], [201.5, 354.5], [228.5, 406.5], [167.5, 395.5]]
-    },
-    {
-      "id": "TFI1",
-      "name": "Totem (Fire #1)",
-      "icon": "totem-fire",
-      "coords": [245.5, 429.5],
-      "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
-    },
-    {
-      "id": "TFI2",
-      "name": "Totem (Fire #2)",
-      "icon": "totem-fire",
-      "coords": [227.5, 455.5],
-      "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
-    },
-    {
-      "id": "TFI3",
-      "name": "Totem (Fire #3)",
-      "icon": "totem-fire",
-      "coords": [206.5, 442.5],
-      "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
-    },
-    {
-      "id": "TFI4",
-      "name": "Totem (Fire #4)",
-      "icon": "totem-fire",
-      "coords": [192.5, 468.5],
-      "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
-    },
-    {
-      "id": "TFI5",
-      "name": "Totem (Fire #5)",
-      "icon": "totem-fire",
-      "coords": [159.5, 437.5],
-      "sequence": [[245.5, 429.5], [227.5, 455.5], [206.5, 442.5], [192.5, 468.5], [159.5, 437.5]]
-    },
-    {
-      "id": "TCK1",
-      "name": "Totem (Checkerboard #1)",
-      "icon": "totem-checkerboard",
-      "coords": [260.5, 549.5],
-      "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
-    },
-    {
-      "id": "TCK2",
-      "name": "Totem (Checkerboard #2)",
-      "icon": "totem-checkerboard",
-      "coords": [259.5, 496.5],
-      "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
-    },
-    {
-      "id": "TCK3",
-      "name": "Totem (Checkerboard #3)",
-      "icon": "totem-checkerboard",
-      "coords": [228.5, 498.5],
-      "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
-    },
-    {
-      "id": "TCK4",
-      "name": "Totem (Checkerboard #4)",
-      "icon": "totem-checkerboard",
-      "coords": [204.5, 549.5],
-      "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
-    },
-    {
-      "id": "TCK5",
-      "name": "Totem (Checkerboard #5)",
-      "icon": "totem-checkerboard",
-      "coords": [166.5, 502.5],
-      "sequence": [[260.5, 549.5], [259.5, 496.5], [228.5, 498.5], [204.5, 549.5], [166.5, 502.5]]
-    },
-    {
-      "id": "TQU1",
-      "name": "Totem (Question #1)",
-      "icon": "totem-question",
-      "coords": [246.5, 572.5],
-      "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
-    },
-    {
-      "id": "TQU2",
-      "name": "Totem (Question #2)",
-      "icon": "totem-question",
-      "coords": [215.5, 607.5],
-      "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
-    },
-    {
-      "id": "TQU3",
-      "name": "Totem (Question #3)",
-      "icon": "totem-question",
-      "coords": [206.5, 586.5],
-      "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
-    },
-    {
-      "id": "TQU4",
-      "name": "Totem (Question #4)",
-      "icon": "totem-question",
-      "coords": [182.5, 610.5],
-      "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
-    },
-    {
-      "id": "TQU5",
-      "name": "Totem (Question #5)",
-      "icon": "totem-question",
-      "coords": [163.5, 568.5],
-      "sequence": [[246.5, 572.5], [215.5, 607.5], [206.5, 586.5], [182.5, 610.5], [163.5, 568.5]]
-    }
-  ],
-  "cheatSecret": [
-    {
-      "id": "CS1",
-      "name": "Cheater Bunny #1",
-      "icon": "c-bunny",
-      "coords": [270.5, 36.5]
-    },
-    {
-      "id": "CS2",
-      "name": "Cheater Bunny #2",
-      "icon": "c-bunny",
-      "coords": [245.5, 127.5]
-    },
-    {
-      "id": "CS3",
-      "name": "Cheater Bunny #3",
-      "icon": "c-bunny",
-      "coords": [345.5, 433.5]
-    },
-    {
-      "id": "CS4",
-      "name": "Cheater Bunny #4",
-      "icon": "c-bunny",
-      "coords": [257.5, 391.5]
-    },
-    {
-      "id": "CS5",
-      "name": "Cheater Bunny #5",
-      "icon": "c-bunny",
-      "coords": [172.5, 491.5]
-    },
-    {
-      "id": "CS6",
-      "name": "Cheater Bunny #6",
-      "icon": "c-bunny",
-      "coords": [93.5, 435.5]
-    },
-    {
-      "id": "CS7",
-      "name": "Cheater Bunny #7",
-      "icon": "c-bunny",
-      "coords": [39.5, 402.5]
-    },
-    {
-      "id": "CS8",
-      "name": "Cheater Bunny #8",
-      "icon": "c-bunny",
-      "coords": [62.5, 191.5]
-    },
-    {
-      "id": "CS9",
-      "name": "Cheater Bunny #9",
-      "icon": "c-bunny",
-      "coords": [143.5, 454.5]
-    },
-    {
-      "id": "CS10",
-      "name": "Cheaters Ring",
-      "icon": "c-ring",
-      "coords": [224.5, 43.5]
-    }
-  ],
-  "explosive": [
-    ["EXP1", [303.5, 634.5]],
-    ["EXP2", [325.5, 372.5]],
-    ["EXP3", [273.5, 353.5]],
-    ["EXP4", [179.5, 598.5]],
-    ["EXP5", [179.5, 602.5]],
-    ["EXP6", [179.5, 625.5]],
-    ["EXP7", [111.5, 516.5]],
-    ["EXP8", [90.5, 587.5]],
-    ["EXP9", [2.5, 219.5]]
-  ],
-  "berry": [
-    ["BER3", [338.5, 101.5]],
-    ["BER6", [334.5, 219.5]],
-    ["BER7", [338.5, 257.5]],
-    ["BER9", [333.5, 409.5]],
-    ["BER10", [333.5, 431.5]],
-    ["BER11", [347.5, 592.5]],
-    ["BER12", [314.5, 115.5]],
-    ["BER13", [315.5, 129.5]],
-    ["BER15", [312.5, 371.5]],
-    ["BER17", [316.5, 445.5]],
-    ["BER20", [265.5, 31.5]],
-    ["BER21", [294.5, 81.5]],
-    ["BER22", [294.5, 185.5]],
-    ["BER24", [293.5, 282.5]],
-    ["BER25", [289.5, 295.5]],
-    ["BER26", [302.5, 362.5]],
-    ["BER27", [298.5, 463.5]],
-    ["BER28", [289.5, 623.5]],
-    ["BER29", [271.5, 236.5]],
-    ["BER30", [271.5, 401.5]],
-    ["BER31", [279.5, 517.5]],
-    ["BER34", [266.5, 576.5]],
-    ["BER35", [267.5, 586.5]],
-    ["BER37", [258.5, 117.5]],
-    ["BER38", [258.5, 157.5]],
-    ["BER39", [249.5, 234.5]],
-    ["BER43", [229.5, 179.5]],
-    ["BER45", [234.5, 340.5]],
-    ["BER46", [234.5, 372.5]],
-    ["BER47", [235.5, 391.5]],
-    ["BER48", [223.5, 432.5]],
-    ["BER50", [234.5, 522.5]],
-    ["BER52", [236.5, 567.5]],
-    ["BER53", [223.5, 634.5]],
-    ["BER54", [206.5, 11.5]],
-    ["BER56", [201.5, 46.5]],
-    ["BER57", [201.5, 98.5]],
-    ["BER59", [200.5, 142.5]],
-    ["BER60", [201.5, 228.5]],
-    ["BER62", [207.5, 577.5]],
-    ["BER63", [211.5, 603.5]],
-    ["BER64", [189.5, 37.5]],
-    ["BER65", [191.5, 51.5]],
-    ["BER66", [178.5, 62.5]],
-    ["BER67", [181.5, 347.5]],
-    ["BER68", [181.5, 350.5]],
-    ["BER69", [178.5, 508.5]],
-    ["BER70", [165.5, 17.5]],
-    ["BER71", [171.5, 69.5]],
-    ["BER72", [166.5, 117.5]],
-    ["BER74", [171.5, 155.5]],
-    ["BER75", [169.5, 192.5]],
-    ["BER77", [167.5, 323.5]],
-    ["BER78", [157.5, 499.5]],
-    ["BER79", [157.5, 509.5]],
-    ["BER80", [173.5, 531.5]],
-    ["BER81", [157.5, 598.5]],
-    ["BER82", [141.5, 130.5]],
-    ["BER83", [135.5, 470.5]],
-    ["BER84", [134.5, 500.5]],
-    ["BER85", [114.5, 95.5]],
-    ["BER87", [113.5, 395.5]],
-    ["BER89", [111.5, 468.5]],
-    ["BER90", [125.5, 579.5]],
-    ["BER91", [92.5, 487.5]],
-    ["BER92", [102.5, 509.5]],
-    ["BER93", [105.5, 547.5]],
-    ["BER94", [93.5, 563.5]],
-    ["BER95", [104.5, 602.5]],
-    ["BER97", [76.5, 237.5]],
-    ["BER99", [61.5, 287.5]],
-    ["BER100", [46.5, 322.5]],
-    ["BER102", [58.5, 603.5]],
-    ["BER103", [24.5, 93.5]],
-    ["BER104", [35.5, 414.5]],
-    ["BER105", [23.5, 577.5]],
-    ["BER107", [8.5, 596.5]],
-    ["BER108", [19.5, 620.5]]
-  ],
-  "blueberry": [
-    ["BER1", [331.5, 3.5]],
-    ["BER2", [335.5, 32.5]],
-    ["BER4", [331.5, 124.5]],
-    ["BER5", [345.5, 225.5]],
-    ["BER8", [345.5, 357.5]],
-    ["BER14", [311.5, 351.5]],
-    ["BER16", [315.5, 411.5]],
-    ["BER18", [280.5, 37.5]],
-    ["BER19", [265.5, 3.5]],
-    ["BER23", [303.5, 246.5]],
-    ["BER32", [281.5, 565.5]],
-    ["BER33", [281.5, 595.5]],
-    ["BER36", [261.5, 4.5]],
-    ["BER40", [244.5, 340.5]],
-    ["BER41", [255.5, 435.5]],
-    ["BER42", [251.5, 517.5]],
-    ["BER44", [237.5, 322.5]],
-    ["BER49", [223.5, 474.5]],
-    ["BER51", [235.5, 557.5]],
-    ["BER55", [215.5, 37.5]],
-    ["BER58", [202.5, 116.5]],
-    ["BER61", [212.5, 533.5]],
-    ["BER73", [156.5, 81.5]],
-    ["BER76", [157.5, 273.5]],
-    ["BER86", [127.5, 389.5]],
-    ["BER88", [116.5, 431.5]],
-    ["BER96", [72.5, 56.5]],
-    ["BER98", [86.5, 216.5]],
-    ["BER101", [53.5, 361.5]],
-    ["BER106", [2.5, 223.5]],
-    ["BER109", [6.5, 607.5]],
-    ["BER110", [137.5, 74.5]]
-  ],
-  "firecracker": [
-    ["FIR1", [345.5, 157.5]],
-    ["FIR2", [346.5, 234.5]],
-    ["FIR3", [332.5, 243.5]],
-    ["FIR4", [337.5, 601.5]],
-    ["FIR5", [323.5, 288.5]],
-    ["FIR6", [317.5, 388.5]],
-    ["FIR7", [265.5, 23.5]],
-    ["FIR8", [291.5, 47.5]],
-    ["FIR9", [291.5, 48.5]],
-    ["FIR10", [291.5, 49.5]],
-    ["FIR11", [293.5, 279.5]],
-    ["FIR12", [296.5, 370.5]],
-    ["FIR13", [302.5, 387.5]],
-    ["FIR14", [281.5, 201.5]],
-    ["FIR15", [272.5, 331.5]],
-    ["FIR16", [257.5, 135.5]],
-    ["FIR17", [249.5, 155.5]],
-    ["FIR18", [245.5, 150.5]],
-    ["FIR19", [221.5, 86.5]],
-    ["FIR20", [224.5, 133.5]],
-    ["FIR21", [224.5, 152.5]],
-    ["FIR22", [234.5, 151.5]],
-    ["FIR23", [230.5, 133.5]],
-    ["FIR24", [224.5, 183.5]],
-    ["FIR25", [239.5, 197.5]],
-    ["FIR26", [224.5, 398.5]],
-    ["FIR27", [222.5, 542.5]],
-    ["FIR28", [202.5, 495.5]],
-    ["FIR29", [213.5, 549.5]],
-    ["FIR30", [180.5, 412.5]],
-    ["FIR31", [180.5, 419.5]],
-    ["FIR32", [155.5, 335.5]],
-    ["FIR33", [155.5, 338.5]],
-    ["FIR34", [136.5, 177.5]],
-    ["FIR35", [136.5, 179.5]],
-    ["FIR36", [136.5, 181.5]],
-    ["FIR37", [136.5, 183.5]],
-    ["FIR38", [141.5, 486.5]],
-    ["FIR39", [115.5, 167.5]],
-    ["FIR40", [115.5, 169.5]],
-    ["FIR41", [115.5, 182.5]],
-    ["FIR42", [116.5, 190.5]],
-    ["FIR43", [115.5, 205.5]],
-    ["FIR44", [115.5, 219.5]],
-    ["FIR45", [116.5, 238.5]],
-    ["FIR46", [127.5, 387.5]],
-    ["FIR47", [107.5, 361.5]],
-    ["FIR48", [93.5, 404.5]],
-    ["FIR49", [90.5, 454.5]],
-    ["FIR50", [77.5, 406.5]],
-    ["FIR51", [48.5, 237.5]],
-    ["FIR52", [50.5, 287.5]],
-    ["FIR53", [59.5, 348.5]],
-    ["FIR54", [53.5, 358.5]],
-    ["FIR55", [26.5, 277.5]],
-    ["FIR56", [32.5, 285.5]],
-    ["FIR57", [39.5, 324.5]],
-    ["FIR58", [41.5, 340.5]],
-    ["FIR59", [113.5, 558.5]]
-  ],
-  "chinchilla": [
-    ["CHI1", [335.5, 495.5]],
-    ["CHI2", [339.5, 490.5]],
-    ["CHI3", [344.5, 489.5]],
-    ["CHI4", [336.5, 609.5]],
-    ["CHI5", [271.5, 61.5]],
-    ["CHI6", [253.5, 52.5]],
-    ["CHI7", [253.5, 62.5]],
-    ["CHI8", [249.5, 496.5]],
-    ["CHI9", [243.5, 485.5]],
-    ["CHI10", [254.5, 539.5]],
-    ["CHI11", [221.5, 498.5]],
-    ["CHI12", [231.5, 584.5]],
-    ["CHI13", [223.5, 584.5]],
-    ["CHI14", [236.5, 615.5]],
-    ["CHI15", [202.5, 210.5]],
-    ["CHI16", [205.5, 230.5]],
-    ["CHI17", [209.5, 232.5]],
-    ["CHI18", [208.5, 638.5]]
-  ],
-  "bubbleBird": [
-    ["BIR1", [342.5, 504.5]],
-    ["BIR2", [295.5, 509.5]],
-    ["BIR3", [271.5, 605.5]],
-    ["BIR4", [209.5, 389.5]],
-    ["BIR5", [213.5, 422.5]],
-    ["BIR6", [127.5, 55.5]],
-    ["BIR7", [73.5, 272.5]]
-  ],
-  "squirrel": [
-    ["SQR1", [95.5,235.5]],
-    ["SQR2", [140.5,242.5]],
-    ["SQR3", [180.5,291.5]],
-    ["SQR4", [225.5,293.5]],
-    ["SQR5", [213.5,552.5]],
-    ["SQR6", [116.5,486.5]],
-    ["SQR7", [68.5,557.5]],
-    ["SQR8", [120.5,77.5]],
-    ["SQR9", [311.5,296.5]],
-    ["SQR10", [3.5,283.5]],
-    ["SQR11", [28.5,246.5]],
-    ["SQR12", [38.5,226.5]],
-    ["SQR13", [162.5,359.5]]
-  ],
-  "yellowFlower": [
-    ["YFL1", [315.5,119.5]],
-    ["YFL2", [315.5,121.5]],
-    ["YFL3", [249.5,220.5]],
-    ["YFL4", [249.5,224.5]],
-    ["YFL5", [248.5,210.5]],
-    ["YFL6", [254.5,198.5]],
-    ["YFL7", [246.5,240.5]],
-    ["YFL8", [224.5,202.5]],
-    ["YFL9", [180.5,78.5]],
-    ["YFL10", [180.5,82.5]],
-    ["YFL11", [180.5,84.5]],
-    ["YFL12", [108.5,112.5]],
-    ["YFL13", [28.5,96.5]],
-    ["YFL14", [2.5,267.5]],
-    ["YFL15", [3.5,321.5]],
-    ["YFL16", [4.5,236.5]],
-    ["YFL17", [82.5,245.5]],
-    ["YFL18", [120.5,245.5]],
-    ["YFL19", [127.5,245.5]],
-    ["YFL20", [134.5,252.5]],
-    ["YFL21", [135.5,257.5]],
-    ["YFL22", [135.5,266.5]],
-    ["YFL23", [140.5,239.5]],
-    ["YFL24", [135.5,280.5]],
-    ["YFL25", [182.5,160.5]],
-    ["YFL26", [113.5,391.5]],
-    ["YFL27", [113.5,396.5]],
-    ["YFL28", [112.5,402.5]],
-    ["YFL29", [180.5,356.5]],
-    ["YFL30", [179.5,367.5]],
-    ["YFL31", [179.5,394.5]],
-    ["YFL32", [179.5,400.5]],
-    ["YFL33", [335.5,438.5]],
-    ["YFL34", [332.5,481.5]],
-    ["YFL35", [292.5,457.5]],
-    ["YFL36", [292.5,459.5]],
-    ["YFL37", [293.5,461.5]],
-    ["YFL38", [293.5,465.5]],
-    ["YFL39", [287.5,470.5]],
-    ["YFL40", [287.5,466.5]],
-    ["YFL41", [287.5,461.5]],
-    ["YFL42", [287.5,458.5]],
-    ["YFL43", [287.5,455.5]],
-    ["YFL44", [293.5,438.5]],
-    ["YFL45", [294.5,480.5]],
-    ["YFL46", [272.5,475.5]],
-    ["YFL47", [274.5,565.5]],
-    ["YFL48", [267.5,559.5]],
-    ["YFL49", [268.5,570.5]],
-    ["YFL50", [267.5,573.5]],
-    ["YFL51", [266.5,582.5]],
-    ["YFL52", [273.5,593.5]],
-    ["YFL53", [256.5,577.5]],
-    ["YFL54", [256.5,579.5]],
-    ["YFL55", [256.5,581.5]],
-    ["YFL56", [136.5,507.5]],
-    ["YFL57", [135.5,505.5]],
-    ["YFL58", [138.5,516.5]],
-    ["YFL59", [139.5,520.5]],
-    ["YFL60", [140.5,522.5]],
-    ["YFL61", [138.5,525.5]],
-    ["YFL62", [143.5,478.5]],
-    ["YFL63", [44.5,408.5]],
-    ["YFL64", [35.5,440.5]],
-    ["YFL65", [15.5,598.5]],
-    ["YFL66", [24.5,595.5]],
-    ["YFL67", [8.5,594.5]],
-    ["YFL68", [64.5,621.5]],
-    ["YFL69", [88.5,618.5]],
-    ["YFL70", [74.5,632.5]]
-  ],
-  "pinkFlower": [
-    ["PFL1", [251.5,73.5]],
-    ["PFL2", [251.5,75.5]],
-    ["PFL3", [251.5,76.5]],
-    ["PFL4", [253.5,77.5]],
-    ["PFL5", [256.5,78.5]],
-    ["PFL6", [223.5,476.5]],
-    ["PFL7", [223.5,478.5]],
-    ["PFL8", [223.5,472.5]],
-    ["PFL9", [202.5,480.5]],
-    ["PFL10", [202.5,573.5]],
-    ["PFL11", [203.5,579.5]],
-    ["PFL12", [208.5,574.5]],
-    ["PFL13", [211.5,581.5]],
-    ["PFL14", [204.5,582.5]],
-    ["PFL15", [205.5,590.5]],
-    ["PFL16", [213.5,601.5]],
-    ["PFL17", [204.5,621.5]],
-    ["PFL18", [214.5,628.5]],
-    ["PFL19", [223.5,627.5]],
-    ["PFL20", [223.5,625.5]],
-    ["PFL21", [222.5,623.5]],
-    ["PFL22", [222.5,620.5]],
-    ["PFL23", [224.5,606.5]],
-    ["PFL24", [224.5,604.5]],
-    ["PFL25", [245.5,627.5]],
-    ["PFL26", [245.5,611.5]],
-    ["PFL27", [245.5,604.5]],
-    ["PFL28", [267.5,611.5]],
-    ["PFL29", [267.5,629.5]],
-    ["PFL30", [262.5,634.5]],
-    ["PFL31", [289.5,625.5]],
-    ["PFL32", [289.5,609.5]],
-    ["PFL33", [289.5,603.5]],
-    ["PFL34", [293.5,557.5]],
-    ["PFL35", [288.5,490.5]],
-    ["PFL36", [347.5,585.5]],
-    ["PFL37", [347.5,582.5]],
-    ["PFL38", [334.5,512.5]],
-    ["PFL39", [347.5,497.5]],
-    ["PFL40", [338.5,265.5]],
-    ["PFL41", [338.5,255.5]],
-    ["PFL42", [338.5,246.5]],
-    ["PFL43", [338.5,104.5]],
-    ["PFL44", [338.5,108.5]],
-    ["PFL46", [289.5,615.5]],
-    ["PFL47", [289.5,618.5]],
-    ["PFL48", [289.5,619.5]],
-    ["PFL49", [291.5,473.5]],
-    ["PFL50", [296.5,471.5]],
-    ["PFL51", [292.5,468.5]],
-    ["PFL52", [293.5,453.5]],
-    ["PFL53", [292.5,456.5]],
-    ["PFL54", [293.5,450.5]],
-    ["PFL55", [292.5,448.5]],
-    ["PFL56", [298.5,428.5]],
-    ["PFL57", [295.5,430.5]],
-    ["PFL58", [298.5,424.5]],
-    ["PFL59", [298.5,421.5]],
-    ["PFL60", [294.5,405.5]],
-    ["PFL61", [269.5,517.5]],
-    ["PFL62", [282.5,530.5]],
-    ["PFL63", [283.5,533.5]],
-    ["PFL64", [283.5,535.5]],
-    ["PFL65", [282.5,540.5]],
-    ["PFL66", [282.5,544.5]],
-    ["PFL67", [282.5,546.5]],
-    ["PFL68", [268.5,588.5]],
-    ["PFL69", [275.5,594.5]],
-    ["PFL70", [271.5,592.5]],
-    ["PFL71", [245.5,543.5]],
-    ["PFL72", [228.5,45.5]],
-    ["PFL73", [223.5,419.5]],
-    ["PFL74", [223.5,428.5]],
-    ["PFL75", [223.5,434.5]],
-    ["PFL76", [223.5,564.5]],
-    ["PFL77", [210.5,459.5]],
-    ["PFL78", [208.5,465.5]],
-    ["PFL79", [203.5,421.5]],
-    ["PFL80", [203.5,407.5]],
-    ["PFL81", [203.5,433.5]],
-    ["PFL82", [206.5,445.5]],
-    ["PFL83", [210.5,463.5]],
-    ["PFL84", [165.5,381.5]],
-    ["PFL85", [171.5,379.5]],
-    ["PFL86", [174.5,377.5]],
-    ["PFL87", [167.5,376.5]],
-    ["PFL88", [161.5,373.5]],
-    ["PFL89", [160.5,391.5]],
-    ["PFL90", [160.5,365.5]],
-    ["PFL91", [159.5,348.5]],
-    ["PFL92", [158.5,341.5]],
-    ["PFL93", [161.5,336.5]],
-    ["PFL94", [160.5,330.5]],
-    ["PFL95", [168.5,329.5]],
-    ["PFL96", [168.5,320.5]],
-    ["PFL97", [135.5,206.5]],
-    ["PFL98", [134.5,254.5]],
-    ["PFL99", [149.5,278.5]],
-    ["PFL100", [149.5,284.5]],
-    ["PFL101", [148.5,238.5]],
-    ["PFL102", [149.5,244.5]],
-    ["PFL103", [124.5,274.5]],
-    ["PFL104", [114.5,274.5]],
-    ["PFL105", [112.5,271.5]],
-    ["PFL106", [113.5,264.5]],
-    ["PFL107", [92.5,194.5]],
-    ["PFL108", [94.5,209.5]],
-    ["PFL109", [93.5,223.5]],
-    ["PFL110", [94.5,230.5]],
-    ["PFL111", [95.5,234.5]],
-    ["PFL112", [95.5,235.5]],
-    ["PFL113", [95.5,239.5]],
-    ["PFL114", [94.5,245.5]],
-    ["PFL115", [101.5,259.5]],
-    ["PFL116", [100.5,402.5]],
-    ["PFL117", [90.5,402.5]],
-    ["PFL118", [87.5,403.5]],
-    ["PFL119", [70.5,272.5]],
-    ["PFL120", [72.5,260.5]],
-    ["PFL121", [74.5,259.5]],
-    ["PFL122", [77.5,258.5]],
-    ["PFL123", [71.5,251.5]],
-    ["PFL124", [71.5,250.5]],
-    ["PFL125", [81.5,246.5]],
-    ["PFL126", [31.5,27.5]],
-    ["PFL127", [30.5,25.5]],
-    ["PFL128", [24.5,16.5]],
-    ["PFL129", [8.5,11.5]],
-    ["PFL130", [6.5,13.5]],
-    ["PFL131", [10.5,17.5]],
-    ["PFL132", [10.5,18.5]],
-    ["PFL133", [10.5,20.5]],
-    ["PFL134", [10.5,21.5]]
-  ],
-  "brownMushroom": [
-    ["BRM1", [12.5,5.5]],
-    ["BRM2", [12.5,29.5]],
-    ["BRM3", [2.5,366.5]],
-    ["BRM4", [3.5,391.5]],
-    ["BRM5", [28.5,413.5]],
-    ["BRM6", [49.5,483.5]],
-    ["BRM7", [47.5,491.5]],
-    ["BRM8", [48.5,513.5]],
-    ["BRM9", [49.5,516.5]],
-    ["BRM10", [50.5,518.5]],
-    ["BRM11", [80.5,278.5]],
-    ["BRM12", [93.5,207.5]],
-    ["BRM13", [92.5,527.5]],
-    ["BRM14", [92.5,544.5]],
-    ["BRM15", [98.5,558.5]],
-    ["BRM16", [116.5,409.5]],
-    ["BRM17", [136.5,212.5]],
-    ["BRM18", [150.5,473.5]],
-    ["BRM19", [142.5,469.5]],
-    ["BRM20", [134.5,503.5]],
-    ["BRM21", [137.5,530.5]],
-    ["BRM22", [136.5,554.5]],
-    ["BRM23", [135.5,549.5]],
-    ["BRM24", [178.5,534.5]],
-    ["BRM25", [178.5,555.5]],
-    ["BRM26", [178.5,557.5]],
-    ["BRM27", [179.5,595.5]],
-    ["BRM28", [191.5,595.5]],
-    ["BRM29", [188.5,609.5]],
-    ["BRM30", [190.5,619.5]],
-    ["BRM31", [179.5,621.5]],
-    ["BRM32", [179.5,635.5]],
-    ["BRM33", [184.5,638.5]],
-    ["BRM34", [208.5,634.5]],
-    ["BRM35", [208.5,629.5]],
-    ["BRM36", [204.5,617.5]],
-    ["BRM37", [201.5,227.5]],
-    ["BRM38", [201.5,222.5]],
-    ["BRM39", [201.5,221.5]],
-    ["BRM40", [222.5,617.5]],
-    ["BRM41", [246.5,436.5]],
-    ["BRM42", [244.5,421.5]],
-    ["BRM43", [249.5,417.5]],
-    ["BRM44", [276.5,387.5]],
-    ["BRM45", [276.5,391.5]],
-    ["BRM46", [276.5,392.5]],
-    ["BRM47", [276.5,393.5]],
-    ["BRM48", [270.5,483.5]],
-    ["BRM49", [269.5,520.5]],
-    ["BRM50", [291.5,597.5]],
-    ["BRM51", [289.5,591.5]],
-    ["BRM52", [292.5,568.5]],
-    ["BRM53", [288.5,551.5]],
-    ["BRM54", [288.5,539.5]],
-    ["BRM55", [287.5,525.5]],
-    ["BRM56", [309.5,525.5]],
-    ["BRM57", [310.5,565.5]],
-    ["BRM58", [310.5,591.5]],
-    ["BRM59", [323.5,610.5]],
-    ["BRM60", [323.5,626.5]],
-    ["BRM61", [336.5,564.5]],
-    ["BRM62", [334.5,509.5]],
-    ["BRM63", [332.5,472.5]],
-    ["BRM64", [331.5,467.5]],
-    ["BRM65", [333.5,433.5]],
-    ["BRM66", [333.5,428.5]],
-    ["BRM67", [333.5,411.5]],
-    ["BRM68", [333.5,407.5]],
-    ["BRM69", [334.5,409.5]],
-    ["BRM70", [348.5,415.5]],
-    ["BRM71", [348.5,419.5]],
-    ["BRM72", [348.5,422.5]],
-    ["BRM73", [348.5,423.5]],
-    ["BRM74", [348.5,416.5]],
-    ["BRM75", [223.5,502.5]],
-    ["BRM76", [223.5,500.5]],
-    ["BRM77", [231.5,500.5]],
-    ["BRM78", [230.5,494.5]],
-    ["BRM79", [229.5,511.5]],
-    ["BRM80", [223.5,629.5]],
-    ["BRM81", [139.5,557.5]],
-    ["BRM82", [139.5,524.5]],
-    ["BRM83", [8.5,10.5]],
-    ["BRM84", [32.5,30.5]],
-    ["BRM85", [223.5,496.5]]
-  ],
-  "tulip": [
-    ["TUL1", [332.5,9.5]],
-    ["TUL2", [332.5,13.5]],
-    ["TUL3", [332.5,21.5]],
-    ["TUL4", [332.5,26.5]],
-    ["TUL5", [331.5,58.5]],
-    ["TUL6", [338.5,100.5]],
-    ["TUL7", [338.5,105.5]],
-    ["TUL8", [221.5,498.5]],
-    ["TUL9", [223.5,405.5]],
-    ["TUL10", [229.5,180.5]],
-    ["TUL11", [223.5,156.5]],
-    ["TUL12", [227.5,31.5]],
-    ["TUL13", [138.5,326.5]],
-    ["TUL14", [134.5,285.5]],
-    ["TUL15", [116.5,470.5]],
-    ["TUL16", [112.5,470.5]],
-    ["TUL17", [116.5,443.5]],
-    ["TUL18", [146.5,320.5]],
-    ["TUL19", [95.5,406.5]],
-    ["TUL20", [103.5,405.5]],
-    ["TUL21", [93.5,231.5]],
-    ["TUL22", [93.5,222.5]],
-    ["TUL23", [93.5,216.5]],
-    ["TUL24", [94.5,205.5]],
-    ["TUL25", [3.5,395.5]],
-    ["TUL26", [3.5,386.5]],
-    ["TUL27", [3.5,367.5]],
-    ["TUL28", [2.5,364.5]],
-    ["TUL29", [338.5,109.5]],
-    ["TUL30", [289.5,605.5]],
-    ["TUL31", [102.5,256.5]],
-    ["TUL32", [78.5,401.5]],
-    ["TUL33", [142.5,468.5]],
-    ["TUL34", [201.5,224.5]]
-  ],
-  "swirlyPlant": [
-    ["SWI1", [333.5,335.5]],
-    ["SWI2", [333.5,345.5]],
-    ["SWI3", [328.5,453.5]],
-    ["SWI4", [328.5,447.5]],
-    ["SWI5", [339.5,456.5]],
-    ["SWI6", [339.5,462.5]],
-    ["SWI7", [343.5,461.5]],
-    ["SWI8", [343.5,457.5]],
-    ["SWI9", [328.5,473.5]],
-    ["SWI10", [310.5,558.5]],
-    ["SWI11", [310.5,556.5]],
-    ["SWI12", [310.5,527.5]],
-    ["SWI13", [313.5,440.5]],
-    ["SWI14", [300.5,398.5]],
-    ["SWI15", [300.5,401.5]],
-    ["SWI16", [302.5,487.5]],
-    ["SWI17", [302.5,497.5]],
-    ["SWI18", [290.5,502.5]],
-    ["SWI19", [302.5,539.5]],
-    ["SWI20", [301.5,541.5]],
-    ["SWI21", [281.5,459.5]],
-    ["SWI22", [282.5,455.5]],
-    ["SWI23", [282.5,448.5]],
-    ["SWI24", [281.5,435.5]],
-    ["SWI25", [282.5,431.5]],
-    ["SWI26", [281.5,423.5]],
-    ["SWI27", [282.5,416.5]],
-    ["SWI28", [283.5,414.5]],
-    ["SWI29", [249.5,257.5]],
-    ["SWI30", [249.5,265.5]],
-    ["SWI31", [244.5,409.5]],
-    ["SWI32", [244.5,411.5]],
-    ["SWI33", [243.5,412.5]],
-    ["SWI34", [244.5,417.5]],
-    ["SWI35", [244.5,420.5]],
-    ["SWI36", [243.5,426.5]],
-    ["SWI37", [243.5,431.5]],
-    ["SWI38", [260.5,423.5]],
-    ["SWI39", [262.5,418.5]],
-    ["SWI40", [261.5,432.5]],
-    ["SWI41", [223.5,557.5]],
-    ["SWI42", [223.5,555.5]],
-    ["SWI43", [223.5,547.5]],
-    ["SWI44", [230.5,548.5]],
-    ["SWI45", [231.5,553.5]],
-    ["SWI46", [235.5,555.5]],
-    ["SWI47", [238.5,549.5]],
-    ["SWI48", [230.5,537.5]],
-    ["SWI49", [225.5,534.5]],
-    ["SWI50", [225.5,536.5]],
-    ["SWI51", [223.5,554.5]],
-    ["SWI52", [226.5,526.5]],
-    ["SWI53", [225.5,528.5]],
-    ["SWI54", [235.5,529.5]],
-    ["SWI55", [238.5,525.5]],
-    ["SWI56", [239.5,532.5]],
-    ["SWI57", [225.5,280.5]],
-    ["SWI58", [224.5,256.5]],
-    ["SWI59", [224.5,264.5]],
-    ["SWI60", [135.5,591.5]],
-    ["SWI61", [135.5,570.5]],
-    ["SWI62", [140.5,575.5]],
-    ["SWI63", [140.5,584.5]],
-    ["SWI64", [147.5,577.5]],
-    ["SWI65", [139.5,340.5]],
-    ["SWI66", [139.5,336.5]],
-    ["SWI67", [137.5,323.5]],
-    ["SWI68", [143.5,324.5]],
-    ["SWI69", [135.5,302.5]],
-    ["SWI70", [135.5,288.5]],
-    ["SWI71", [137.5,316.5]],
-    ["SWI72", [137.5,312.5]],
-    ["SWI73", [137.5,308.5]],
-    ["SWI74", [138.5,305.5]],
-    ["SWI75", [137.5,302.5]],
-    ["SWI76", [140.5,297.5]],
-    ["SWI77", [137.5,293.5]],
-    ["SWI78", [137.5,289.5]],
-    ["SWI79", [137.5,286.5]],
-    ["SWI80", [115.5,231.5]],
-    ["SWI81", [116.5,225.5]],
-    ["SWI82", [116.5,449.5]],
-    ["SWI83", [116.5,459.5]],
-    ["SWI84", [116.5,475.5]],
-    ["SWI85", [116.5,481.5]],
-    ["SWI86", [127.5,480.5]],
-    ["SWI87", [121.5,520.5]],
-    ["SWI88", [113.5,527.5]],
-    ["SWI89", [89.5,307.5]],
-    ["SWI90", [89.5,299.5]],
-    ["SWI91", [89.5,293.5]],
-    ["SWI92", [89.5,284.5]],
-    ["SWI93", [28.5,239.5]],
-    ["SWI94", [28.5,243.5]],
-    ["SWI95", [27.5,247.5]],
-    ["SWI96", [26.5,278.5]],
-    ["SWI97", [26.5,283.5]],
-    ["SWI98", [156.5,108.5]],
-    ["SWI99", [156.5,105.5]],
-    ["SWI100", [155.5,117.5]],
-    ["SWI101", [261.5,409.5]]
   ]
 }

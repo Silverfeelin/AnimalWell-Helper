@@ -43,141 +43,27 @@
       </button>
     </div>
   </div>
-  <!-- Exploration -->
-  <div class="sidebar-section">
-    <h2 class="sidebar-marker-group">
-      <span (click)="toggleMarkerLayers('item', 'telephone', 'key', 'door', 'teleporter', 'pipe', 'flame', 'explosive')">
-        Exploration
-      </span>
-    </h2>
-    <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="markerLayersVisible['item']" (click)="toggleMarkerLayers('item')">
-        <span class="material-symbols-outlined">star</span>&nbsp;
-        <span>Items ({{ markerLayersCount['item']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['telephone']" (click)="toggleMarkerLayers('telephone')">
-        <span class="material-symbols-outlined">phone</span>&nbsp;
-        <span>Telephones ({{ markerLayersCount['telephone']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['key']" (click)="toggleMarkerLayers('key')">
-        <span class="material-symbols-outlined">key</span>&nbsp;
-        <span>Keys ({{ markerLayersCount['key']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['door']" (click)="toggleMarkerLayers('door')">
-        <span class="material-symbols-outlined">door_front</span>&nbsp;
-        <span>Doors ({{ markerLayersCount['door']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['teleporter']" (click)="toggleMarkerLayers('teleporter')">
-        <span class="material-symbols-outlined">flight</span>&nbsp;
-        <span>Teleporters ({{ markerLayersCount['teleporter']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['pipe']" (click)="toggleMarkerLayers('pipe')">
-        <span class="material-symbols-outlined">valve</span>&nbsp;
-        <span>Pipes ({{ markerLayersCount['pipe']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['flame']" (click)="toggleMarkerLayers('flame')">
-        <span class="material-symbols-outlined">local_fire_department</span>&nbsp;
-        <span>Flames ({{ markerLayersCount['flame']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['explosive']" (click)="toggleMarkerLayers('explosive')">
-        <span class="material-symbols-outlined">destruction</span>&nbsp;
-        <span>Explosives ({{ markerLayersCount['explosive']}})</span>
-      </button>
-    </div>
-  </div>
-  <!-- Late game-->
-  <div class="sidebar-section">
-    <h2 class="sidebar-marker-group">
-      <span (click)="toggleMarkerLayers('egg', 'match', 'candle', 'medal', 'bunny', 'totem')">
-        Late game
-      </span>
-    </h2>
-    <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="markerLayersVisible['egg']" (click)="toggleMarkerLayers('egg')">
-        <span class="material-symbols-outlined">egg</span>&nbsp;
-        <span>Eggs ({{ markerLayersCount['egg']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['candle']" (click)="toggleMarkerLayers('match', 'candle')">
-        <span class="material-symbols-outlined">candle</span>&nbsp;
-        <span>Candles (9)</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['medal']" (click)="toggleMarkerLayers('medal')">
-        <span class="material-symbols-outlined">workspace_premium</span>&nbsp;
-        <span>Medals ({{ markerLayersCount['medal']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['totem']" (click)="toggleMarkerLayers('totem')">
-        <span class="material-symbols-outlined">skull</span>&nbsp;
-        <span>Totems ({{ markerLayersCount['totem']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['bunny']" (click)="toggleMarkerLayers('bunny')">
-        <span class="material-symbols-outlined">cruelty_free</span>&nbsp;
-        <span>Bunnies (16)</span>
-      </button>
-    </div>
-  </div>
-  <!-- Other -->
-  <div class="sidebar-section">
-    <h2 class="sidebar-marker-group">
-      <span (click)="toggleMarkerLayers('berry', 'blueberry', 'firecracker', 'chinchilla', 'bubbleBird', 'squirrel', 'cheatSecret')">
-        Other
-      </span>
-    </h2>
-    <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="markerLayersVisible['berry']" (click)="toggleMarkerLayers('berry', 'blueberry')">
-        <span class="material-symbols-outlined">nutrition</span>&nbsp;
-        <span>Berries ({{ markerLayersCount['berry'] + markerLayersCount['blueberry'] }})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['firecracker']" (click)="toggleMarkerLayers('firecracker')">
-        <span class="material-symbols-outlined">light_mode</span>&nbsp;
-        <span>Firecrackers ({{ markerLayersCount['firecracker']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['chinchilla']" (click)="toggleMarkerLayers('chinchilla')">
-        <span class="material-symbols-outlined">pets</span>&nbsp;
-        <span>Chinchillas ({{ markerLayersCount['chinchilla']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['bubbleBird']" (click)="toggleMarkerLayers('bubbleBird')">
-        <span class="material-symbols-outlined">raven</span>&nbsp;
-        <span>Bubble Birds ({{ markerLayersCount['bubbleBird']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['squirrel']" (click)="toggleMarkerLayers('squirrel')">
-        <span class="material-symbols-outlined">pets</span>&nbsp;
-        <span>Squirrels ({{ markerLayersCount['squirrel']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['cheatSecret']" (click)="toggleMarkerLayers('cheatSecret')">
-        <span class="material-symbols-outlined">joystick</span>&nbsp;
-        <span>Cheat/Exploit ({{ markerLayersCount['cheatSecret']}})</span>
-      </button>
-    </div>
-  </div>
-  <!-- Mysteries -->
-  <div class="sidebar-section">
-    <h2 class="sidebar-marker-group">
-      Mysteries
-    </h2>
 
-    <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="markerLayersVisible['yellowFlower']" (click)="toggleMarkerLayers('yellowFlower')">
-        <span class="material-symbols-outlined">deceased</span>&nbsp;
-        <span>Yellow flowers ({{ markerLayersCount['yellowFlower']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['pinkFlower']" (click)="toggleMarkerLayers('pinkFlower')">
-        <span class="material-symbols-outlined">deceased</span>&nbsp;
-        <span>Pink flowers ({{ markerLayersCount['pinkFlower']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['tulip']" (click)="toggleMarkerLayers('tulip')">
-        <span class="material-symbols-outlined">deceased</span>&nbsp;
-        <span>Tulips ({{ markerLayersCount['tulip']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['brownMushroom']" (click)="toggleMarkerLayers('brownMushroom')">
-        <span class="material-symbols-outlined">grain</span>&nbsp;
-        <span>Brown mushrooms ({{ markerLayersCount['brownMushroom']}})</span>
-      </button>
-      <button type="button" [class.border-active]="markerLayersVisible['swirlyPlant']" (click)="toggleMarkerLayers('swirlyPlant')">
-        <span class="material-symbols-outlined">park</span>&nbsp;
-        <span>Swirly plants ({{ markerLayersCount['swirlyPlant']}})</span>
-      </button>
+  <!-- Sidebar markers per section -->
+  @for (section of markerSections; track $index) {
+    <div class="sidebar-section">
+      <h2 class="sidebar-marker-group">
+        <span (click)="toggleMarkerSection(section)">
+          {{ section.name }}
+        </span>
+      </h2>
+      <div class="flex flex-wrap">
+        @for (group of section.groups; track group.name) {
+          <button type="button" [class.border-active]="markerLayersVisible[group.name]" (click)="toggleMarkerLayers(group.name)">
+            @if (group.labelIcon) { <span class="material-symbols-outlined">{{group.labelIcon}}</span>&nbsp; }
+            <span>{{ group.label }}</span>&nbsp;<span>({{ group.markerCount ?? markerLayersCount[group.name] }})</span>
+          </button>
+        }
+      </div>
     </div>
-  </div>
+  }
+
+  <!-- Custom markers -->
   @if (map) {
     <div class="sidebar-section">
       <h2>Custom</h2>
