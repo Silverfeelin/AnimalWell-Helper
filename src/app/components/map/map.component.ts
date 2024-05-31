@@ -304,7 +304,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const gridCoordLayer = L.layerGroup();
     for (let x = 0; x < MapHelper.tilesX; x++) {
       L.tooltip({
-        content: String.fromCharCode(65 + x),
+        content: `${String.fromCharCode(65 + x)}`,
         className: 'leaflet-tooltip-border',
         direction: 'top',
         permanent: true
@@ -312,7 +312,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }
     for (let y = 0; y < MapHelper.tilesY; y++) {
       L.tooltip({
-        content: String(y + 1),
+        content: `${y + 1}`,
         className: 'leaflet-tooltip-border',
         direction: 'left',
         permanent: true
@@ -332,9 +332,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       if (!this.mapLayers.coords.visible) { return; }
       const x = Math.floor(event.latlng.lng / MapHelper.mapTileWidth);
       const y = Math.floor(event.latlng.lat / MapHelper.mapTileHeight);
+      const rx = x + 2;
+      const ry = 19 - y;
       coordTooltip.setOpacity(x < 0 || x > 15 || y < 0 || y > 15 ? 0 : 1);
       const xChar = String.fromCharCode(65 + x);
-      coordTooltip.setContent(`${xChar}${16 - y}`);
+      coordTooltip.setContent(`${xChar}${16 - y} (${rx},${ry})`);
       coordTooltip.setLatLng([(y+1) * MapHelper.mapTileHeight, (x + 0.5) * MapHelper.mapTileWidth]);
     });
 
