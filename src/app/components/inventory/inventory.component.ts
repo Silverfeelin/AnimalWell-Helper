@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 interface IItem {
   name: string;
@@ -18,6 +18,8 @@ interface IFlame {
   styleUrl: './inventory.component.scss'
 })
 export class InventoryComponent {
+  @Input() showFlames = true;
+
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   items: Array<IItem> = [

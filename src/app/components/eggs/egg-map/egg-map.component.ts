@@ -7,6 +7,8 @@ import { IEgg } from '../egg.interface';
 import { MapHelper } from '@src/app/helpers/map-helper';
 import { Router } from '@angular/router';
 import { MapEventService } from '@src/app/services/map-event.service';
+import { INode } from '../../map/node.interface';
+import { DataService } from '@src/app/services/data.service';
 
 interface ITile {
   x: number;
@@ -33,10 +35,12 @@ export class EggMapComponent implements AfterViewInit, OnDestroy {
   map!: L.Map;
   tiles: Array<Array<ITile>> = [];
   eggMarkers: { [key: string]: { tile: ITile, marker: L.Marker } } = {};
+  nodes: Array<INode> = this._dataService.getNodes();
 
   private readonly _subscriptions: Array<SubscriptionLike> = [];
 
   constructor(
+    private readonly _dataService: DataService,
     private readonly _eventService: EventService,
     private readonly _mapEventService: MapEventService,
     private readonly _router: Router,

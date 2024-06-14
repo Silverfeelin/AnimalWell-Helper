@@ -1,5 +1,5 @@
-<div class="inventory margin">
-  <img class="img-inventory" src="/assets/game/inventory.png">
+<div class="inventory">
+  <img class="img-inventory" src="/assets/game/inventory.png" style="user-select: none;">
 
   <div class="item-grid">
     @for (item of items; track $index) {
@@ -9,7 +9,7 @@
 
   <div class="flames-grid">
     @for (flame of flames; track $index) {
-      <div class="flame-block" [class.obtained]="flame.obtained" (click)="toggleObtained(flame)"></div>
+      <div class="flame-block" [class.obtained]="flame.obtained" [class.flame-hidden]="!showFlames" (click)="toggleObtained(flame)"></div>
     }
   </div>
 </div>

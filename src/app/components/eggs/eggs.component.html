@@ -1,6 +1,13 @@
 <div class="">
-  <!-- <app-inventory></app-inventory> -->
-  <app-egg-shrine [eggs]="eggs"></app-egg-shrine>
+  <div class="container border d-block mb">
+    <h1 class="m-0">Inventory</h1>
+    </div>
+  <div class="mt">
+    <app-inventory [showFlames]="false"></app-inventory>
+  </div>
+  <div class="mt">
+    <app-egg-shrine [eggs]="eggs"></app-egg-shrine>
+  </div>
   <div class="mt">
     <app-egg-map [eggs]="eggs"></app-egg-map>
   </div>

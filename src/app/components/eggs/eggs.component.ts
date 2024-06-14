@@ -3,11 +3,13 @@ import { EggMapComponent } from './egg-map/egg-map.component';
 import { EggShrineComponent } from './egg-shrine/egg-shrine.component';
 import { DataService } from '@src/app/services/data.service';
 import { IEgg } from './egg.interface';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-eggs',
   standalone: true,
   imports: [
+    InventoryComponent,
     EggShrineComponent,
     EggMapComponent
   ],

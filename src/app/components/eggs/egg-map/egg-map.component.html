@@ -6,19 +6,40 @@
   <div class="flex flex-column">
     <div class="flex flex-wrap">
       <div class="flex flex-wrap">
-        <button (click)="navigateToMap()">Go to full map (spoiler warning)</button>
+        <button (click)="navigateToMap()">
+          <span class="material-symbols-outlined">map</span>&nbsp;
+          Go to full map (spoiler warning)
+        </button>
       </div>
     </div>
     <div class="flex flex-wrap">
       <div class="flex flex-wrap">
-        <button (click)="showAll()">Show all tiles</button>
-        <button (click)="hideAll()">Hide all tiles</button>
+        <button (click)="showAll()">
+          <span class="material-symbols-outlined">grid_on</span>&nbsp;
+          Show all tiles
+        </button>
+        <button (click)="hideAll()">
+          <span class="material-symbols-outlined">grid_off</span>&nbsp;
+          Hide all tiles
+        </button>
       </div>
       <div class="flex flex-wrap">
-        <button (click)="showTileEggs()">Show eggs in visible tiles</button>
-        <button (click)="showEggTiles()">Show tiles with found eggs</button>
-        <button (click)="showAllEggs()">Show all eggs</button>
-        <button (click)="hideAllEggs()">Hide all eggs</button>
+        <button (click)="showEggTiles()">
+          <span class="material-symbols-outlined">ev_shadow</span>&nbsp;
+          Show tiles with found eggs
+        </button>
+        <button (click)="showTileEggs()">
+          <span class="material-symbols-outlined">ev_shadow</span>&nbsp;
+          Show eggs in visible tiles
+        </button>
+        <button (click)="showAllEggs()">
+          <span class="material-symbols-outlined">egg</span>&nbsp;
+          Show all eggs
+        </button>
+        <button (click)="hideAllEggs()">
+          <span class="material-symbols-outlined">egg</span>&nbsp;
+          Hide all eggs
+        </button>
       </div>
     </div>
   </div>

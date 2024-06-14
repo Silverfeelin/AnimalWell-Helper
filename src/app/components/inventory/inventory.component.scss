@@ -44,6 +44,12 @@
   border: 1px solid #f00;
 }
 
+.flame-hidden {
+  background-color: #000 !important;
+  border: 0 !important;
+  cursor: default !important;
+}
+
 .obtained {
   border-color: #0f0;
   background-color: transparent;
