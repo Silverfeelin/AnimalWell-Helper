@@ -5,19 +5,26 @@
   <!-- Map layer -->
   <div class="sidebar-section">
     <h2 class="sidebar-marker-group">Map layer</h2>
-    <div class="flex flex-wrap">
-      <button type="button" [class.border-active]="mapLayers['map'].visible" (click)="showMapLayer('map')">
-        <span class="material-symbols-outlined">map</span>&nbsp;
-        <span>Map</span>
-      </button>
-      <button type="button" [class.border-active]="mapLayers['border'].visible" (click)="showMapLayer('border')">
-        <span class="material-symbols-outlined">border_style</span>&nbsp;
-        <span>Borders</span>
-      </button>
-      <button type="button" [class.border-active]="mapLayers['coords'].visible" (click)="showMapLayer('coords')">
-        <span class="material-symbols-outlined">numbers</span>&nbsp;
-        <span>Coordinates</span>
-      </button>
+    <div class="flex flex-column">
+      <div class="flex flex-wrap">
+        <button type="button" [class.border-active]="mapLayers['map'].visible" (click)="showMapLayer('map')">
+          <span class="material-symbols-outlined">map</span>&nbsp;
+          <span>Map</span>
+        </button>
+        <button type="button" [class.border-active]="mapLayers['cheatMap'].visible" (click)="showMapLayer('cheatMap')">
+          <span class="material-symbols-outlined">joystick</span>&nbsp;
+          <span>Cheat areas</span>
+        </button>
+      <div class="flex flex-wrap">
+        <button type="button" [class.border-active]="mapLayers['border'].visible" (click)="showMapLayer('border')">
+          <span class="material-symbols-outlined">border_style</span>&nbsp;
+          <span>Borders</span>
+        </button>
+        <button type="button" [class.border-active]="mapLayers['coords'].visible" (click)="showMapLayer('coords')">
+          <span class="material-symbols-outlined">numbers</span>&nbsp;
+          <span>Coordinates</span>
+        </button>
+      </div>
     </div>
   </div>
   <!-- World layer -->
