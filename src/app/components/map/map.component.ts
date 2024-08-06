@@ -13,7 +13,7 @@ import { db } from '@src/app/services/db';
 
 L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
-type MapLayerName = 'map' | 'world' | 'explored' | 'bright' | 'border' | 'coords' | 'space';
+type MapLayerName = 'map' | 'cheatMap' | 'world' | 'explored' | 'bright' | 'border' | 'coords' | 'space';
 type MarkerSection = { name: string, groups: Array<IMarkerGroup> };
 
 @Component({
@@ -38,6 +38,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   mapLayers: { [key in MapLayerName]: { layer: L.LayerGroup, type: 'map' | 'world' | 'border' | 'space', visible: boolean } } = {
     map: { layer: null as any, type: 'map', visible: false },
+    cheatMap: { layer: null as any, type: 'map', visible: false },
     world: { layer: null as any, type: 'world', visible: false },
     explored: { layer: null as any, type: 'world', visible: false },
     bright: { layer: null as any, type: 'world', visible: false },
@@ -264,6 +265,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const mapLayerOuter = L.imageOverlay('/assets/game/map_outer.png', [[-MapHelper.mapTileHeight, -MapHelper.mapTileWidth], [MapHelper.mapHeight + MapHelper.mapTileHeight, MapHelper.mapWidth + MapHelper.mapTileWidth]], { opacity: 0.5, attribution: '' });
     const mapLayerGroup = L.layerGroup([mapLayer, mapLayerOuter]);
     this.mapLayers.map.layer = mapLayerGroup;
+
+    const cheatMapLayer = L.imageOverlay('/assets/game/map_cheats_clean.png', bounds, { attribution: 'Map layer by hawkeye2042' });
+    const cheatMapLayerOuter = L.imageOverlay('/assets/game/map_outer_cheats_clean.png', [[-MapHelper.mapTileHeight, -MapHelper.mapTileWidth], [MapHelper.mapHeight + MapHelper.mapTileHeight, MapHelper.mapWidth + MapHelper.mapTileWidth]], { opacity: 0.5, attribution: '' });
+    const cheatMapLayerGroup = L.layerGroup([cheatMapLayer, cheatMapLayerOuter]);
+    this.mapLayers.cheatMap.layer = cheatMapLayerGroup;
 
     // Add world images
     // Apply height offset to closer match the map layer (don't ask me why it's not aligned perfectly).
