@@ -6,13 +6,22 @@
 html {
   color: #fff;
   font-family: 'Roboto', sans-serif;
-  background-image: url('https://animalwell.wiki.gg/images/0/00/Background_blurred.png');
   background-color: #080812;
+  min-width: fit-content;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('https://animalwell.wiki.gg/images/0/00/Background_blurred.png');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-width: fit-content;
 }
 
 a {
