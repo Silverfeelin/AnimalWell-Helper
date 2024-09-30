@@ -280,7 +280,7 @@
       "code": "6D",
       "name": "Moon Egg",
       "coords": [168.5, 636.5],
-      "items": [ "Disc" ]
+      "items": [ "Disc", "Lantern" ]
     },
     {
       "code": "7D",
@@ -400,7 +400,7 @@
       "code": "12E",
       "name": "Obsidian Egg",
       "coords": [52.5, 565.5],
-      "items": [ "Disc" ]
+      "items": [ "Bubble Wand", "Disc" ]
     },
     {
       "code": "13E",
