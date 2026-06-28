@@ -1397,6 +1397,50 @@
       ]
     },
     {
+      "name": "bballbricks",
+      "section": "Other",
+      "label": "B.Ball Bricks",
+      "labelIcon": "star",
+      "markerIcon": "b-ball",
+      "markerFilter": "grayscale(100%) brightness(0.5)",
+      "markerLabel": "B.Ball Bricks",
+      "markers": [
+        ["BBBR1", [338.5,137.5]],
+        ["BBBR2", [358.5,98.5]],
+        ["BBBR3", [55.5,226.5]],
+        ["BBBR4", [71.5,243.5]],
+        ["BBBR5", [7.5,99.5]],
+        ["BBBR6", [296.5,12.5]]
+      ]
+    },
+    {
+      "name": "breakablefloor",
+      "section": "Other",
+      "label": "Breakable floor",
+      "labelIcon": "star",
+      "markerIcon": "top",
+      "markerFilter": "grayscale(100%) brightness(0.5)",
+      "markerLabel": "Breakable floor",
+      "markers": [
+        ["BRF1", [332.5,134.5]],
+        ["BRF2", [330.5,604.5]],
+        ["BRF3", [245.5,221.5]],
+        ["BRF4", [201.5,325.5]],
+        ["BRF5", [131.5,491.5]],
+        ["BRF6", [155.5,486.5]],
+        ["BRF7", [60.5,595.5]],
+        ["BRF8", [47.5,498.5]],
+        ["BRF9", [59.5,351.5]],
+        ["BRF10", [63.5,123.5]],
+        ["BRF11", [27.5,93.5]],
+        ["BRF12", [357.5,147.5]],
+        ["BRF13", [348.5,131.5]],
+        ["BRF14", [318.5,2.5]],
+        ["BRF15", [2.5,47.5]],
+        ["BRF16", [25.5,145.5]]
+      ]
+    },
+    {
       "name": "yellowFlower",
       "section": "Mysteries",
       "label": "Yellow flowers",
